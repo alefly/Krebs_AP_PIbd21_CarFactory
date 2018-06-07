@@ -1,4 +1,4 @@
-﻿namespace AbstractShopView
+﻿namespace CarFactoryView
 {
     partial class FormIngridients
     {

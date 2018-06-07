@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using Unity;
 using Unity.Attributes;
 
-namespace AbstractShopView
+namespace CarFactoryView
 {
     public partial class FormCreateBooking : Form
     {
@@ -64,7 +64,7 @@ namespace AbstractShopView
                     int id = Convert.ToInt32(comboBoxCommodity.SelectedValue);
                     CommodityView commodity = serviceP.GetElement(id);
                     int count = Convert.ToInt32(textBoxCount.Text);
-                    textBoxSum.Text = (count * commodity.Price).ToString();
+                    textBoxSum.Text = ((int)(count * commodity.Price)).ToString();
                 }
                 catch(Exception ex)
                 {

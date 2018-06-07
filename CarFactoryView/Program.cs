@@ -9,7 +9,7 @@ using Unity.Lifetime;
 using System.Data.Entity;
 using CarServiceService.WorkDB;
 
-namespace AbstractShopView
+namespace CarFactoryView
 {
     static class Program
     {
@@ -36,6 +36,7 @@ namespace AbstractShopView
 			currentContainer.RegisterType<ICommodity, CommodityServiceDB>(new HierarchicalLifetimeManager());
 			currentContainer.RegisterType<IStorage, StorageServiceDB>(new HierarchicalLifetimeManager());
 			currentContainer.RegisterType<IMain, MainServiceDB>(new HierarchicalLifetimeManager());
+			currentContainer.RegisterType<IReportService, ReportServiceDB>(new HierarchicalLifetimeManager());
 
 			return currentContainer;
         }
