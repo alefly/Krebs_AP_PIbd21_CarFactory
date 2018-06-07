@@ -1,37 +1,40 @@
 ﻿using CarFactory;
+using CarFactoryService;
 using CarFactoryService.BindingModels;
 using CarFactoryService.Interfaces;
 using CarFactoryService.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace CarFactoryService.WorkerList
+namespace CarServiceService.WorkDB
 {
-	public class IngridientList : IIngridient
+	public class IngridientServiceDB : IIngridient
 	{
-		private ListDataSingleton source;
+		private CarFactoryDbContext context;
 
-		public IngridientList()
+		public IngridientServiceDB(CarFactoryDbContext context)
 		{
-			source = ListDataSingleton.GetInstance();
+			this.context = context;
 		}
 
 		public List<IngridientView> GetList()
 		{
-			List<IngridientView> result = source.Ingridients
+			List<IngridientView> result = context.Ingridients
 				.Select(rec => new IngridientView
 				{
 					Id = rec.Id,
 					IngridientName = rec.IngridientName
-				}).ToList();
-
+				})
+				.ToList();
 			return result;
 		}
 
 		public IngridientView GetElement(int id)
 		{
-			Ingridient element = source.Ingridients.FirstOrDefault(rec => rec.Id == id);
+			Ingridient element = context.Ingridients.FirstOrDefault(rec => rec.Id == id);
 			if (element != null)
 			{
 				return new IngridientView
@@ -45,41 +48,42 @@ namespace CarFactoryService.WorkerList
 
 		public void AddElement(BindingIngridients model)
 		{
-			Ingridient element = source.Ingridients.FirstOrDefault(rec => rec.IngridientName == model.IngridientName);
+			Ingridient element = context.Ingridients.FirstOrDefault(rec => rec.IngridientName == model.IngridientName);
 			if (element != null)
 			{
 				throw new Exception("Уже есть компонент с таким названием");
 			}
-			int maxId = source.Ingridients.Count > 0 ? source.Ingridients.Max(rec => rec.Id) : 0;
-			source.Ingridients.Add(new Ingridient
+			context.Ingridients.Add(new Ingridient
 			{
-				Id = maxId + 1,
 				IngridientName = model.IngridientName
 			});
+			context.SaveChanges();
 		}
 
 		public void UpdElement(BindingIngridients model)
 		{
-			Ingridient element = source.Ingridients.FirstOrDefault(rec =>
- rec.IngridientName == model.IngridientName && rec.Id != model.Id);
+			Ingridient element = context.Ingridients.FirstOrDefault(rec =>
+										rec.IngridientName == model.IngridientName && rec.Id != model.Id);
 			if (element != null)
 			{
 				throw new Exception("Уже есть компонент с таким названием");
 			}
-			element = source.Ingridients.FirstOrDefault(rec => rec.Id == model.Id);
+			element = context.Ingridients.FirstOrDefault(rec => rec.Id == model.Id);
 			if (element == null)
 			{
 				throw new Exception("Элемент не найден");
 			}
 			element.IngridientName = model.IngridientName;
+			context.SaveChanges();
 		}
 
 		public void DelElement(int id)
 		{
-			Ingridient element = source.Ingridients.FirstOrDefault(rec => rec.Id == id);
+			Ingridient element = context.Ingridients.FirstOrDefault(rec => rec.Id == id);
 			if (element != null)
 			{
-				source.Ingridients.Remove(element);
+				context.Ingridients.Remove(element);
+				context.SaveChanges();
 			}
 			else
 			{

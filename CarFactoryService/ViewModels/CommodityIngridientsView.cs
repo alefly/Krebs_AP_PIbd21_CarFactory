@@ -8,7 +8,7 @@
 
         public int IngridientId { get; set; }
 
-        public string IngridientName { get; set; }
+		public string IngridientName { get; set; }
 
         public int Count { get; set; }
     }

@@ -8,14 +8,14 @@ namespace CarFactoryService.Interfaces
     {
         List<BookingView> GetList();
 
-        void CreateOrder(BindingBooking model);
+        void CreateBooking(BindingBooking model);
 
-        void TakeOrderInWork(BindingBooking model);
+        void TakeBookingInWork(BindingBooking model);
 
-        void FinishOrder(int id);
+        void FinishBooking(int id);
 
-        void PayOrder(int id);
+        void PayBooking(int id);
 
-        void PutComponentOnStock(BindingStorageComponents model);
+        void PutIngridientOnStorage(BindingStorageIngridients model);
     }
 }

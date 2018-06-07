@@ -24,7 +24,7 @@ namespace CarFactoryService.WorkerList
 {
 					Id = rec.Id,
 					StorageName = rec.StorageName,
-					StorageComponents= source.StorageIngridients
+					StorageIngridients= source.StorageIngridients
                             .Where(recPC => recPC.StorageId == rec.Id)
                             .Select(recPC => new StorageIngridientsView
 {
@@ -32,7 +32,7 @@ namespace CarFactoryService.WorkerList
 StorageId = recPC.StorageId,
 	IngridientId = recPC.IngridientId,
 	IngridientName = source.Ingridients
-                                    .FirstOrDefault(recC => recC.Id == recPC.IngridientId)?.IngredientName,
+                                    .FirstOrDefault(recC => recC.Id == recPC.IngridientId)?.IngridientName,
 	Count = recPC.Count
                             })
                             .ToList()
@@ -50,7 +50,7 @@ StorageId = recPC.StorageId,
 				{
 					Id = element.Id,
 					StorageName = element.StorageName,
-					StorageComponents = source.StorageIngridients
+					StorageIngridients = source.StorageIngridients
                             .Where(recPC => recPC.StorageId == element.Id)
                             .Select(recPC => new StorageIngridientsView
 {
@@ -58,7 +58,7 @@ StorageId = recPC.StorageId,
 	StorageId = recPC.StorageId,
 	IngridientId = recPC.IngridientId,
 	IngridientName = source.Ingridients
-                                   .FirstOrDefault(recC => recC.Id == recPC.IngridientId)?.IngredientName,
+                                   .FirstOrDefault(recC => recC.Id == recPC.IngridientId)?.IngridientName,
 	Count = recPC.Count
                             })
                             .ToList()

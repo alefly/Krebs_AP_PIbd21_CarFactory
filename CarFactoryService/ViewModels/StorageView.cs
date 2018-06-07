@@ -8,6 +8,6 @@ namespace CarFactoryService.ViewModels
 
         public string StorageName { get; set; }
 
-        public List<StorageIngridientsView> StorageComponents { get; set; }
+        public List<StorageIngridientsView> StorageIngridients { get; set; }
     }
 }

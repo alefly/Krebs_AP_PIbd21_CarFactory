@@ -1,6 +1,6 @@
 ﻿namespace CarFactoryService.BindingModels
 {
-    public class BindingStorageComponents
+    public class BindingStorageIngridients
     {
         public int Id { get; set; }
 

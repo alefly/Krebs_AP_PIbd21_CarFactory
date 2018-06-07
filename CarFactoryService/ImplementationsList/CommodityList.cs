@@ -33,7 +33,7 @@ CommodityIngridients = source.CommodityIngridients
 	CommodityId = recPC.CommodityId,
 	IngridientId = recPC.IngridientId,
 	IngridientName = source.Ingridients
-                                    .FirstOrDefault(recC => recC.Id == recPC.IngridientId)?.IngredientName,
+                                    .FirstOrDefault(recC => recC.Id == recPC.IngridientId)?.IngridientName,
 	Count = recPC.Count
                             })
                             .ToList()
@@ -60,7 +60,7 @@ CommodityIngridients = source.CommodityIngridients
 	CommodityId = recPC.CommodityId,
 	IngridientId = recPC.IngridientId,
 	IngridientName = source.Ingridients
-                                        .FirstOrDefault(recC => recC.Id == recPC.IngridientId)?.IngredientName,
+                                        .FirstOrDefault(recC => recC.Id == recPC.IngridientId)?.IngridientName,
 	Count = recPC.Count
                             })
                             .ToList()

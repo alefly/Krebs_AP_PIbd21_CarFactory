@@ -68,7 +68,7 @@ namespace AbstractShopView
             }
             try
             {
-                serviceM.TakeOrderInWork(new BindingBooking
+                serviceM.TakeBookingInWork(new BindingBooking
                 {
                     Id = id.Value,
                     WorkerId = Convert.ToInt32(comboBoxWorker.SelectedValue)
