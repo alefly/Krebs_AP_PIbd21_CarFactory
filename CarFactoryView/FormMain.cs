@@ -1,31 +1,24 @@
-﻿using CarFactoryService.Interfaces;
+﻿using CarFactoryService.BindingModels;
 using CarFactoryService.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using Unity;
-using Unity.Attributes;
 
-namespace AbstractShopView
+namespace CarFactoryView
 {
     public partial class FormMain : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
-
-        private readonly IMain service;
-
-        public FormMain(IMain service)
+        public FormMain()
         {
             InitializeComponent();
-            this.service = service;
         }
 
         private void LoadData()
         {
             try
             {
-                List<BookingView> list = service.GetList();
+                List<BookingView> list = Task.Run(() => APIConsumer.GetRequestData<List<BookingView>>("api/Main/GetList")).Result;
                 if (list != null)
                 {
                     dataGridView.DataSource = list;
@@ -38,101 +31,170 @@ namespace AbstractShopView
             }
             catch (Exception ex)
             {
+                while (ex.InnerException != null)
+                {
+                    ex = ex.InnerException;
+                }
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void клиентыToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormConsumers>();
+            var form = new FormConsumers();
             form.ShowDialog();
         }
 
         private void компонентыToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormIngridients>();
+            var form = new FormIngridients();
             form.ShowDialog();
         }
 
         private void изделияToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<Commodities>();
+            var form = new FormCommodities();
             form.ShowDialog();
         }
 
         private void складыToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormStoragies>();
+            var form = new FormStorage();
             form.ShowDialog();
         }
 
         private void сотрудникиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormWorkers>();
+            var form = new FormWorkers();
             form.ShowDialog();
         }
 
         private void пополнитьСкладToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormPutOnStorage>();
+            var form = new FormPutOnStorage();
             form.ShowDialog();
         }
 
-        private void buttonCreateOrder_Click(object sender, EventArgs e)
+        private void buttonCreateBooking_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormCreateBooking>();
+            var form = new FormCreateBooking();
             form.ShowDialog();
-            LoadData();
         }
 
-        private void buttonTakeOrderInWork_Click(object sender, EventArgs e)
+        private void buttonTakeBookingInWork_Click(object sender, EventArgs e)
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                var form = Container.Resolve<FormTakeBookingInWork>();
-                form.Id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
+                var form = new FormTakeBookingInWork
+                {
+                    Id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value)
+                };
                 form.ShowDialog();
-                LoadData();
             }
         }
 
-        private void buttonOrderReady_Click(object sender, EventArgs e)
+        private void buttonBookingReady_Click(object sender, EventArgs e)
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
                 int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
-                try
+
+                Task task = Task.Run(() => APIConsumer.PostRequestData("api/Main/FinishBooking", new BindingBooking
                 {
-                    service.FinishBooking(id);
-                    LoadData();
-                }
-                catch (Exception ex)
+                    Id = id
+                }));
+
+                task.ContinueWith((prevTask) => MessageBox.Show("Статус заказа изменен. Обновите список", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information),
+                TaskContinuationOptions.OnlyOnRanToCompletion);
+
+                task.ContinueWith((prevTask) =>
                 {
+                    var ex = (Exception)prevTask.Exception;
+                    while (ex.InnerException != null)
+                    {
+                        ex = ex.InnerException;
+                    }
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                }, TaskContinuationOptions.OnlyOnFaulted);
             }
         }
 
-        private void buttonPayOrder_Click(object sender, EventArgs e)
+        private void buttonPayBooking_Click(object sender, EventArgs e)
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
                 int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
-                try
+
+                Task task = Task.Run(() => APIConsumer.PostRequestData("api/Main/PayBooking", new BindingBooking
                 {
-                    service.PayBooking(id);
-                    LoadData();
-                }
-                catch (Exception ex)
+                    Id = id
+                }));
+
+                task.ContinueWith((prevTask) => MessageBox.Show("Статус заказа изменен. Обновите список", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information),
+                TaskContinuationOptions.OnlyOnRanToCompletion);
+
+                task.ContinueWith((prevTask) =>
                 {
+                    var ex = (Exception)prevTask.Exception;
+                    while (ex.InnerException != null)
+                    {
+                        ex = ex.InnerException;
+                    }
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                }, TaskContinuationOptions.OnlyOnFaulted);
             }
         }
 
         private void buttonRef_Click(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void прайсИзделийToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog
+            {
+                Filter = "doc|*.doc|docx|*.docx"
+            };
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                string fileName = sfd.FileName;
+                Task task = Task.Run(() => APIConsumer.PostRequestData("api/Report/SaveCommodityPrice", new ReportBindingModel
+                {
+                    FileName = fileName
+                }));
+
+                task.ContinueWith((prevTask) => MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information),
+                TaskContinuationOptions.OnlyOnRanToCompletion);
+
+                task.ContinueWith((prevTask) =>
+                {
+                    var ex = (Exception)prevTask.Exception;
+                    while (ex.InnerException != null)
+                    {
+                        ex = ex.InnerException;
+                    }
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }, TaskContinuationOptions.OnlyOnFaulted);
+            }
+        }
+
+        private void загруженностьСкладовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new FormStoragesLoad();
+            form.ShowDialog();
+        }
+
+        private void заказыКлиентовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new FormConsumerBookings();
+            form.ShowDialog();
+        }
+
+        private void письмаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new FormMails();
+            form.ShowDialog();
         }
     }
 }

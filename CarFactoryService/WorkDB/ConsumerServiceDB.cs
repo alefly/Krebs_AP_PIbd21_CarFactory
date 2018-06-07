@@ -25,6 +25,7 @@ namespace CarFactoryService.WorkDB
 				.Select(rec => new ConsumerView
 				{
 					Id = rec.Id,
+                    Mail = rec.Mail,
 					ConsumerName = rec.ConsumerName
 				})
 				.ToList();
@@ -39,8 +40,20 @@ namespace CarFactoryService.WorkDB
 				return new ConsumerView
 				{
 					Id = element.Id,
-					ConsumerName = element.ConsumerName
-				};
+                    Mail = element.Mail,
+                    ConsumerName = element.ConsumerName,
+                    Messages = context.MessageInfos
+                            .Where(recM => recM.ConsumerId == element.Id)
+                            .Select(recM => new MessageInfoView
+                            {
+                        MessageId = recM.MessageId,
+                        DateDelivery = recM.DateDelivery,
+                        Subject = recM.Subject,
+                        Body = recM.Body
+                            })
+                            .ToList()
+
+                };
 			}
 			throw new Exception("Элемент не найден");
 		}
@@ -54,6 +67,7 @@ namespace CarFactoryService.WorkDB
 			}
 			context.Consumers.Add(new Consumer
 			{
+                Mail = model.Mail,
 				ConsumerName = model.ConsumerName
 			});
 			context.SaveChanges();
@@ -72,8 +86,9 @@ namespace CarFactoryService.WorkDB
 			{
 				throw new Exception("Элемент не найден");
 			}
+            element.Mail = model.Mail;
 			element.ConsumerName = model.ConsumerName;
-			context.SaveChanges();
+            context.SaveChanges();
 		}
 
 		public void DelElement(int id)

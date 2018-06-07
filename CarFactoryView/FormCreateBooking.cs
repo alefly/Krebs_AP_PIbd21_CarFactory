@@ -1,46 +1,33 @@
 ﻿using CarFactoryService.BindingModels;
-using CarFactoryService.Interfaces;
 using CarFactoryService.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using Unity;
-using Unity.Attributes;
 
-namespace AbstractShopView
+namespace CarFactoryView
 {
     public partial class FormCreateBooking : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
-
-        private readonly IConsumer serviceC;
-
-        private readonly ICommodity serviceP;
-
-        private readonly IMain serviceM;
-
-        public FormCreateBooking(IConsumer serviceC, ICommodity serviceP, IMain serviceM)
+        public FormCreateBooking()
         {
             InitializeComponent();
-            this.serviceC = serviceC;
-            this.serviceP = serviceP;
-            this.serviceM = serviceM;
         }
 
-        private void FormCreateOrder_Load(object sender, EventArgs e)
+        private void FormCreateBooking_Load(object sender, EventArgs e)
         {
             try
             {
-                List<ConsumerView> listC = serviceC.GetList();
+                List<ConsumerView> listC = Task.Run(() => APIConsumer.GetRequestData<List<ConsumerView>>("api/Consumer/GetList")).Result;
                 if (listC != null)
                 {
-                    comboBoxClient.DisplayMember = "ConsumerName";
-                    comboBoxClient.ValueMember = "Id";
-                    comboBoxClient.DataSource = listC;
-                    comboBoxClient.SelectedItem = null;
+                    comboBoxConsumer.DisplayMember = "ConsumerName";
+                    comboBoxConsumer.ValueMember = "Id";
+                    comboBoxConsumer.DataSource = listC;
+                    comboBoxConsumer.SelectedItem = null;
                 }
-                List<CommodityView> listP = serviceP.GetList();
+
+                List<CommodityView> listP = Task.Run(() => APIConsumer.GetRequestData<List<CommodityView>>("api/Commodity/GetList")).Result;
                 if (listP != null)
                 {
                     comboBoxCommodity.DisplayMember = "CommodityName";
@@ -51,6 +38,10 @@ namespace AbstractShopView
             }
             catch (Exception ex)
             {
+                while (ex.InnerException != null)
+                {
+                    ex = ex.InnerException;
+                }
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -62,12 +53,16 @@ namespace AbstractShopView
                 try
                 {
                     int id = Convert.ToInt32(comboBoxCommodity.SelectedValue);
-                    CommodityView commodity = serviceP.GetElement(id);
+                    CommodityView Commodity = Task.Run(() => APIConsumer.GetRequestData<CommodityView>("api/Commodity/Get/" + id)).Result;
                     int count = Convert.ToInt32(textBoxCount.Text);
-                    textBoxSum.Text = (count * commodity.Price).ToString();
+                    textBoxSum.Text = (count * (int)Commodity.Price).ToString();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
+                    while (ex.InnerException != null)
+                    {
+                        ex = ex.InnerException;
+                    }
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -90,7 +85,7 @@ namespace AbstractShopView
                 MessageBox.Show("Заполните поле Количество", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (comboBoxClient.SelectedValue == null)
+            if (comboBoxConsumer.SelectedValue == null)
             {
                 MessageBox.Show("Выберите клиента", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -100,28 +95,35 @@ namespace AbstractShopView
                 MessageBox.Show("Выберите изделие", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            try
+            int ConsumerId = Convert.ToInt32(comboBoxConsumer.SelectedValue);
+            int CommodityId = Convert.ToInt32(comboBoxCommodity.SelectedValue);
+            int count = Convert.ToInt32(textBoxCount.Text);
+            int sum = Convert.ToInt32(textBoxSum.Text);
+            Task task = Task.Run(() => APIConsumer.PostRequestData("api/Main/CreateBooking", new BindingBooking
             {
-                serviceM.CreateBooking(new BindingBooking
+                ConsumerId = ConsumerId,
+                CommodityId = CommodityId,
+                Count = count,
+                Sum = sum
+            }));
+
+            task.ContinueWith((prevTask) => MessageBox.Show("Сохранение прошло успешно. Обновите список", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information),
+                TaskContinuationOptions.OnlyOnRanToCompletion);
+            task.ContinueWith((prevTask) =>
+            {
+                var ex = (Exception)prevTask.Exception;
+                while (ex.InnerException != null)
                 {
-                    ConsumerId = Convert.ToInt32(comboBoxClient.SelectedValue),
-                    CommodityId = Convert.ToInt32(comboBoxCommodity.SelectedValue),
-                    Count = Convert.ToInt32(textBoxCount.Text),
-                    Sum = Convert.ToInt32(textBoxSum.Text)
-                });
-                MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DialogResult = DialogResult.OK;
-                Close();
-            }
-            catch (Exception ex)
-            {
+                    ex = ex.InnerException;
+                }
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            }, TaskContinuationOptions.OnlyOnFaulted);
+
+            Close();
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
             Close();
         }
     }

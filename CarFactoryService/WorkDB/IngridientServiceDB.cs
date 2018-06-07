@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarServiceService.WorkDB
+namespace CarFactoryService.WorkDB
 {
 	public class IngridientServiceDB : IIngridient
 	{

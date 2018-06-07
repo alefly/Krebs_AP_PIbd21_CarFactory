@@ -1,56 +1,47 @@
 ﻿using CarFactoryService.BindingModels;
-using CarFactoryService.Interfaces;
 using CarFactoryService.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using Unity;
-using Unity.Attributes;
 
-namespace AbstractShopView
+namespace CarFactoryView
 {
     public partial class FormPutOnStorage : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
-
-        private readonly IStorage serviceS;
-
-        private readonly IIngridient serviceC;
-
-        private readonly IMain serviceM;
-
-        public FormPutOnStorage(IStorage serviceS, IIngridient serviceC, IMain serviceM)
+        public FormPutOnStorage()
         {
             InitializeComponent();
-            this.serviceS = serviceS;
-            this.serviceC = serviceC;
-            this.serviceM = serviceM;
         }
 
-        private void FormPutOnStock_Load(object sender, EventArgs e)
+        private void FormPutOnStorage_Load(object sender, EventArgs e)
         {
             try
             {
-                List<IngridientView> listC = serviceC.GetList();
+                List<IngridientView> listC = Task.Run(() => APIConsumer.GetRequestData<List<IngridientView>>("api/Ingridient/GetList")).Result;
                 if (listC != null)
                 {
-                    comboBoxComponent.DisplayMember = "IngridientName";
-                    comboBoxComponent.ValueMember = "Id";
-                    comboBoxComponent.DataSource = listC;
-                    comboBoxComponent.SelectedItem = null;
+                    comboBoxIngridient.DisplayMember = "IngridientName";
+                    comboBoxIngridient.ValueMember = "Id";
+                    comboBoxIngridient.DataSource = listC;
+                    comboBoxIngridient.SelectedItem = null;
                 }
-                List<StorageView> listS = serviceS.GetList();
+
+                List<StorageView> listS = Task.Run(() => APIConsumer.GetRequestData<List<StorageView>>("api/Storage/GetList")).Result;
                 if (listS != null)
                 {
-                    comboBoxStock.DisplayMember = "StorageName";
-                    comboBoxStock.ValueMember = "Id";
-                    comboBoxStock.DataSource = listS;
-                    comboBoxStock.SelectedItem = null;
+                    comboBoxStorage.DisplayMember = "StorageName";
+                    comboBoxStorage.ValueMember = "Id";
+                    comboBoxStorage.DataSource = listS;
+                    comboBoxStorage.SelectedItem = null;
                 }
             }
             catch (Exception ex)
             {
+                while (ex.InnerException != null)
+                {
+                    ex = ex.InnerException;
+                }
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -62,37 +53,54 @@ namespace AbstractShopView
                 MessageBox.Show("Заполните поле Количество", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (comboBoxComponent.SelectedValue == null)
+            if (comboBoxIngridient.SelectedValue == null)
             {
                 MessageBox.Show("Выберите компонент", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (comboBoxStock.SelectedValue == null)
+            if (comboBoxStorage.SelectedValue == null)
             {
                 MessageBox.Show("Выберите склад", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             try
             {
-                serviceM.PutIngridientOnStorage(new BindingStorageIngridients
+                int componentId = Convert.ToInt32(comboBoxIngridient.SelectedValue);
+                int stockId = Convert.ToInt32(comboBoxStorage.SelectedValue);
+                int count = Convert.ToInt32(textBoxCount.Text);
+                Task task = Task.Run(() => APIConsumer.PostRequestData("api/Main/PutIngridientOnStorage", new BindingStorageIngridients
                 {
-                    IngridientId = Convert.ToInt32(comboBoxComponent.SelectedValue),
-                    StorageId = Convert.ToInt32(comboBoxStock.SelectedValue),
-                    Count = Convert.ToInt32(textBoxCount.Text)
-                });
-                MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DialogResult = DialogResult.OK;
+                    IngridientId = componentId,
+                    StorageId = stockId,
+                    Count = count
+                }));
+
+                task.ContinueWith((prevTask) => MessageBox.Show("Склад пополнен", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information),
+                    TaskContinuationOptions.OnlyOnRanToCompletion);
+                task.ContinueWith((prevTask) =>
+                {
+                    var ex = (Exception)prevTask.Exception;
+                    while (ex.InnerException != null)
+                    {
+                        ex = ex.InnerException;
+                    }
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }, TaskContinuationOptions.OnlyOnFaulted);
+
                 Close();
             }
             catch (Exception ex)
             {
+                while (ex.InnerException != null)
+                {
+                    ex = ex.InnerException;
+                }
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
             Close();
         }
     }

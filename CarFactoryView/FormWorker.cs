@@ -1,44 +1,38 @@
 ﻿using CarFactoryService.BindingModels;
-using CarFactoryService.Interfaces;
 using CarFactoryService.ViewModels;
 using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using Unity;
-using Unity.Attributes;
 
-namespace AbstractShopView
+namespace CarFactoryView
 {
     public partial class FormWorker : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
-
         public int Id { set { id = value; } }
-
-        private readonly IWorker service;
 
         private int? id;
 
-        public FormWorker(IWorker service)
+        public FormWorker()
         {
             InitializeComponent();
-            this.service = service;
         }
 
-        private void FormImplementer_Load(object sender, EventArgs e)
+        private void FormWorker_Load(object sender, EventArgs e)
         {
             if (id.HasValue)
             {
                 try
                 {
-                    WorkerView view = service.GetElement(id.Value);
-                    if (view != null)
-                    {
-                        textBoxFIO.Text = view.WorkerName;
-                    }
+                    var Worker = Task.Run(() => APIConsumer.GetRequestData<WorkerView>("api/Worker/Get/" + id.Value)).Result;
+                    textBoxName.Text = Worker.WorkerName;
                 }
                 catch (Exception ex)
                 {
+                    while (ex.InnerException != null)
+                    {
+                        ex = ex.InnerException;
+                    }
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -46,41 +40,46 @@ namespace AbstractShopView
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(textBoxFIO.Text))
+            if (string.IsNullOrEmpty(textBoxName.Text))
             {
                 MessageBox.Show("Заполните ФИО", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            try
+            string fio = textBoxName.Text;
+            Task task;
+            if (id.HasValue)
             {
-                if (id.HasValue)
+                task = Task.Run(() => APIConsumer.PostRequestData("api/Worker/UpdElement", new BindingWorkers
                 {
-                    service.UpdElement(new BindingWorkers
-                    {
-                        Id = id.Value,
-                        WorkerName = textBoxFIO.Text
-                    });
-                }
-                else
-                {
-                    service.AddElement(new BindingWorkers
-					{
-                        WorkerName = textBoxFIO.Text
-                    });
-                }
-                MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DialogResult = DialogResult.OK;
-                Close();
+                    Id = id.Value,
+                    WorkerName = fio
+                }));
             }
-            catch (Exception ex)
+            else
             {
+                task = Task.Run(() => APIConsumer.PostRequestData("api/Worker/AddElement", new BindingWorkers
+                {
+                    WorkerName = fio
+                }));
+            }
+
+            task.ContinueWith((prevTask) => MessageBox.Show("Сохранение прошло успешно. Обновите список", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information),
+                TaskContinuationOptions.OnlyOnRanToCompletion);
+            task.ContinueWith((prevTask) =>
+            {
+                var ex = (Exception)prevTask.Exception;
+                while (ex.InnerException != null)
+                {
+                    ex = ex.InnerException;
+                }
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            }, TaskContinuationOptions.OnlyOnFaulted);
+
+            Close();
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
             Close();
         }
     }

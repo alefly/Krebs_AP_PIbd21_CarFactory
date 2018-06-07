@@ -1,41 +1,24 @@
 ﻿using CarFactoryService.BindingModels;
-using CarFactoryService.Interfaces;
 using CarFactoryService.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Unity;
-using Unity.Attributes;
 
-namespace AbstractShopView
+namespace CarFactoryView
 {
     public partial class FormTakeBookingInWork : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
-
         public int Id { set { id = value; } }
-
-        private readonly IWorker serviceI;
-
-        private readonly IMain serviceM;
 
         private int? id;
 
-        public FormTakeBookingInWork(IWorker serviceI, IMain serviceM)
+        public FormTakeBookingInWork()
         {
             InitializeComponent();
-            this.serviceI = serviceI;
-            this.serviceM = serviceM;
         }
 
-        private void FormTakeOrderInWork_Load(object sender, EventArgs e)
+        private void FormTakeBookingInWork_Load(object sender, EventArgs e)
         {
             try
             {
@@ -44,17 +27,21 @@ namespace AbstractShopView
                     MessageBox.Show("Не указан заказ", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Close();
                 }
-                List<WorkerView> listI = serviceI.GetList();
-                if (listI != null)
+                List<WorkerView> list = Task.Run(() => APIConsumer.GetRequestData<List<WorkerView>>("api/Worker/GetList")).Result;
+                if (list != null)
                 {
                     comboBoxWorker.DisplayMember = "WorkerName";
                     comboBoxWorker.ValueMember = "Id";
-                    comboBoxWorker.DataSource = listI;
+                    comboBoxWorker.DataSource = list;
                     comboBoxWorker.SelectedItem = null;
                 }
             }
             catch (Exception ex)
             {
+                while (ex.InnerException != null)
+                {
+                    ex = ex.InnerException;
+                }
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -68,24 +55,39 @@ namespace AbstractShopView
             }
             try
             {
-                serviceM.TakeBookingInWork(new BindingBooking
+                int implementerId = Convert.ToInt32(comboBoxWorker.SelectedValue);
+                Task task = Task.Run(() => APIConsumer.PostRequestData("api/Main/TakeBookingInWork", new BindingBooking
                 {
                     Id = id.Value,
-                    WorkerId = Convert.ToInt32(comboBoxWorker.SelectedValue)
-                });
-                MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DialogResult = DialogResult.OK;
+                    WorkerId = implementerId
+                }));
+
+                task.ContinueWith((prevTask) => MessageBox.Show("Заказ передан в работу. Обновите список", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information),
+                    TaskContinuationOptions.OnlyOnRanToCompletion);
+                task.ContinueWith((prevTask) =>
+                {
+                    var ex = (Exception)prevTask.Exception;
+                    while (ex.InnerException != null)
+                    {
+                        ex = ex.InnerException;
+                    }
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }, TaskContinuationOptions.OnlyOnFaulted);
+
                 Close();
             }
             catch (Exception ex)
             {
+                while (ex.InnerException != null)
+                {
+                    ex = ex.InnerException;
+                }
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
             Close();
         }
     }

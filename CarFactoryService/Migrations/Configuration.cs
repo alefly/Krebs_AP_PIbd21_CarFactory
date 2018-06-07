@@ -1,4 +1,4 @@
-namespace AbstractShopService.Migrations
+namespace CarFactoryService.Migrations
 {
     using System;
     using System.Data.Entity;
@@ -9,10 +9,8 @@ namespace AbstractShopService.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-			AutomaticMigrationDataLossAllowed = true;
-
-		}
+            AutomaticMigrationsEnabled = false;
+        }
 
         protected override void Seed(CarFactoryService.CarFactoryDbContext context)
         {

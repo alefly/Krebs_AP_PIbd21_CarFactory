@@ -1,11 +1,11 @@
-﻿namespace AbstractShopView
+﻿namespace CarFactoryView
 {
     partial class FormCommodity
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private System.ComponentModel.IContainer ingridients = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -13,9 +13,9 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (ingridients != null))
             {
-                components.Dispose();
+                ingridients.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -34,13 +34,13 @@
             this.labelName = new System.Windows.Forms.Label();
             this.textBoxPrice = new System.Windows.Forms.TextBox();
             this.labelPrice = new System.Windows.Forms.Label();
-            this.groupBoxComponents = new System.Windows.Forms.GroupBox();
+            this.groupBoxIngridient = new System.Windows.Forms.GroupBox();
             this.buttonRef = new System.Windows.Forms.Button();
             this.buttonDel = new System.Windows.Forms.Button();
             this.buttonUpd = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.groupBoxComponents.SuspendLayout();
+            this.groupBoxIngridient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,19 +96,19 @@
             this.labelPrice.TabIndex = 2;
             this.labelPrice.Text = "Цена:";
             // 
-            // groupBoxComponents
+            // groupBoxIngridient
             // 
-            this.groupBoxComponents.Controls.Add(this.buttonRef);
-            this.groupBoxComponents.Controls.Add(this.buttonDel);
-            this.groupBoxComponents.Controls.Add(this.buttonUpd);
-            this.groupBoxComponents.Controls.Add(this.buttonAdd);
-            this.groupBoxComponents.Controls.Add(this.dataGridView);
-            this.groupBoxComponents.Location = new System.Drawing.Point(12, 58);
-            this.groupBoxComponents.Name = "groupBoxComponents";
-            this.groupBoxComponents.Size = new System.Drawing.Size(478, 250);
-            this.groupBoxComponents.TabIndex = 4;
-            this.groupBoxComponents.TabStop = false;
-            this.groupBoxComponents.Text = "Компоненты";
+            this.groupBoxIngridient.Controls.Add(this.buttonRef);
+            this.groupBoxIngridient.Controls.Add(this.buttonDel);
+            this.groupBoxIngridient.Controls.Add(this.buttonUpd);
+            this.groupBoxIngridient.Controls.Add(this.buttonAdd);
+            this.groupBoxIngridient.Controls.Add(this.dataGridView);
+            this.groupBoxIngridient.Location = new System.Drawing.Point(12, 58);
+            this.groupBoxIngridient.Name = "groupBoxIngridient";
+            this.groupBoxIngridient.Size = new System.Drawing.Size(478, 250);
+            this.groupBoxIngridient.TabIndex = 4;
+            this.groupBoxIngridient.TabStop = false;
+            this.groupBoxIngridient.Text = "Компоненты";
             // 
             // buttonRef
             // 
@@ -163,23 +163,23 @@
             this.dataGridView.Size = new System.Drawing.Size(350, 231);
             this.dataGridView.TabIndex = 0;
             // 
-            // FormProduct
+            // FormCommodity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(502, 348);
-            this.Controls.Add(this.groupBoxComponents);
+            this.Controls.Add(this.groupBoxIngridient);
             this.Controls.Add(this.textBoxPrice);
             this.Controls.Add(this.labelPrice);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.labelName);
-            this.Name = "FormProduct";
+            this.Name = "FormCommodity";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Изделие";
-            this.Load += new System.EventHandler(this.FormProduct_Load);
-            this.groupBoxComponents.ResumeLayout(false);
+            this.Load += new System.EventHandler(this.FormCommodity_Load);
+            this.groupBoxIngridient.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -194,7 +194,7 @@
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.TextBox textBoxPrice;
         private System.Windows.Forms.Label labelPrice;
-        private System.Windows.Forms.GroupBox groupBoxComponents;
+        private System.Windows.Forms.GroupBox groupBoxIngridient;
         private System.Windows.Forms.Button buttonRef;
         private System.Windows.Forms.Button buttonDel;
         private System.Windows.Forms.Button buttonUpd;

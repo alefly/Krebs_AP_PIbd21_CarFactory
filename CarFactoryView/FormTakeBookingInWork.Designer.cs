@@ -1,11 +1,11 @@
-﻿namespace AbstractShopView
+﻿namespace CarFactoryView
 {
     partial class FormTakeBookingInWork
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private System.ComponentModel.IContainer ingridients = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -13,9 +13,9 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (ingridients != null))
             {
-                components.Dispose();
+                ingridients.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -29,28 +29,28 @@
         private void InitializeComponent()
         {
             this.comboBoxWorker = new System.Windows.Forms.ComboBox();
-            this.labelImplementer = new System.Windows.Forms.Label();
+            this.labelWorker = new System.Windows.Forms.Label();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // comboBoxImplementer
+            // comboBoxWorker
             // 
             this.comboBoxWorker.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxWorker.FormattingEnabled = true;
             this.comboBoxWorker.Location = new System.Drawing.Point(95, 6);
-            this.comboBoxWorker.Name = "comboBoxImplementer";
+            this.comboBoxWorker.Name = "comboBoxWorker";
             this.comboBoxWorker.Size = new System.Drawing.Size(217, 21);
             this.comboBoxWorker.TabIndex = 1;
             // 
-            // labelImplementer
+            // labelWorker
             // 
-            this.labelImplementer.AutoSize = true;
-            this.labelImplementer.Location = new System.Drawing.Point(12, 9);
-            this.labelImplementer.Name = "labelImplementer";
-            this.labelImplementer.Size = new System.Drawing.Size(77, 13);
-            this.labelImplementer.TabIndex = 0;
-            this.labelImplementer.Text = "Исполнитель:";
+            this.labelWorker.AutoSize = true;
+            this.labelWorker.Location = new System.Drawing.Point(12, 9);
+            this.labelWorker.Name = "labelWorker";
+            this.labelWorker.Size = new System.Drawing.Size(77, 13);
+            this.labelWorker.TabIndex = 0;
+            this.labelWorker.Text = "Исполнитель:";
             // 
             // buttonCancel
             // 
@@ -72,7 +72,7 @@
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
-            // FormTakeOrderInWork
+            // FormTakeBookingInWork
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -80,11 +80,11 @@
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.comboBoxWorker);
-            this.Controls.Add(this.labelImplementer);
-            this.Name = "FormTakeOrderInWork";
+            this.Controls.Add(this.labelWorker);
+            this.Name = "FormTakeBookingInWork";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Отдать заказ в работу";
-            this.Load += new System.EventHandler(this.FormTakeOrderInWork_Load);
+            this.Load += new System.EventHandler(this.FormTakeBookingInWork_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -93,7 +93,7 @@
         #endregion
 
         private System.Windows.Forms.ComboBox comboBoxWorker;
-        private System.Windows.Forms.Label labelImplementer;
+        private System.Windows.Forms.Label labelWorker;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonSave;
     }

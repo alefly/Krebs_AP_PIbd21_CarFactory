@@ -1,51 +1,43 @@
-﻿using CarFactoryService.Interfaces;
-using CarFactoryService.ViewModels;
+﻿using CarFactoryService.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using Unity;
-using Unity.Attributes;
 
-namespace AbstractShopView
+namespace CarFactoryView
 {
     public partial class FormCommodityIngridients : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
-
         public CommodityIngridientView Model { set { model = value; }  get { return model; } }
-
-        private readonly IIngridient service;
 
         private CommodityIngridientView model;
 
-        public FormCommodityIngridients(IIngridient service)
+        public FormCommodityIngridients()
         {
             InitializeComponent();
-            this.service = service;
         }
 
-        private void FormProductComponent_Load(object sender, EventArgs e)
+        private void FormCommodityIngridient_Load(object sender, EventArgs e)
         {
             try
             {
-                List<IngridientView> list = service.GetList();
-                if (list != null)
-                {
-                    comboBoxComponent.DisplayMember = "IngridientName";
-                    comboBoxComponent.ValueMember = "Id";
-                    comboBoxComponent.DataSource = list;
-                    comboBoxComponent.SelectedItem = null;
-                }
+                comboBoxIngridient.DisplayMember = "IngridientName";
+                comboBoxIngridient.ValueMember = "Id";
+                comboBoxIngridient.DataSource = Task.Run(() => APIConsumer.GetRequestData<List<IngridientView>>("api/Ingridient/GetList")).Result;
+                comboBoxIngridient.SelectedItem = null;
             }
             catch (Exception ex)
             {
+                while (ex.InnerException != null)
+                {
+                    ex = ex.InnerException;
+                }
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             if (model != null)
             {
-                comboBoxComponent.Enabled = false;
-                comboBoxComponent.SelectedValue = model.IngridientId;
+                comboBoxIngridient.Enabled = false;
+                comboBoxIngridient.SelectedValue = model.IngridientId;
                 textBoxCount.Text = model.Count.ToString();
             }
         }
@@ -57,7 +49,7 @@ namespace AbstractShopView
                 MessageBox.Show("Заполните поле Количество", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (comboBoxComponent.SelectedValue == null)
+            if (comboBoxIngridient.SelectedValue == null)
             {
                 MessageBox.Show("Выберите компонент", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -68,8 +60,8 @@ namespace AbstractShopView
                 {
                     model = new CommodityIngridientView
                     {
-                        IngridientId = Convert.ToInt32(comboBoxComponent.SelectedValue),
-                        IngridientName = comboBoxComponent.Text,
+                        IngridientId = Convert.ToInt32(comboBoxIngridient.SelectedValue),
+                        IngridientName = comboBoxIngridient.Text,
                         Count = Convert.ToInt32(textBoxCount.Text)
                     };
                 }

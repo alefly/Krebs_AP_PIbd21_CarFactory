@@ -14,7 +14,12 @@ namespace CarFactory
 		[Required]
         public string ConsumerName { get; set; }
 
+        public string Mail { get; set; }
+
 		[ForeignKey("ConsumerId")]
 		public virtual List<Booking> Bookings { get; set; }
+
+        [ForeignKey("ConsumerId")]
+        public virtual List<MessageInfo> MessageInfos { get; set; }
     }
 }

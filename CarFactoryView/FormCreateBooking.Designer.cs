@@ -1,11 +1,11 @@
-﻿namespace AbstractShopView
+﻿namespace CarFactoryView
 {
     partial class FormCreateBooking
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private System.ComponentModel.IContainer ingridients = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -13,9 +13,9 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (ingridients != null))
             {
-                components.Dispose();
+                ingridients.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -28,35 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBoxClient = new System.Windows.Forms.ComboBox();
-            this.labelClient = new System.Windows.Forms.Label();
+            this.comboBoxConsumer = new System.Windows.Forms.ComboBox();
+            this.labelConsumer = new System.Windows.Forms.Label();
             this.labelCount = new System.Windows.Forms.Label();
             this.comboBoxCommodity = new System.Windows.Forms.ComboBox();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.textBoxCount = new System.Windows.Forms.TextBox();
-            this.labelProduct = new System.Windows.Forms.Label();
+            this.labelCommodity = new System.Windows.Forms.Label();
             this.labelSum = new System.Windows.Forms.Label();
             this.textBoxSum = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // comboBoxClient
+            // comboBoxConsumer
             // 
-            this.comboBoxClient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxClient.FormattingEnabled = true;
-            this.comboBoxClient.Location = new System.Drawing.Point(87, 6);
-            this.comboBoxClient.Name = "comboBoxClient";
-            this.comboBoxClient.Size = new System.Drawing.Size(217, 21);
-            this.comboBoxClient.TabIndex = 1;
+            this.comboBoxConsumer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxConsumer.FormattingEnabled = true;
+            this.comboBoxConsumer.Location = new System.Drawing.Point(87, 6);
+            this.comboBoxConsumer.Name = "comboBoxConsumer";
+            this.comboBoxConsumer.Size = new System.Drawing.Size(217, 21);
+            this.comboBoxConsumer.TabIndex = 1;
             // 
-            // labelClient
+            // labelConsumer
             // 
-            this.labelClient.AutoSize = true;
-            this.labelClient.Location = new System.Drawing.Point(12, 9);
-            this.labelClient.Name = "labelClient";
-            this.labelClient.Size = new System.Drawing.Size(46, 13);
-            this.labelClient.TabIndex = 0;
-            this.labelClient.Text = "Клиент:";
+            this.labelConsumer.AutoSize = true;
+            this.labelConsumer.Location = new System.Drawing.Point(12, 9);
+            this.labelConsumer.Name = "labelConsumer";
+            this.labelConsumer.Size = new System.Drawing.Size(46, 13);
+            this.labelConsumer.TabIndex = 0;
+            this.labelConsumer.Text = "Клиент:";
             // 
             // labelCount
             // 
@@ -67,12 +67,12 @@
             this.labelCount.TabIndex = 4;
             this.labelCount.Text = "Количество:";
             // 
-            // comboBoxProduct
+            // comboBoxCommodity
             // 
             this.comboBoxCommodity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCommodity.FormattingEnabled = true;
             this.comboBoxCommodity.Location = new System.Drawing.Point(87, 33);
-            this.comboBoxCommodity.Name = "comboBoxProduct";
+            this.comboBoxCommodity.Name = "comboBoxCommodity";
             this.comboBoxCommodity.Size = new System.Drawing.Size(217, 21);
             this.comboBoxCommodity.TabIndex = 3;
             this.comboBoxCommodity.SelectedIndexChanged += new System.EventHandler(this.comboBoxCommodity_SelectedIndexChanged);
@@ -105,14 +105,14 @@
             this.textBoxCount.TabIndex = 5;
             this.textBoxCount.TextChanged += new System.EventHandler(this.textBoxCount_TextChanged);
             // 
-            // labelProduct
+            // labelCommodity
             // 
-            this.labelProduct.AutoSize = true;
-            this.labelProduct.Location = new System.Drawing.Point(12, 36);
-            this.labelProduct.Name = "labelProduct";
-            this.labelProduct.Size = new System.Drawing.Size(54, 13);
-            this.labelProduct.TabIndex = 2;
-            this.labelProduct.Text = "Изделие:";
+            this.labelCommodity.AutoSize = true;
+            this.labelCommodity.Location = new System.Drawing.Point(12, 36);
+            this.labelCommodity.Name = "labelCommodity";
+            this.labelCommodity.Size = new System.Drawing.Size(54, 13);
+            this.labelCommodity.TabIndex = 2;
+            this.labelCommodity.Text = "Изделие:";
             // 
             // labelSum
             // 
@@ -131,25 +131,25 @@
             this.textBoxSum.Size = new System.Drawing.Size(217, 20);
             this.textBoxSum.TabIndex = 7;
             // 
-            // FormCreateOrder
+            // FormCreateBooking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(318, 151);
             this.Controls.Add(this.labelSum);
             this.Controls.Add(this.textBoxSum);
-            this.Controls.Add(this.comboBoxClient);
-            this.Controls.Add(this.labelClient);
+            this.Controls.Add(this.comboBoxConsumer);
+            this.Controls.Add(this.labelConsumer);
             this.Controls.Add(this.labelCount);
             this.Controls.Add(this.comboBoxCommodity);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.textBoxCount);
-            this.Controls.Add(this.labelProduct);
-            this.Name = "FormCreateOrder";
+            this.Controls.Add(this.labelCommodity);
+            this.Name = "FormCreateBooking";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Заказ";
-            this.Load += new System.EventHandler(this.FormCreateOrder_Load);
+            this.Load += new System.EventHandler(this.FormCreateBooking_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -157,14 +157,14 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBoxClient;
-        private System.Windows.Forms.Label labelClient;
+        private System.Windows.Forms.ComboBox comboBoxConsumer;
+        private System.Windows.Forms.Label labelConsumer;
         private System.Windows.Forms.Label labelCount;
         private System.Windows.Forms.ComboBox comboBoxCommodity;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.TextBox textBoxCount;
-        private System.Windows.Forms.Label labelProduct;
+        private System.Windows.Forms.Label labelCommodity;
         private System.Windows.Forms.Label labelSum;
         private System.Windows.Forms.TextBox textBoxSum;
     }
