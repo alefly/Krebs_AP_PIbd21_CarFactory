@@ -13,11 +13,11 @@ namespace AbstractShopView
         [Dependency]
         public new IUnityContainer Container { get; set; }
 
-        public ProductComponentView Model { set { model = value; }  get { return model; } }
+        public CommodityIngridientView Model { set { model = value; }  get { return model; } }
 
         private readonly IIngridient service;
 
-        private ProductComponentView model;
+        private CommodityIngridientView model;
 
         public FormCommodityIngridients(IIngridient service)
         {
@@ -29,7 +29,7 @@ namespace AbstractShopView
         {
             try
             {
-                List<ComponentView> list = service.GetList();
+                List<IngridientView> list = service.GetList();
                 if (list != null)
                 {
                     comboBoxComponent.DisplayMember = "IngridientName";
@@ -66,7 +66,7 @@ namespace AbstractShopView
             {
                 if (model == null)
                 {
-                    model = new ProductComponentView
+                    model = new CommodityIngridientView
                     {
                         IngridientId = Convert.ToInt32(comboBoxComponent.SelectedValue),
                         IngridientName = comboBoxComponent.Text,

@@ -3,7 +3,7 @@
     /// <summary>
     /// Сколько компонентов хранится на складе
     /// </summary>
-    public class StockComponent
+    public class StorageIngridient
     {
         public int Id { get; set; }
 

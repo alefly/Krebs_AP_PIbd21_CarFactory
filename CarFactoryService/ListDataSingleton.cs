@@ -21,7 +21,7 @@ namespace CarFactoryService
 
         public List<Storage> Storages { get; set; }
 
-        public List<StockComponent> StorageIngridients { get; set; }
+        public List<StorageIngridient> StorageIngridients { get; set; }
 
         private ListDataSingleton()
         {
@@ -32,7 +32,7 @@ namespace CarFactoryService
             Commodity = new List<Commodity>();
             CommodityIngridients = new List<CommodityIngridient>();
             Storages = new List<Storage>();
-            StorageIngridients = new List<StockComponent>();
+            StorageIngridients = new List<StorageIngridient>();
         }
 
         public static ListDataSingleton GetInstance()

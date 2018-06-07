@@ -4,6 +4,7 @@ using CarFactoryService.Interfaces;
 using CarFactoryService.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CarFactoryService.WorkerList
 {
@@ -16,249 +17,170 @@ namespace CarFactoryService.WorkerList
             source = ListDataSingleton.GetInstance();
         }
 
-        public List<CommodityViewModel> GetList()
+        public List<CommodityView> GetList()
         {
-            List<CommodityViewModel> result = new List<CommodityViewModel>();
-            for (int i = 0; i < source.Commodity.Count; ++i)
-            {
-                // требуется дополнительно получить список компонентов для изделия и их количество
-                List<ProductComponentView> productComponents = new List<ProductComponentView>();
-                for (int j = 0; j < source.CommodityIngridients.Count; ++j)
+			List<CommodityView> result = source.Commodity
+                .Select(rec => new CommodityView
                 {
-                    if (source.CommodityIngridients[j].CommodityId == source.Commodity[i].Id)
-                    {
-                        string componentName = string.Empty;
-                        for (int k = 0; k < source.Ingridients.Count; ++k)
-                        {
-                            if (source.CommodityIngridients[j].IngridientId == source.Ingridients[k].Id)
-                            {
-                                componentName = source.Ingridients[k].IngredientName;
-                                break;
-                            }
-                        }
-                        productComponents.Add(new ProductComponentView
-                        {
-                            Id = source.CommodityIngridients[j].Id,
-                            CommodityId = source.CommodityIngridients[j].CommodityId,
-                            IngridientId = source.CommodityIngridients[j].IngridientId,
-                            IngridientName = componentName,
-                            Count = source.CommodityIngridients[j].Count
-                        });
-                    }
-                }
-                result.Add(new CommodityViewModel
-                {
-                    Id = source.Commodity[i].Id,
-                    CommodityName = source.Commodity[i].CommodityName,
-                    Price = source.Commodity[i].Price,
-                    CommodityIngridients = productComponents
-                });
-            }
-            return result;
+				Id = rec.Id,
+CommodityName = rec.CommodityName,
+Price = rec.Price,
+CommodityIngridients = source.CommodityIngridients
+                            .Where(recPC => recPC.CommodityId == rec.Id)
+                            .Select(recPC => new CommodityIngridientView
+							{
+	Id = recPC.Id,
+	CommodityId = recPC.CommodityId,
+	IngridientId = recPC.IngridientId,
+	IngridientName = source.Ingridients
+                                    .FirstOrDefault(recC => recC.Id == recPC.IngridientId)?.IngredientName,
+	Count = recPC.Count
+                            })
+                            .ToList()
+                })
+               .ToList();
+			return result;
         }
 
-        public CommodityViewModel GetElement(int id)
+        public CommodityView GetElement(int id)
         {
-            for (int i = 0; i < source.Commodity.Count; ++i)
-            {
-                // требуется дополнительно получить список компонентов для изделия и их количество
-                List<ProductComponentView> productComponents = new List<ProductComponentView>();
-                for (int j = 0; j < source.CommodityIngridients.Count; ++j)
-                {
-                    if (source.CommodityIngridients[j].CommodityId == source.Commodity[i].Id)
-                    {
-                        string componentName = string.Empty;
-                        for (int k = 0; k < source.Ingridients.Count; ++k)
-                        {
-                            if (source.CommodityIngridients[j].IngridientId == source.Ingridients[k].Id)
-                            {
-                                componentName = source.Ingridients[k].IngredientName;
-                                break;
-                            }
-                        }
-                        productComponents.Add(new ProductComponentView
-                        {
-                            Id = source.CommodityIngridients[j].Id,
-                            CommodityId = source.CommodityIngridients[j].CommodityId,
-                            IngridientId = source.CommodityIngridients[j].IngridientId,
-                            IngridientName = componentName,
-                            Count = source.CommodityIngridients[j].Count
-                        });
-                    }
-                }
-                if (source.Commodity[i].Id == id)
-                {
-                    return new CommodityViewModel
-                    {
-                        Id = source.Commodity[i].Id,
-                        CommodityName = source.Commodity[i].CommodityName,
-                        Price = source.Commodity[i].Price,
-                        CommodityIngridients = productComponents
-                    };
-                }
-            }
-
+			Commodity element = source.Commodity.FirstOrDefault(rec => rec.Id == id);
+			            if (element != null)
+			{
+				return new CommodityView
+               {
+					Id = element.Id,
+CommodityName = element.CommodityName,
+Price = element.Price,
+CommodityIngridients = source.CommodityIngridients
+                           .Where(recPC => recPC.CommodityId == element.Id)
+                           .Select(recPC => new CommodityIngridientView
+{
+	Id = recPC.Id,
+	CommodityId = recPC.CommodityId,
+	IngridientId = recPC.IngridientId,
+	IngridientName = source.Ingridients
+                                        .FirstOrDefault(recC => recC.Id == recPC.IngridientId)?.IngredientName,
+	Count = recPC.Count
+                            })
+                            .ToList()
+                };
+			}
             throw new Exception("Элемент не найден");
         }
 
         public void AddElement(BindingCommodity model)
         {
-            int maxId = 0;
-            for (int i = 0; i < source.Commodity.Count; ++i)
-            {
-                if (source.Commodity[i].Id > maxId)
-                {
-                    maxId = source.Commodity[i].Id;
-                }
-                if (source.Commodity[i].CommodityName == model.CommodityName)
-                {
-                    throw new Exception("Уже есть изделие с таким названием");
-                }
-            }
-            source.Commodity.Add(new Commodity
+           Commodity element = source.Commodity.FirstOrDefault(rec => rec.CommodityName == model.CommodityName);
+			            if (element != null)
+			{
+				throw new Exception("Уже есть изделие с таким названием");
+			}
+			int maxId = source.Commodity.Count > 0 ? source.Commodity.Max(rec => rec.Id) : 0;
+			source.Commodity.Add(new Commodity
             {
                 Id = maxId + 1,
                 CommodityName = model.CommodityName,
                 Price = model.Price
             });
-            // компоненты для изделия
-            int maxPCId = 0;
-            for (int i = 0; i < source.CommodityIngridients.Count; ++i)
-            {
-                if (source.CommodityIngridients[i].Id > maxPCId)
-                {
-                    maxPCId = source.CommodityIngridients[i].Id;
-                }
-            }
-            // убираем дубли по компонентам
-            for (int i = 0; i < model.CommodityIngridients.Count; ++i)
-            {
-                for (int j = 1; j < model.CommodityIngridients.Count; ++j)
-                {
-                    if(model.CommodityIngridients[i].IngridientId ==
-                        model.CommodityIngridients[j].IngridientId)
-                    {
-                        model.CommodityIngridients[i].Count +=
-                            model.CommodityIngridients[j].Count;
-                        model.CommodityIngridients.RemoveAt(j--);
-                    }
-                }
-            }
-            // добавляем компоненты
-            for (int i = 0; i < model.CommodityIngridients.Count; ++i)
-            {
+			// компоненты для изделия
+			int maxPCId = source.CommodityIngridients.Count > 0 ?
+source.CommodityIngridients.Max(rec => rec.Id) : 0;
+			// убираем дубли по компонентам
+			var groupComponents = model.CommodityIngridients
+                                        .GroupBy(rec => rec.IngridientId)
+                                        .Select(rec => new
+                                        {
+				IngridientId = rec.Key,
+Count = rec.Sum(r => r.Count)
+                                        });
+			// добавляем компоненты
+			foreach (var groupComponent in groupComponents)
+			{
                 source.CommodityIngridients.Add(new CommodityIngridient
                 {
                     Id = ++maxPCId,
 					CommodityId = maxId + 1,
-                    IngridientId = model.CommodityIngridients[i].IngridientId,
-                    Count = model.CommodityIngridients[i].Count
-                });
+					IngridientId = groupComponent.IngridientId,
+					Count = groupComponent.Count
+				});
             }
         }
 
         public void UpdElement(BindingCommodity model)
         {
-            int index = -1;
-            for (int i = 0; i < source.Commodity.Count; ++i)
-            {
-                if (source.Commodity[i].Id == model.Id)
-                {
-                    index = i;
-                }
-                if (source.Commodity[i].CommodityName == model.CommodityName && 
-                    source.Commodity[i].Id != model.Id)
-                {
-                    throw new Exception("Уже есть изделие с таким названием");
-                }
-            }
-            if (index == -1)
-            {
+            Commodity element = source.Commodity.FirstOrDefault(rec =>
+rec.CommodityName == model.CommodityName && rec.Id != model.Id);
+			            if (element != null)
+			{
+				throw new Exception("Уже есть изделие с таким названием");
+			}
+			element = source.Commodity.FirstOrDefault(rec => rec.Id == model.Id);
+		            if (element == null)
+			{
                 throw new Exception("Элемент не найден");
             }
-            source.Commodity[index].CommodityName = model.CommodityName;
-            source.Commodity[index].Price = model.Price;
-            int maxPCId = 0;
-            for (int i = 0; i < source.CommodityIngridients.Count; ++i)
-            {
-                if (source.CommodityIngridients[i].Id > maxPCId)
+			element.CommodityName = model.CommodityName;
+			element.Price = model.Price;
+			
+			int maxPCId = source.CommodityIngridients.Count > 0 ? source.CommodityIngridients.Max(rec => rec.Id) : 0;
+			// обновляем существуюущие компоненты
+			var compIds = model.CommodityIngridients.Select(rec => rec.IngridientId).Distinct();
+			var updateComponents = source.CommodityIngridients
+                                            .Where(rec => rec.CommodityId == model.Id &&
+compIds.Contains(rec.IngridientId));
+			            foreach (var updateComponent in updateComponents)
+			{
+				updateComponent.Count = model.CommodityIngridients
+                                                .FirstOrDefault(rec => rec.Id == updateComponent.Id).Count;
+			}
+			source.CommodityIngridients.RemoveAll(rec => rec. CommodityId == model.Id &&
+!compIds.Contains(rec.IngridientId));
+			// новые записи
+			var groupComponents = model.CommodityIngridients
+                                        .Where(rec => rec.Id == 0)
+                                        .GroupBy(rec => rec.IngridientId)
+                                        .Select(rec => new
+                                        {
+				IngridientId = rec.Key,
+Count = rec.Sum(r => r.Count)
+                                        });
+			            foreach (var groupComponent in groupComponents)
+			{
+				CommodityIngridient elementPC = source.CommodityIngridients
+                                        .FirstOrDefault(rec => rec.CommodityId == model.Id &&
+rec.IngridientId == groupComponent.IngridientId);
+				                if (elementPC != null)
+				{
+					elementPC.Count += groupComponent.Count;
+					                }
+				                else
                 {
-                    maxPCId = source.CommodityIngridients[i].Id;
-                }
-            }
-            // обновляем существуюущие компоненты
-            for (int i = 0; i < source.CommodityIngridients.Count; ++i)
-            {
-                if (source.CommodityIngridients[i].CommodityId == model.Id)
-                {
-                    bool flag = true;
-                    for (int j = 0; j < model.CommodityIngridients.Count; ++j)
-                    {
-                        // если встретили, то изменяем количество
-                        if (source.CommodityIngridients[i].Id == model.CommodityIngridients[j].Id)
-                        {
-                            source.CommodityIngridients[i].Count = model.CommodityIngridients[j].Count;
-                            flag = false;
-                            break;
-                        }
-                    }
-                    // если не встретили, то удаляем
-                    if(flag)
-                    {
-                        source.CommodityIngridients.RemoveAt(i--);
-                    }
-                }
-            }
-            // новые записи
-            for(int i = 0; i < model.CommodityIngridients.Count; ++i)
-            {
-                if(model.CommodityIngridients[i].Id == 0)
-                {
-                    // ищем дубли
-                    for (int j = 0; j < source.CommodityIngridients.Count; ++j)
-                    {
-                        if (source.CommodityIngridients[j].CommodityId == model.Id &&
-                            source.CommodityIngridients[j].IngridientId == model.CommodityIngridients[i].IngridientId)
-                        {
-                            source.CommodityIngridients[j].Count += model.CommodityIngridients[i].Count;
-                            model.CommodityIngridients[i].Id = source.CommodityIngridients[j].Id;
-                            break;
-                        }
-                    }
-                    // если не нашли дубли, то новая запись
-                    if (model.CommodityIngridients[i].Id == 0)
-                    {
-                        source.CommodityIngridients.Add(new CommodityIngridient
-                        {
-                            Id = ++maxPCId,
-							CommodityId = model.Id,
-                            IngridientId = model.CommodityIngridients[i].IngridientId,
-                            Count = model.CommodityIngridients[i].Count
-                        });
-                    }
-                }
+					source.CommodityIngridients.Add(new CommodityIngridient
+					{
+						Id = ++maxPCId,
+						CommodityId = model.Id,
+						IngridientId = groupComponent.IngridientId,
+						Count = groupComponent.Count
+                    });
+				}
             }
         }
 
         public void DelElement(int id)
         {
-            // удаяем записи по компонентам при удалении изделия
-            for (int i = 0; i < source.CommodityIngridients.Count; ++i)
+			Commodity element = source.Commodity.FirstOrDefault(rec => rec.Id == id);
+			           if (element != null)
+			{
+				// удаяем записи по компонентам при удалении изделия
+				source.CommodityIngridients.RemoveAll(rec => rec.CommodityId == id);
+				source.Commodity.Remove(element);
+			}
+            else
             {
-                if (source.CommodityIngridients[i].CommodityId == id)
-                {
-                    source.CommodityIngridients.RemoveAt(i--);
-                }
-            }
-            for (int i = 0; i < source.Commodity.Count; ++i)
-            {
-                if (source.Commodity[i].Id == id)
-                {
-                    source.Commodity.RemoveAt(i);
-                    return;
-                }
-            }
-            throw new Exception("Элемент не найден");
+				throw new Exception("Элемент не найден");
+			}
+           
         }
     }
 }

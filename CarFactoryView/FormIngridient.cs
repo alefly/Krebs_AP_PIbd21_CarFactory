@@ -31,7 +31,7 @@ namespace AbstractShopView
             {
                 try
                 {
-                    ComponentView view = service.GetElement(id.Value);
+                    IngridientView view = service.GetElement(id.Value);
                     if (view != null)
                     {
                         textBoxName.Text = view.IngridientName;

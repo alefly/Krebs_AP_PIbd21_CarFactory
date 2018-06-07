@@ -1,6 +1,6 @@
 ﻿namespace CarFactoryService.ViewModels
 {
-    public class OrderView
+    public class BookingView
     {
         public int Id { get; set; }
 

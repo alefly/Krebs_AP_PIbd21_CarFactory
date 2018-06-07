@@ -40,7 +40,7 @@ namespace AbstractShopView
                     comboBoxClient.DataSource = listC;
                     comboBoxClient.SelectedItem = null;
                 }
-                List<CommodityViewModel> listP = serviceP.GetList();
+                List<CommodityView> listP = serviceP.GetList();
                 if (listP != null)
                 {
                     comboBoxCommodity.DisplayMember = "CommodityName";
@@ -62,7 +62,7 @@ namespace AbstractShopView
                 try
                 {
                     int id = Convert.ToInt32(comboBoxCommodity.SelectedValue);
-                    CommodityViewModel commodity = serviceP.GetElement(id);
+                    CommodityView commodity = serviceP.GetElement(id);
                     int count = Convert.ToInt32(textBoxCount.Text);
                     textBoxSum.Text = (count * commodity.Price).ToString();
                 }

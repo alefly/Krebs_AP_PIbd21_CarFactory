@@ -6,9 +6,9 @@ namespace CarFactoryService.Interfaces
 {
     public interface ICommodity
     {
-        List<CommodityViewModel> GetList();
+        List<CommodityView> GetList();
 
-        CommodityViewModel GetElement(int id);
+        CommodityView GetElement(int id);
 
         void AddElement(BindingCommodity model);
 

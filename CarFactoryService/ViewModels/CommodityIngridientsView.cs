@@ -1,6 +1,6 @@
 ﻿namespace CarFactoryService.ViewModels
 {
-    public class ProductComponentView
+    public class CommodityIngridientView
     {
         public int Id { get; set; }
 

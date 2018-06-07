@@ -6,9 +6,9 @@ namespace CarFactoryService.Interfaces
 {
     public interface IIngridient
     {
-        List<ComponentView> GetList();
+        List<IngridientView> GetList();
 
-        ComponentView GetElement(int id);
+        IngridientView GetElement(int id);
 
         void AddElement(BindingIngridients model);
 

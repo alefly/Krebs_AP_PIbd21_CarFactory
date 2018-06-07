@@ -4,6 +4,7 @@ using CarFactoryService.Interfaces;
 using CarFactoryService.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CarFactoryService.WorkerList
 {
@@ -18,101 +19,63 @@ namespace CarFactoryService.WorkerList
 
         public List<StorageView> GetList()
         {
-            List<StorageView> result = new List<StorageView>();
-            for (int i = 0; i < source.Storages.Count; ++i)
-            {
-                // требуется дополнительно получить список компонентов на складе и их количество
-                List<StorageIngridientsView> StorageComponents = new List<StorageIngridientsView>();
-                for (int j = 0; j < source.StorageIngridients.Count; ++j)
-                {
-                    if (source.StorageIngridients[j].StorageId == source.Storages[i].Id)
-                    {
-                        string componentName = string.Empty;
-                        for (int k = 0; k < source.Ingridients.Count; ++k)
-                        {
-                            if (source.CommodityIngridients[j].IngridientId == source.Ingridients[k].Id)
-                            {
-                                componentName = source.Ingridients[k].IngredientName;
-                                break;
-                            }
-                        }
-                        StorageComponents.Add(new StorageIngridientsView
-                        {
-                            Id = source.StorageIngridients[j].Id,
-                            StorageId = source.StorageIngridients[j].StorageId,
-                            IngridientId = source.StorageIngridients[j].IngridientId,
-                            IngridientName = componentName,
-                            Count = source.StorageIngridients[j].Count
-                        });
-                    }
-                }
-                result.Add(new StorageView
-                {
-                    Id = source.Storages[i].Id,
-                    StorageName = source.Storages[i].StorageName,
-                    StorageComponents = StorageComponents
-                });
-            }
-            return result;
+			List<StorageView> result = source.Storages
+                .Select(rec => new StorageView
+{
+					Id = rec.Id,
+					StorageName = rec.StorageName,
+					StorageComponents= source.StorageIngridients
+                            .Where(recPC => recPC.StorageId == rec.Id)
+                            .Select(recPC => new StorageIngridientsView
+{
+	Id = recPC.Id,
+StorageId = recPC.StorageId,
+	IngridientId = recPC.IngridientId,
+	IngridientName = source.Ingridients
+                                    .FirstOrDefault(recC => recC.Id == recPC.IngridientId)?.IngredientName,
+	Count = recPC.Count
+                            })
+                            .ToList()
+               })
+                .ToList();
+			return result;
         }
 
         public StorageView GetElement(int id)
         {
-            for (int i = 0; i < source.Storages.Count; ++i)
-            {
-                // требуется дополнительно получить список компонентов на складе и их количество
-                List<StorageIngridientsView> StockComponents = new List<StorageIngridientsView>();
-                for (int j = 0; j < source.StorageIngridients.Count; ++j)
-                {
-                    if (source.StorageIngridients[j].StorageId == source.Storages[i].Id)
-                    {
-                        string componentName = string.Empty;
-                        for (int k = 0; k < source.Ingridients.Count; ++k)
-                        {
-                            if (source.CommodityIngridients[j].IngridientId == source.Ingridients[k].Id)
-                            {
-                                componentName = source.Ingridients[k].IngredientName;
-                                break;
-                            }
-                        }
-                        StockComponents.Add(new StorageIngridientsView
-                        {
-                            Id = source.StorageIngridients[j].Id,
-                            StorageId = source.StorageIngridients[j].StorageId,
-                            IngridientId = source.StorageIngridients[j].IngridientId,
-                            IngridientName = componentName,
-                            Count = source.StorageIngridients[j].Count
-                        });
-                    }
-                }
-                if (source.Storages[i].Id == id)
-                {
-                    return new StorageView
-                    {
-                        Id = source.Storages[i].Id,
-                        StorageName = source.Storages[i].StorageName,
-                        StorageComponents = StockComponents
-                    };
-                }
-            }
+			Storage element = source.Storages.FirstOrDefault(rec => rec.Id == id);
+			            if (element != null)
+			{
+				return new StorageView
+				{
+					Id = element.Id,
+					StorageName = element.StorageName,
+					StorageComponents = source.StorageIngridients
+                            .Where(recPC => recPC.StorageId == element.Id)
+                            .Select(recPC => new StorageIngridientsView
+{
+	Id = recPC.Id,
+	StorageId = recPC.StorageId,
+	IngridientId = recPC.IngridientId,
+	IngridientName = source.Ingridients
+                                   .FirstOrDefault(recC => recC.Id == recPC.IngridientId)?.IngredientName,
+	Count = recPC.Count
+                            })
+                            .ToList()
+                };
+			}
             throw new Exception("Элемент не найден");
         }
 
         public void AddElement(BindingStorage model)
         {
-            int maxId = 0;
-            for (int i = 0; i < source.Storages.Count; ++i)
-            {
-                if (source.Storages[i].Id > maxId)
-                {
-                    maxId = source.Storages[i].Id;
-                }
-                if (source.Storages[i].StorageName == model.StorageName)
-                {
-                    throw new Exception("Уже есть склад с таким названием" + source.Storages[i].StorageName);
-                }
-            }
-            source.Storages.Add(new Storage
+            Storage element = source.Storages.FirstOrDefault(rec => rec.StorageName == model.StorageName);
+			            if (element != null)
+			{
+				throw new Exception("Уже есть склад с таким названием");
+			}
+			int maxId = source.Storages.Count > 0 ? source.Storages.Max(rec => rec.Id) : 0;
+			source.Storages.Add(new Storage
             {
                 Id = maxId + 1,
                 StorageName = model.StorageName
@@ -121,45 +84,34 @@ namespace CarFactoryService.WorkerList
 
         public void UpdElement(BindingStorage model)
         {
-            int index = -1;
-            for (int i = 0; i < source.Storages.Count; ++i)
-            {
-                if (source.Storages[i].Id == model.Id)
-                {
-                    index = i;
-                }
-                if (source.Storages[i].StorageName == model.StorageName && 
-                    source.Storages[i].Id != model.Id)
-                {
-                    throw new Exception("Уже есть склад с таким названием");
-                }
-            }
-            if (index == -1)
-            {
+			Storage element = source.Storages.FirstOrDefault(rec =>
+rec.StorageName == model.StorageName && rec.Id != model.Id);
+			           if (element != null)
+			{
+				throw new Exception("Уже есть склад с таким названием");
+			}
+			element = source.Storages.FirstOrDefault(rec => rec.Id == model.Id);
+			            if (element == null)
+			{
                 throw new Exception("Элемент не найден");
             }
-            source.Storages[index].StorageName = model.StorageName;
-        }
+			element.StorageName = model.StorageName;
+		}
 
         public void DelElement(int id)
         {
-            // при удалении удаляем все записи о компонентах на удаляемом складе
-            for (int i = 0; i < source.StorageIngridients.Count; ++i)
+			Storage element = source.Storages.FirstOrDefault(rec => rec.Id == id);
+			            if (element != null)
+			{
+				// при удалении удаляем все записи о компонентах на удаляемом складе
+				source.StorageIngridients.RemoveAll(rec => rec.StorageId == id);
+				source.Storages.Remove(element);
+			}
+            else
             {
-                if (source.StorageIngridients[i].StorageId == id)
-                {
-                    source.StorageIngridients.RemoveAt(i--);
-                }
-            }
-            for (int i = 0; i < source.Storages.Count; ++i)
-            {
-                if (source.Storages[i].Id == id)
-                {
-                    source.Storages.RemoveAt(i);
-                    return;
-                }
-            }
-            throw new Exception("Элемент не найден");
+				throw new Exception("Элемент не найден");
+			}
+            
         }
     }
 }

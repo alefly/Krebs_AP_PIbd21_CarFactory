@@ -1,6 +1,6 @@
 ﻿namespace CarFactoryService.ViewModels
 {
-    public class ComponentView
+    public class IngridientView
     {
         public int Id { get; set; }
 
