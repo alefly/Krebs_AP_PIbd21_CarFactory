@@ -1,33 +1,33 @@
 ﻿namespace CarFactoryView
 {
-	partial class FormConsumerBookings
-	{
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.IContainer ingridients = null;
+    partial class FormConsumerBookings
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-		protected override void Dispose(bool disposing)
-		{
-			if (disposing && (ingridients != null))
-			{
-				ingridients.Dispose();
-			}
-			base.Dispose(disposing);
-		}
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
-		#region Windows Form Designer generated code
+        #region Windows Form Designer generated code
 
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
             this.panel = new System.Windows.Forms.Panel();
             this.buttonToPdf = new System.Windows.Forms.Button();
             this.buttonMake = new System.Windows.Forms.Button();
@@ -108,7 +108,7 @@
             // reportViewer
             // 
             this.reportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportViewer.LocalReport.ReportEmbeddedResource = "CarFactoryView.Report1.rdlc";
+            this.reportViewer.LocalReport.ReportEmbeddedResource = "CarFactoryView.ReportConsumerBookings.rdlc";
             this.reportViewer.Location = new System.Drawing.Point(0, 35);
             this.reportViewer.Name = "reportViewer";
             this.reportViewer.ServerReport.BearerToken = null;
@@ -125,22 +125,21 @@
             this.Name = "FormConsumerBookings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Заказы клиентов";
-            this.Load += new System.EventHandler(this.FormConsumerBookings_Load);
             this.panel.ResumeLayout(false);
             this.panel.PerformLayout();
             this.ResumeLayout(false);
 
-		}
+        }
 
-		#endregion
+        #endregion
 
-		private System.Windows.Forms.Panel panel;
-		private System.Windows.Forms.Button buttonToPdf;
-		private System.Windows.Forms.Button buttonMake;
-		private System.Windows.Forms.DateTimePicker dateTimePickerTo;
-		private System.Windows.Forms.Label labelTo;
-		private System.Windows.Forms.DateTimePicker dateTimePickerFrom;
-		private System.Windows.Forms.Label labelFrom;
-		private Microsoft.Reporting.WinForms.ReportViewer reportViewer;
-	}
+        private System.Windows.Forms.Panel panel;
+        private System.Windows.Forms.Button buttonToPdf;
+        private System.Windows.Forms.Button buttonMake;
+        private System.Windows.Forms.DateTimePicker dateTimePickerTo;
+        private System.Windows.Forms.Label labelTo;
+        private System.Windows.Forms.DateTimePicker dateTimePickerFrom;
+        private System.Windows.Forms.Label labelFrom;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer;
+    }
 }

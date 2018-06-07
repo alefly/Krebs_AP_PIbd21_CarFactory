@@ -1,40 +1,38 @@
 ﻿using CarFactoryService.BindingModels;
-using CarFactoryService.Interfaces;
 using CarFactoryService.ViewModels;
 using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using Unity;
-using Unity.Attributes;
 
 namespace CarFactoryView
 {
     public partial class FormIngridient : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
-
         public int Id { set { id = value; } }
-
-        private readonly IIngridient service;
 
         private int? id;
 
-        public FormIngridient(IIngridient service)
+        public FormIngridient()
         {
             InitializeComponent();
-            this.service = service;
         }
 
-        private void FormComponent_Load(object sender, EventArgs e)
+        private void FormIngridient_Load(object sender, EventArgs e)
         {
             if (id.HasValue)
             {
                 try
                 {
-                    IngridientView view = service.GetElement(id.Value);
-                    if (view != null)
+                    var response = APIConsumer.GetRequest("api/Ingridient/Get/" + id.Value);
+                    if (response.Result.IsSuccessStatusCode)
                     {
-                        textBoxName.Text = view.IngridientName;
+                        var ingridient = APIConsumer.GetElement<IngridientView>(response);
+                        textBoxName.Text = ingridient.IngridientName;
+                    }
+                    else
+                    {
+                        throw new Exception(APIConsumer.GetError(response));
                     }
                 }
                 catch (Exception ex)
@@ -42,6 +40,7 @@ namespace CarFactoryView
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            this.reportViewer1.RefreshReport();
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -53,9 +52,10 @@ namespace CarFactoryView
             }
             try
             {
+                Task<HttpResponseMessage> response;
                 if (id.HasValue)
                 {
-                    service.UpdElement(new BindingIngridients
+                    response = APIConsumer.PostRequest("api/Ingridient/UpdElement", new BindingIngridients
                     {
                         Id = id.Value,
                         IngridientName = textBoxName.Text
@@ -63,14 +63,21 @@ namespace CarFactoryView
                 }
                 else
                 {
-                    service.AddElement(new BindingIngridients
+                    response = APIConsumer.PostRequest("api/Ingridient/AddElement", new BindingIngridients
                     {
                         IngridientName = textBoxName.Text
                     });
                 }
-                MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DialogResult = DialogResult.OK;
-                Close();
+                if (response.Result.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }
+                else
+                {
+                    throw new Exception(APIConsumer.GetError(response));
+                }
             }
             catch (Exception ex)
             {

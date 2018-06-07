@@ -1,41 +1,23 @@
 ﻿using CarFactoryService.BindingModels;
-using CarFactoryService.Interfaces;
 using CarFactoryService.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Unity;
-using Unity.Attributes;
 
 namespace CarFactoryView
 {
     public partial class FormTakeBookingInWork : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
-
         public int Id { set { id = value; } }
-
-        private readonly IWorker serviceI;
-
-        private readonly IMain serviceM;
 
         private int? id;
 
-        public FormTakeBookingInWork(IWorker serviceI, IMain serviceM)
+        public FormTakeBookingInWork()
         {
             InitializeComponent();
-            this.serviceI = serviceI;
-            this.serviceM = serviceM;
         }
 
-        private void FormTakeOrderInWork_Load(object sender, EventArgs e)
+        private void FormTakeBookingInWork_Load(object sender, EventArgs e)
         {
             try
             {
@@ -44,13 +26,21 @@ namespace CarFactoryView
                     MessageBox.Show("Не указан заказ", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Close();
                 }
-                List<WorkerView> listI = serviceI.GetList();
-                if (listI != null)
+                var response = APIConsumer.GetRequest("api/Worker/GetList");
+                if (response.Result.IsSuccessStatusCode)
                 {
-                    comboBoxWorker.DisplayMember = "WorkerName";
-                    comboBoxWorker.ValueMember = "Id";
-                    comboBoxWorker.DataSource = listI;
-                    comboBoxWorker.SelectedItem = null;
+                    List<WorkerView> list = APIConsumer.GetElement<List<WorkerView>>(response);
+                    if (list != null)
+                    {
+                        comboBoxWorker.DisplayMember = "WorkerName";
+                        comboBoxWorker.ValueMember = "Id";
+                        comboBoxWorker.DataSource = list;
+                        comboBoxWorker.SelectedItem = null;
+                    }
+                }
+                else
+                {
+                    throw new Exception(APIConsumer.GetError(response));
                 }
             }
             catch (Exception ex)
@@ -68,14 +58,21 @@ namespace CarFactoryView
             }
             try
             {
-                serviceM.TakeBookingInWork(new BindingBooking
+                var response = APIConsumer.PostRequest("api/Main/TakeBookingInWork", new BindingBooking
                 {
                     Id = id.Value,
                     WorkerId = Convert.ToInt32(comboBoxWorker.SelectedValue)
                 });
-                MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DialogResult = DialogResult.OK;
-                Close();
+                if (response.Result.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }
+                else
+                {
+                    throw new Exception(APIConsumer.GetError(response));
+                }
             }
             catch (Exception ex)
             {

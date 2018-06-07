@@ -1,45 +1,43 @@
 ﻿using CarFactoryService.BindingModels;
-using CarFactoryService.Interfaces;
 using CarFactoryService.ViewModels;
 using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using Unity;
-using Unity.Attributes;
 
 namespace CarFactoryView
 {
     public partial class FormStorage : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
-
         public int Id { set { id = value; } }
-
-        private readonly IStorage service;
 
         private int? id;
 
-        public FormStorage(IStorage service)
+        public FormStorage()
         {
             InitializeComponent();
-            this.service = service;
         }
 
-        private void FormStock_Load(object sender, EventArgs e)
+        private void FormStorage_Load(object sender, EventArgs e)
         {
             if (id.HasValue)
             {
                 try
                 {
-                    StorageView view = service.GetElement(id.Value);
-                    if (view != null)
+                    var response = APIConsumer.GetRequest("api/Storage/Get/" + id.Value);
+                    if (response.Result.IsSuccessStatusCode)
                     {
-                        textBoxName.Text = view.StorageName;
-                        dataGridView.DataSource = view.StorageIngridients;
+                        var stock = APIConsumer.GetElement<StorageView>(response);
+                        textBoxName.Text = stock.StorageName;
+                        dataGridView.DataSource = stock.StorageIngridients;
                         dataGridView.Columns[0].Visible = false;
                         dataGridView.Columns[1].Visible = false;
                         dataGridView.Columns[2].Visible = false;
                         dataGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    }
+                    else
+                    {
+                        throw new Exception(APIConsumer.GetError(response));
                     }
                 }
                 catch (Exception ex)
@@ -58,9 +56,10 @@ namespace CarFactoryView
             }
             try
             {
+                Task<HttpResponseMessage> response;
                 if (id.HasValue)
                 {
-                    service.UpdElement(new BindingStorage
+                    response = APIConsumer.PostRequest("api/Storage/UpdElement", new BindingStorage
                     {
                         Id = id.Value,
                         StorageName = textBoxName.Text
@@ -68,14 +67,21 @@ namespace CarFactoryView
                 }
                 else
                 {
-                    service.AddElement(new BindingStorage
+                    response = APIConsumer.PostRequest("api/Storage/AddElement", new BindingStorage
                     {
                         StorageName = textBoxName.Text
                     });
                 }
-                MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DialogResult = DialogResult.OK;
-                Close();
+                if (response.Result.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }
+                else
+                {
+                    throw new Exception(APIConsumer.GetError(response));
+                }
             }
             catch (Exception ex)
             {

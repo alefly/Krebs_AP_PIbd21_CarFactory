@@ -9,7 +9,7 @@ namespace CarFactoryService.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(CarFactoryService.CarFactoryDbContext context)
