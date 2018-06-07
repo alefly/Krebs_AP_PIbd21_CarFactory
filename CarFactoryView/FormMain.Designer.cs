@@ -1,33 +1,33 @@
-﻿namespace AbstractShopView
+﻿namespace CarFactoryView
 {
-    partial class FormMain
-    {
-        /// <summary>
-        /// Обязательная переменная конструктора.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+	partial class FormMain
+	{
+		/// <summary>
+		/// Обязательная переменная конструктора.
+		/// </summary>
+		private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Освободить все используемые ресурсы.
-        /// </summary>
-        /// <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+		/// <summary>
+		/// Освободить все используемые ресурсы.
+		/// </summary>
+		/// <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
 
-        #region Код, автоматически созданный конструктором форм Windows
+		#region Код, автоматически созданный конструктором форм Windows
 
-        /// <summary>
-        /// Требуемый метод для поддержки конструктора — не изменяйте 
-        /// содержимое этого метода с помощью редактора кода.
-        /// </summary>
-        private void InitializeComponent()
-        {
+		/// <summary>
+		/// Требуемый метод для поддержки конструктора — не изменяйте 
+		/// содержимое этого метода с помощью редактора кода.
+		/// </summary>
+		private void InitializeComponent()
+		{
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.клиентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -36,6 +36,10 @@
 			this.складыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.сотрудникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.пополнитьСкладToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.прайсИзделийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.загруженностьСкладовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.заказыКлиентовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.buttonPayOrder = new System.Windows.Forms.Button();
 			this.buttonOrderReady = new System.Windows.Forms.Button();
 			this.buttonTakeOrderInWork = new System.Windows.Forms.Button();
@@ -49,8 +53,9 @@
 			// menuStrip1
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.справочникиToolStripMenuItem,
-            this.пополнитьСкладToolStripMenuItem});
+			this.справочникиToolStripMenuItem,
+			this.пополнитьСкладToolStripMenuItem,
+			this.отчетыToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(1049, 24);
@@ -60,11 +65,11 @@
 			// справочникиToolStripMenuItem
 			// 
 			this.справочникиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.клиентыToolStripMenuItem,
-            this.компонентыToolStripMenuItem,
-            this.изделияToolStripMenuItem,
-            this.складыToolStripMenuItem,
-            this.сотрудникиToolStripMenuItem});
+			this.клиентыToolStripMenuItem,
+			this.компонентыToolStripMenuItem,
+			this.изделияToolStripMenuItem,
+			this.складыToolStripMenuItem,
+			this.сотрудникиToolStripMenuItem});
 			this.справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
 			this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
 			this.справочникиToolStripMenuItem.Text = "Справочники";
@@ -110,6 +115,37 @@
 			this.пополнитьСкладToolStripMenuItem.Size = new System.Drawing.Size(115, 20);
 			this.пополнитьСкладToolStripMenuItem.Text = "Пополнить склад";
 			this.пополнитьСкладToolStripMenuItem.Click += new System.EventHandler(this.пополнитьСкладToolStripMenuItem_Click);
+			// 
+			// отчетыToolStripMenuItem
+			// 
+			this.отчетыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+				this.прайсИзделийToolStripMenuItem,
+		  this.загруженностьСкладовToolStripMenuItem,
+		  this.заказыКлиентовToolStripMenuItem});
+			this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
+			this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+			this.отчетыToolStripMenuItem.Text = "Отчеты";
+			// 
+			// прайсИзделийToolStripMenuItem
+			// 
+			this.прайсИзделийToolStripMenuItem.Name = "прайсИзделийToolStripMenuItem";
+			this.прайсИзделийToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+			this.прайсИзделийToolStripMenuItem.Text = "Прайс изделий";
+			this.прайсИзделийToolStripMenuItem.Click += new System.EventHandler(this.прайсИзделийToolStripMenuItem_Click);
+			// 
+			// загруженностьСкладовToolStripMenuItem
+			// 
+			this.загруженностьСкладовToolStripMenuItem.Name = "загруженностьСкладовToolStripMenuItem";
+			this.загруженностьСкладовToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+			this.загруженностьСкладовToolStripMenuItem.Text = "Загруженность складов";
+			this.загруженностьСкладовToolStripMenuItem.Click += new System.EventHandler(this.загруженностьСкладовToolStripMenuItem_Click);
+			// 
+			// заказыКлиентовToolStripMenuItem
+			// 
+			this.заказыКлиентовToolStripMenuItem.Name = "заказыКлиентовToolStripMenuItem";
+			this.заказыКлиентовToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+			this.заказыКлиентовToolStripMenuItem.Text = "Заказы клиентов";
+			this.заказыКлиентовToolStripMenuItem.Click += new System.EventHandler(this.заказыКлиентовToolStripMenuItem_Click);
 			// 
 			// buttonPayOrder
 			// 
@@ -195,24 +231,29 @@
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
-        }
+		}
 
-        #endregion
+		#endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem справочникиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem компонентыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem изделияToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem складыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem сотрудникиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem пополнитьСкладToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem клиентыToolStripMenuItem;
-        private System.Windows.Forms.Button buttonPayOrder;
-        private System.Windows.Forms.Button buttonOrderReady;
-        private System.Windows.Forms.Button buttonTakeOrderInWork;
-        private System.Windows.Forms.Button buttonCreateOrder;
-        private System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.Button buttonRef;
-    }
+		private System.Windows.Forms.MenuStrip menuStrip1;
+		private System.Windows.Forms.ToolStripMenuItem справочникиToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem компонентыToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem изделияToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem складыToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem сотрудникиToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem пополнитьСкладToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem клиентыToolStripMenuItem;
+		private System.Windows.Forms.Button buttonPayOrder;
+		private System.Windows.Forms.Button buttonOrderReady;
+		private System.Windows.Forms.Button buttonTakeOrderInWork;
+		private System.Windows.Forms.Button buttonCreateOrder;
+		private System.Windows.Forms.DataGridView dataGridView;
+		private System.Windows.Forms.Button buttonRef;
+		private System.Windows.Forms.ToolStripMenuItem отчетыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem прайсИзделийToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem загруженностьСкладовToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem заказыКлиентовToolStripMenuItem;
+
+	}
 }
 
