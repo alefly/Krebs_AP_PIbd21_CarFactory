@@ -2,6 +2,7 @@
 using CarFactoryService.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CarFactoryView
@@ -17,41 +18,30 @@ namespace CarFactoryView
         {
             try
             {
-                var responseC = APIConsumer.GetRequest("api/Ingridient/GetList");
-                if (responseC.Result.IsSuccessStatusCode)
+                List<IngridientView> listC = Task.Run(() => APIConsumer.GetRequestData<List<IngridientView>>("api/Ingridient/GetList")).Result;
+                if (listC != null)
                 {
-                    List<IngridientView> list = APIConsumer.GetElement<List<IngridientView>>(responseC);
-                    if (list != null)
-                    {
-                        comboBoxIngridient.DisplayMember = "IngridientName";
-                        comboBoxIngridient.ValueMember = "Id";
-                        comboBoxIngridient.DataSource = list;
-                        comboBoxIngridient.SelectedItem = null;
-                    }
+                    comboBoxIngridient.DisplayMember = "IngridientName";
+                    comboBoxIngridient.ValueMember = "Id";
+                    comboBoxIngridient.DataSource = listC;
+                    comboBoxIngridient.SelectedItem = null;
                 }
-                else
+
+                List<StorageView> listS = Task.Run(() => APIConsumer.GetRequestData<List<StorageView>>("api/Storage/GetList")).Result;
+                if (listS != null)
                 {
-                    throw new Exception(APIConsumer.GetError(responseC));
-                }
-                var responseS = APIConsumer.GetRequest("api/Storage/GetList");
-                if (responseS.Result.IsSuccessStatusCode)
-                {
-                    List<StorageView> list = APIConsumer.GetElement<List<StorageView>>(responseS);
-                    if (list != null)
-                    {
-                        comboBoxStorage.DisplayMember = "StorageName";
-                        comboBoxStorage.ValueMember = "Id";
-                        comboBoxStorage.DataSource = list;
-                        comboBoxStorage.SelectedItem = null;
-                    }
-                }
-                else
-                {
-                    throw new Exception(APIConsumer.GetError(responseC));
+                    comboBoxStorage.DisplayMember = "StorageName";
+                    comboBoxStorage.ValueMember = "Id";
+                    comboBoxStorage.DataSource = listS;
+                    comboBoxStorage.SelectedItem = null;
                 }
             }
             catch (Exception ex)
             {
+                while (ex.InnerException != null)
+                {
+                    ex = ex.InnerException;
+                }
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -75,32 +65,42 @@ namespace CarFactoryView
             }
             try
             {
-                var response = APIConsumer.PostRequest("api/Main/PutIngridientOnStorage", new BindingStorageIngridients
+                int componentId = Convert.ToInt32(comboBoxIngridient.SelectedValue);
+                int stockId = Convert.ToInt32(comboBoxStorage.SelectedValue);
+                int count = Convert.ToInt32(textBoxCount.Text);
+                Task task = Task.Run(() => APIConsumer.PostRequestData("api/Main/PutIngridientOnStorage", new BindingStorageIngridients
                 {
-                    IngridientId = Convert.ToInt32(comboBoxIngridient.SelectedValue),
-                    StorageId = Convert.ToInt32(comboBoxStorage.SelectedValue),
-                    Count = Convert.ToInt32(textBoxCount.Text)
-                });
-                if (response.Result.IsSuccessStatusCode)
+                    IngridientId = componentId,
+                    StorageId = stockId,
+                    Count = count
+                }));
+
+                task.ContinueWith((prevTask) => MessageBox.Show("Склад пополнен", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information),
+                    TaskContinuationOptions.OnlyOnRanToCompletion);
+                task.ContinueWith((prevTask) =>
                 {
-                    MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    DialogResult = DialogResult.OK;
-                    Close();
-                }
-                else
-                {
-                    throw new Exception(APIConsumer.GetError(response));
-                }
+                    var ex = (Exception)prevTask.Exception;
+                    while (ex.InnerException != null)
+                    {
+                        ex = ex.InnerException;
+                    }
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }, TaskContinuationOptions.OnlyOnFaulted);
+
+                Close();
             }
             catch (Exception ex)
             {
+                while (ex.InnerException != null)
+                {
+                    ex = ex.InnerException;
+                }
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
             Close();
         }
     }

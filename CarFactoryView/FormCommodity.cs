@@ -27,22 +27,18 @@ namespace CarFactoryView
             {
                 try
                 {
-                    var response = APIConsumer.GetRequest("api/Commodity/Get/" + id.Value);
-                    if (response.Result.IsSuccessStatusCode)
-                    {
-                        var commodity = APIConsumer.GetElement<CommodityView>(response);
-                        textBoxName.Text = commodity.CommodityName;
-                        textBoxPrice.Text = commodity.Price.ToString();
-                        commodityIngridients = commodity.CommodityIngridients;
-                        LoadData();
-                    }
-                    else
-                    {
-                        throw new Exception(APIConsumer.GetError(response));
-                    }
+                    var commodity = Task.Run(() => APIConsumer.GetRequestData<CommodityView>("api/Commodity/Get/" + id.Value)).Result;
+                    textBoxName.Text = commodity.CommodityName;
+                    textBoxPrice.Text = commodity.Price.ToString();
+                    commodityIngridients = commodity.CommodityIngridients;
+                    LoadData();
                 }
                 catch (Exception ex)
                 {
+                    while (ex.InnerException != null)
+                    {
+                        ex = ex.InnerException;
+                    }
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -77,9 +73,9 @@ namespace CarFactoryView
             var form = new FormCommodityIngridients();
             if (form.ShowDialog() == DialogResult.OK)
             {
-                if(form.Model != null)
+                if (form.Model != null)
                 {
-                    if(id.HasValue)
+                    if (id.HasValue)
                     {
                         form.Model.CommodityId = id.Value;
                     }
@@ -144,59 +140,57 @@ namespace CarFactoryView
                 MessageBox.Show("Заполните компоненты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            try
+            List<BindingCommodityIngridient> commodityIngridientBM = new List<BindingCommodityIngridient>();
+            for (int i = 0; i < commodityIngridients.Count; ++i)
             {
-                List<BindingCommodityIngridient> commodityIngridientsBM = new List<BindingCommodityIngridient>();
-                for (int i = 0; i < commodityIngridients.Count; ++i)
+                commodityIngridientBM.Add(new BindingCommodityIngridient
                 {
-                    commodityIngridientsBM.Add(new BindingCommodityIngridient
-                    {
-                        Id = commodityIngridients[i].Id,
-                        CommodityId = commodityIngridients[i].CommodityId,
-                        IngridientId = commodityIngridients[i].IngridientId,
-                        Count = commodityIngridients[i].Count
-                    });
-                }
-                Task<HttpResponseMessage> response;
-                if (id.HasValue)
-                {
-                    response = APIConsumer.PostRequest("api/Commodity/UpdElement", new BindingCommodity
-                    {
-                        Id = id.Value,
-                        CommodityName = textBoxName.Text,
-                        Price = Convert.ToInt32(textBoxPrice.Text),
-                        CommodityIngridients = commodityIngridientsBM
-                    });
-                }
-                else
-                {
-                    response = APIConsumer.PostRequest("api/Commodity/AddElement", new BindingCommodity
-                    {
-                        CommodityName = textBoxName.Text,
-                        Price = Convert.ToInt32(textBoxPrice.Text),
-                        CommodityIngridients = commodityIngridientsBM
-                    });
-                }
-                if (response.Result.IsSuccessStatusCode)
-                {
-                    MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    DialogResult = DialogResult.OK;
-                    Close();
-                }
-                else
-                {
-                    throw new Exception(APIConsumer.GetError(response));
-                }
+                    Id = commodityIngridients[i].Id,
+                    CommodityId = commodityIngridients[i].CommodityId,
+                    IngridientId = commodityIngridients[i].IngridientId,
+                    Count = commodityIngridients[i].Count
+                });
             }
-            catch (Exception ex)
+            string name = textBoxName.Text;
+            int price = Convert.ToInt32(textBoxPrice.Text);
+            Task task;
+            if (id.HasValue)
             {
+                task = Task.Run(() => APIConsumer.PostRequestData("api/Commodity/UpdElement", new BindingCommodity
+                {
+                    Id = id.Value,
+                    CommodityName = name,
+                    Price = price,
+                    CommodityIngridients = commodityIngridientBM
+                }));
+            }
+            else
+            {
+                task = Task.Run(() => APIConsumer.PostRequestData("api/Commodity/AddElement", new BindingCommodity
+                {
+                    CommodityName = name,
+                    Price = price,
+                    CommodityIngridients = commodityIngridientBM
+                }));
+            }
+
+            task.ContinueWith((prevTask) => MessageBox.Show("Сохранение прошло успешно. Обновите список", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information),
+                TaskContinuationOptions.OnlyOnRanToCompletion);
+            task.ContinueWith((prevTask) =>
+            {
+                var ex = (Exception)prevTask.Exception;
+                while (ex.InnerException != null)
+                {
+                    ex = ex.InnerException;
+                }
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            }, TaskContinuationOptions.OnlyOnFaulted);
+
+            Close();
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
             Close();
         }
     }

@@ -3,6 +3,7 @@ using CarFactoryService.ViewModels;
 using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CarFactoryView
@@ -28,26 +29,23 @@ namespace CarFactoryView
                                             " по " + dateTimePickerTo.Value.ToShortDateString());
                 reportViewer.LocalReport.SetParameters(parameter);
 
-                var response = APIConsumer.PostRequest("api/Report/GetConsumerBookings", new ReportBindingModel
-                {
-                    DateFrom = dateTimePickerFrom.Value,
-                    DateTo = dateTimePickerTo.Value
-                });
-                if (response.Result.IsSuccessStatusCode)
-                {
-                    var dataSource = APIConsumer.GetElement<List<ConsumerBookingsModel>>(response);
-                    ReportDataSource source = new ReportDataSource("DataSetOrders", dataSource);
-                    reportViewer.LocalReport.DataSources.Add(source);
-                }
-                else
-                {
-                    throw new Exception(APIConsumer.GetError(response));
-                }
+                var dataSource = Task.Run(() => APIConsumer.PostRequestData<ReportBindingModel, List<ConsumerBookingsModel>>("api/Report/GetClientOrders",
+new ReportBindingModel
+{
+    DateFrom = dateTimePickerFrom.Value,
+    DateTo = dateTimePickerTo.Value
+})).Result;
+                ReportDataSource source = new ReportDataSource("DataSetBookings", dataSource);
+                reportViewer.LocalReport.DataSources.Add(source);
 
                 reportViewer.RefreshReport();
             }
             catch (Exception ex)
             {
+                while (ex.InnerException != null)
+                {
+                    ex = ex.InnerException;
+                }
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -65,27 +63,27 @@ namespace CarFactoryView
             };
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-                try
+                string fileName = sfd.FileName;
+                Task task = Task.Run(() => APIConsumer.PostRequestData("api/Report/SaveConsumerBookings", new ReportBindingModel
+
                 {
-                    var response = APIConsumer.PostRequest("api/Report/SaveConsumerBookings", new ReportBindingModel
+                    FileName = fileName,
+                    DateFrom = dateTimePickerFrom.Value,
+                    DateTo = dateTimePickerTo.Value
+                }));
+
+                task.ContinueWith((prevTask) => MessageBox.Show("Список заказов сохранен", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information),
+                TaskContinuationOptions.OnlyOnRanToCompletion);
+
+                task.ContinueWith((prevTask) =>
                     {
-                        FileName = sfd.FileName,
-                        DateFrom = dateTimePickerFrom.Value,
-                        DateTo = dateTimePickerTo.Value
-                    });
-                    if (response.Result.IsSuccessStatusCode)
-                    {
-                        MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        throw new Exception(APIConsumer.GetError(response));
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                        var ex = (Exception)prevTask.Exception;
+                        while (ex.InnerException != null)
+                        {
+                            ex = ex.InnerException;
+                        }
+                        MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }, TaskContinuationOptions.OnlyOnFaulted);
             }
         }
     }
