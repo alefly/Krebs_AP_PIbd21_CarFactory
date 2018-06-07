@@ -6,7 +6,7 @@ namespace CarFactoryService.Interfaces
 {
     public interface IMain
     {
-        List<OrderView> GetList();
+        List<BookingView> GetList();
 
         void CreateOrder(BindingBooking model);
 

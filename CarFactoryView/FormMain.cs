@@ -25,7 +25,7 @@ namespace AbstractShopView
         {
             try
             {
-                List<OrderView> list = service.GetList();
+                List<BookingView> list = service.GetList();
                 if (list != null)
                 {
                     dataGridView.DataSource = list;

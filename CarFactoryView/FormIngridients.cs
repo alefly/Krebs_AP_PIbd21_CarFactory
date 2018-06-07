@@ -30,7 +30,7 @@ namespace AbstractShopView
         {
             try
             {
-                List<ComponentView> list = service.GetList();
+                List<IngridientView> list = service.GetList();
                 if (list != null)
                 {
                     dataGridView.DataSource = list;

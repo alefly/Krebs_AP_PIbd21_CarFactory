@@ -230,11 +230,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CarFactoryModel\CarFactory.csproj">
+    <ProjectReference Include="..\CarFacoryModel\CarFactory.csproj">
       <Project>{5edcfafa-0f3a-4810-8489-4d221a86ad1e}</Project>
       <Name>CarFactory</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CarFactoryService\CarFactoryServise.csproj">
+    <ProjectReference Include="..\CarfactoryService\CarFactoryServise.csproj">
       <Project>{2bc53217-7680-45d4-970e-944996e6ab2e}</Project>
       <Name>CarFactoryServise</Name>
     </ProjectReference>

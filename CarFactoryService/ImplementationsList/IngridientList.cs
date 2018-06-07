@@ -4,102 +4,87 @@ using CarFactoryService.Interfaces;
 using CarFactoryService.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CarFactoryService.WorkerList
 {
-    public class IngridientList : IIngridient
-    {
-        private ListDataSingleton source;
+	public class IngridientList : IIngridient
+	{
+		private ListDataSingleton source;
 
-        public IngridientList()
-        {
-            source = ListDataSingleton.GetInstance();
-        }
+		public IngridientList()
+		{
+			source = ListDataSingleton.GetInstance();
+		}
 
-        public List<ComponentView> GetList()
-        {
-            List<ComponentView> result = new List<ComponentView>();
-            for (int i = 0; i < source.Ingridients.Count; ++i)
-            {
-                result.Add(new ComponentView
-                {
-                    Id = source.Ingridients[i].Id,
-                    IngridientName = source.Ingridients[i].IngredientName
-                });
-            }
-            return result;
-        }
+		public List<IngridientView> GetList()
+		{
+			List<IngridientView> result = source.Ingridients
+				.Select(rec => new IngridientView
+				{
+					Id = rec.Id,
+					IngridientName = rec.IngredientName
+				}).ToList();
 
-        public ComponentView GetElement(int id)
-        {
-            for (int i = 0; i < source.Ingridients.Count; ++i)
-            {
-                if (source.Ingridients[i].Id == id)
-                {
-                    return new ComponentView
-                    {
-                        Id = source.Ingridients[i].Id,
-                        IngridientName = source.Ingridients[i].IngredientName
-                    };
-                }
-            }
-            throw new Exception("Элемент не найден");
-        }
+			return result;
+		}
 
-        public void AddElement(BindingIngridients model)
-        {
-            int maxId = 0;
-            for (int i = 0; i < source.Ingridients.Count; ++i)
-            {
-                if (source.Ingridients[i].Id > maxId)
-                {
-                    maxId = source.Ingridients[i].Id;
-                }
-                if (source.Ingridients[i].IngredientName == model.IngridientName)
-                {
-                    throw new Exception("Уже есть компонент с таким названием");
-                }
-            }
-            source.Ingridients.Add(new Ingredient
-            {
-                Id = maxId + 1,
-                IngredientName = model.IngridientName
-            });
-        }
+		public IngridientView GetElement(int id)
+		{
+			Ingredient element = source.Ingridients.FirstOrDefault(rec => rec.Id == id);
+			if (element != null)
+			{
+				return new IngridientView
+				{
+					Id = element.Id,
+					IngridientName = element.IngredientName
+				};
+			}
+			throw new Exception("Элемент не найден");
+		}
 
-        public void UpdElement(BindingIngridients model)
-        {
-            int index = -1;
-            for (int i = 0; i < source.Ingridients.Count; ++i)
-            {
-                if (source.Ingridients[i].Id == model.Id)
-                {
-                    index = i;
-                }
-                if (source.Ingridients[i].IngredientName == model.IngridientName && 
-                    source.Ingridients[i].Id != model.Id)
-                {
-                    throw new Exception("Уже есть компонент с таким названием");
-                }
-            }
-            if (index == -1)
-            {
-                throw new Exception("Элемент не найден");
-            }
-            source.Ingridients[index].IngredientName = model.IngridientName;
-        }
+		public void AddElement(BindingIngridients model)
+		{
+			Ingredient element = source.Ingridients.FirstOrDefault(rec => rec.IngredientName == model.IngridientName);
+			if (element != null)
+			{
+				throw new Exception("Уже есть компонент с таким названием");
+			}
+			int maxId = source.Ingridients.Count > 0 ? source.Ingridients.Max(rec => rec.Id) : 0;
+			source.Ingridients.Add(new Ingredient
+			{
+				Id = maxId + 1,
+				IngredientName = model.IngridientName
+			});
+		}
 
-        public void DelElement(int id)
-        {
-            for (int i = 0; i < source.Ingridients.Count; ++i)
-            {
-                if (source.Ingridients[i].Id == id)
-                {
-                    source.Ingridients.RemoveAt(i);
-                    return;
-                }
-            }
-            throw new Exception("Элемент не найден");
-        }
-    }
+		public void UpdElement(BindingIngridients model)
+		{
+			Ingredient element = source.Ingridients.FirstOrDefault(rec =>
+ rec.IngredientName == model.IngridientName && rec.Id != model.Id);
+			if (element != null)
+			{
+				throw new Exception("Уже есть компонент с таким названием");
+			}
+			element = source.Ingridients.FirstOrDefault(rec => rec.Id == model.Id);
+			if (element == null)
+			{
+				throw new Exception("Элемент не найден");
+			}
+			element.IngredientName = model.IngridientName;
+		}
+
+		public void DelElement(int id)
+		{
+			Ingredient element = source.Ingridients.FirstOrDefault(rec => rec.Id == id);
+			if (element != null)
+			{
+				source.Ingridients.Remove(element);
+			}
+			else
+			{
+				throw new Exception("Элемент не найден");
+			}
+		}
+	}
 }

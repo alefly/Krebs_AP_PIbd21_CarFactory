@@ -32,7 +32,7 @@ namespace AbstractShopView
         {
             try
             {
-                List<ComponentView> listC = serviceC.GetList();
+                List<IngridientView> listC = serviceC.GetList();
                 if (listC != null)
                 {
                     comboBoxComponent.DisplayMember = "IngridientName";

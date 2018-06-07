@@ -2,7 +2,7 @@
 
 namespace CarFactoryService.ViewModels
 {
-    public class CommodityViewModel
+    public class CommodityView
     {
         public int Id { get; set; }
 
@@ -10,6 +10,6 @@ namespace CarFactoryService.ViewModels
 
         public decimal Price { get; set; }
 
-        public List<ProductComponentView> CommodityIngridients { get; set; }
+        public List<CommodityIngridientView> CommodityIngridients { get; set; }
     }
 }

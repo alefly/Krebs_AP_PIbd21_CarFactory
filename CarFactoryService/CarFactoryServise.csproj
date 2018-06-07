@@ -72,7 +72,7 @@
     <Compile Include="ViewModels\StorageView.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CarFactoryModel\CarFactory.csproj">
+    <ProjectReference Include="..\AbstractShopModel\CarFactory.csproj">
       <Project>{5edcfafa-0f3a-4810-8489-4d221a86ad1e}</Project>
       <Name>CarFactory</Name>
     </ProjectReference>

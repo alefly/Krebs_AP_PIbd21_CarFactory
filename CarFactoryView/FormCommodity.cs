@@ -20,7 +20,7 @@ namespace AbstractShopView
 
         private int? id;
 
-        private List<ProductComponentView> productComponents;
+        private List<CommodityIngridientView> productComponents;
 
         public FormCommodity(ICommodity service)
         {
@@ -34,7 +34,7 @@ namespace AbstractShopView
             {
                 try
                 {
-                    CommodityViewModel view = service.GetElement(id.Value);
+                    CommodityView view = service.GetElement(id.Value);
                     if (view != null)
                     {
                         textBoxName.Text = view.CommodityName;
@@ -50,7 +50,7 @@ namespace AbstractShopView
             }
             else
             {
-                productComponents = new List<ProductComponentView>();
+                productComponents = new List<CommodityIngridientView>();
             }
         }
 
