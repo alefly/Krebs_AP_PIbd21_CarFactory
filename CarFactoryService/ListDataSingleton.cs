@@ -9,7 +9,7 @@ namespace CarFactoryService
 
         public List<Consumer> Consumer { get; set; }
 
-        public List<Ingredient> Ingridients { get; set; }
+        public List<Ingridient> Ingridients { get; set; }
 
         public List<Worker> Workers { get; set; }
 
@@ -26,7 +26,7 @@ namespace CarFactoryService
         private ListDataSingleton()
         {
             Consumer = new List<Consumer>();
-            Ingridients = new List<Ingredient>();
+            Ingridients = new List<Ingridient>();
             Workers = new List<Worker>();
             Bookings = new List<Booking>();
             Commodity = new List<Commodity>();

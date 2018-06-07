@@ -2,11 +2,11 @@
 {
     public class BookingView
     {
-        public int Id { get; set; }
+		public int Id { get; set; }
 
-        public int ClientId { get; set; }
+        public int ConsumerId { get; set; }
 
-        public string ClientName { get; set; }
+        public string ConsumerName { get; set; }
 
         public int CommodityId { get; set; }
 

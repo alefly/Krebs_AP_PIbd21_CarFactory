@@ -103,7 +103,7 @@ namespace AbstractShopView
                 int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                 try
                 {
-                    service.FinishOrder(id);
+                    service.FinishBooking(id);
                     LoadData();
                 }
                 catch (Exception ex)
@@ -120,7 +120,7 @@ namespace AbstractShopView
                 int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                 try
                 {
-                    service.PayOrder(id);
+                    service.PayBooking(id);
                     LoadData();
                 }
                 catch (Exception ex)

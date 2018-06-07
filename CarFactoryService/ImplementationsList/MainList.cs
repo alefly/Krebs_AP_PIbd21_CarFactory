@@ -23,7 +23,7 @@ namespace CarFactoryService.WorkerList
 				.Select(rec => new BookingView
 				{
 					Id = rec.Id,
-					ClientId = rec.ConsumerId,
+					ConsumerId = rec.ConsumerId,
 					CommodityId = rec.CommodityId,
 					WorkerId = rec.WorkerId,
 					DateCreate = rec.DateCreate.ToLongDateString(),
@@ -31,7 +31,7 @@ namespace CarFactoryService.WorkerList
 					Status = rec.Status.ToString(),
 					Count = rec.Count,
 					Sum = rec.SumPrice,
-					ClientName = source.Consumer
+					ConsumerName = source.Consumer
 									.FirstOrDefault(recC => recC.Id == rec.ConsumerId)?.ConsumerName,
 					CommodityName = source.Commodity
 									.FirstOrDefault(recP => recP.Id == rec.CommodityId)?.CommodityName,
@@ -42,7 +42,7 @@ namespace CarFactoryService.WorkerList
 			return result;
 		}
 
-		public void CreateOrder(BindingBooking model)
+		public void CreateBooking(BindingBooking model)
 		{
 			int maxId = source.Bookings.Count > 0 ? source.Bookings.Max(rec => rec.Id) : 0;
 			source.Bookings.Add(new Booking
@@ -57,7 +57,7 @@ namespace CarFactoryService.WorkerList
 			});
 		}
 
-		public void TakeOrderInWork(BindingBooking model)
+		public void TakeBookingInWork(BindingBooking model)
 		{
 			Booking element = source.Bookings.FirstOrDefault(rec => rec.Id == model.Id);
 			if (element == null)
@@ -75,7 +75,7 @@ namespace CarFactoryService.WorkerList
 				{
 					var componentName = source.Ingridients
 									.FirstOrDefault(rec => rec.Id == commodityIngridient.IngridientId);
-					throw new Exception("Не достаточно компонента " + componentName?.IngredientName +
+					throw new Exception("Не достаточно компонента " + componentName?.IngridientName +
 " требуется " + commodityIngridient.Count + ", в наличии " + countOnStorage);
 				}
 			}
@@ -105,7 +105,7 @@ namespace CarFactoryService.WorkerList
 			element.Status = BookingStatus.Выполняется;
 		}
 
-		public void FinishOrder(int id)
+		public void FinishBooking(int id)
 		{
 			Booking element = source.Bookings.FirstOrDefault(rec => rec.Id == id);
 			if (element == null)
@@ -115,7 +115,7 @@ namespace CarFactoryService.WorkerList
 			element.Status = BookingStatus.Готов;
 		}
 
-		public void PayOrder(int id)
+		public void PayBooking(int id)
 		{
 			Booking element = source.Bookings.FirstOrDefault(rec => rec.Id == id);
 			if (element == null)
@@ -126,7 +126,7 @@ namespace CarFactoryService.WorkerList
 
 		}
 
-		public void PutComponentOnStock(BindingStorageComponents model)
+		public void PutIngridientOnStorage(BindingStorageIngridients model)
 		{
 			StorageIngridient element = source.StorageIngridients
 												.FirstOrDefault(rec => rec.StorageId == model.StorageId &&
