@@ -1,0 +1,6 @@
+C:\Users\алёна\Desktop\Новая папка (2)\AbstractShop-LabWork09\AbstractShopModel\bin\Debug\AbstractShopModel.dll
+C:\Users\алёна\Desktop\Новая папка (2)\AbstractShop-LabWork09\AbstractShopModel\bin\Debug\AbstractShopModel.pdb
+C:\Users\алёна\Desktop\Новая папка (2)\AbstractShop-LabWork09\AbstractShopModel\obj\Debug\PrintingHouse.csproj.CoreCompileInputs.cache
+C:\Users\алёна\Desktop\Новая папка (2)\AbstractShop-LabWork09\AbstractShopModel\obj\Debug\AbstractShopModel.dll
+C:\Users\алёна\Desktop\Новая папка (2)\AbstractShop-LabWork09\AbstractShopModel\obj\Debug\AbstractShopModel.pdb
+C:\Users\алёна\Desktop\Новая папка (2)\AbstractShop-LabWork09\AbstractShopModel\obj\Debug\PrintingHouse.csprojResolveAssemblyReference.cache
