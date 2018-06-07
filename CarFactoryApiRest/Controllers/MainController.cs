@@ -1,4 +1,5 @@
-﻿using CarFactoryService.BindingModels;
+﻿using CarFactoryApiRest.Services;
+using CarFactoryService.BindingModels;
 using CarFactoryService.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -58,5 +59,18 @@ namespace CarFactoryApiRest.Controllers
 		{
 			_service.PutIngridientOnStorage(model);
 		}
+
+        [HttpGet]
+        public IHttpActionResult GetInfo()
+        {
+            ReflectionService service = new ReflectionService();
+            var list = service.GetInfoByAssembly();
+            if (list == null)
+            {
+                InternalServerError(new Exception("Нет данных"));
+            }
+            return Ok(list);
+        }
+
 	}
 }
