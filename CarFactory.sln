@@ -9,6 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarFactoryServise", "CarFac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarFactoryView", "CarFactoryView\CarFactoryView.csproj", "{92C588FB-347A-4D3F-948C-A08891347860}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9763316C-05A3-4C4F-ADCC-80FFC0536488}"
+	ProjectSection(SolutionItems) = preProject
+		CarFactoryWebView\CarFactoryWebView.csproj = CarFactoryWebView\CarFactoryWebView.csproj
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
