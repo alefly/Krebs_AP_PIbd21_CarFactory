@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarFactory", "CarFactoryMod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarFactoryServise", "CarFactoryService\CarFactoryServise.csproj", "{2BC53217-7680-45D4-970E-944996E6AB2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarFactoryWebView", "CarFactoryWebView\CarFactoryWebView.csproj", "{E962C23D-914F-4C15-9371-3F2CE4CA7320}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarFactoryView", "CarFactoryView\CarFactoryView.csproj", "{92C588FB-347A-4D3F-948C-A08891347860}"
 EndProject
 Global
@@ -25,10 +23,6 @@ Global
 		{2BC53217-7680-45D4-970E-944996E6AB2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BC53217-7680-45D4-970E-944996E6AB2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BC53217-7680-45D4-970E-944996E6AB2E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E962C23D-914F-4C15-9371-3F2CE4CA7320}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E962C23D-914F-4C15-9371-3F2CE4CA7320}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E962C23D-914F-4C15-9371-3F2CE4CA7320}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E962C23D-914F-4C15-9371-3F2CE4CA7320}.Release|Any CPU.Build.0 = Release|Any CPU
 		{92C588FB-347A-4D3F-948C-A08891347860}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{92C588FB-347A-4D3F-948C-A08891347860}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92C588FB-347A-4D3F-948C-A08891347860}.Release|Any CPU.ActiveCfg = Release|Any CPU
