@@ -1,0 +1,34 @@
+E:\PrintingHouse\AbstractShopService\obj\Debug\CarFactoryServise.csprojResolveAssemblyReference.cache
+E:\PrintingHouse\AbstractShopService\obj\Debug\AbstractShopService.dll
+E:\PrintingHouse\AbstractShopService\obj\Debug\AbstractShopService.pdb
+E:\PrintingHouse\AbstractShopService\bin\Debug\AbstractShopService.dll
+E:\PrintingHouse\AbstractShopService\bin\Debug\AbstractShopService.pdb
+E:\PrintingHouse\AbstractShopService\bin\Debug\AbstractShopModel.dll
+E:\PrintingHouse\AbstractShopService\bin\Debug\AbstractShopModel.pdb
+J:\л2\CarFactoryService\obj\Debug\CarFactoryServise.csprojAssemblyReference.cache
+J:\л2\CarFactoryService\obj\Debug\CarFactoryServise.csproj.CoreCompileInputs.cache
+J:\л2\CarFactoryService\obj\Debug\CarFactoryServise.csproj.CopyComplete
+J:\л2\CarFactoryService\bin\Debug\CarFactoryService.dll
+J:\л2\CarFactoryService\bin\Debug\CarFactoryService.pdb
+J:\л2\CarFactoryService\bin\Debug\CarFactoryModel.dll
+J:\л2\CarFactoryService\bin\Debug\CarFactoryModel.pdb
+J:\л2\CarFactoryService\obj\Debug\CarFactoryService.dll
+J:\л2\CarFactoryService\obj\Debug\CarFactoryService.pdb
+J:\л2Web\CarFactoryService\bin\Debug\CarFactoryService.dll
+J:\л2Web\CarFactoryService\bin\Debug\CarFactoryService.pdb
+J:\л2Web\CarFactoryService\bin\Debug\CarFactoryModel.dll
+J:\л2Web\CarFactoryService\bin\Debug\CarFactoryModel.pdb
+J:\л2Web\CarFactoryService\obj\Debug\CarFactoryServise.csprojAssemblyReference.cache
+J:\л2Web\CarFactoryService\obj\Debug\CarFactoryServise.csproj.CoreCompileInputs.cache
+J:\л2Web\CarFactoryService\obj\Debug\CarFactoryServise.csproj.CopyComplete
+J:\л2Web\CarFactoryService\obj\Debug\CarFactoryService.dll
+J:\л2Web\CarFactoryService\obj\Debug\CarFactoryService.pdb
+D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryService\bin\Debug\CarFactoryService.dll
+D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryService\bin\Debug\CarFactoryService.pdb
+D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryService\bin\Debug\CarFactoryModel.dll
+D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryService\bin\Debug\CarFactoryModel.pdb
+D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryService\obj\Debug\CarFactoryServise.csprojAssemblyReference.cache
+D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryService\obj\Debug\CarFactoryServise.csproj.CoreCompileInputs.cache
+D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryService\obj\Debug\CarFactoryServise.csproj.CopyComplete
+D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryService\obj\Debug\CarFactoryService.dll
+D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryService\obj\Debug\CarFactoryService.pdb
