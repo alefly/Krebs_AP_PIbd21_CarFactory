@@ -1,40 +1,38 @@
 ﻿using CarFactoryService.BindingModels;
-using CarFactoryService.Interfaces;
 using CarFactoryService.ViewModels;
 using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using Unity;
-using Unity.Attributes;
 
 namespace CarFactoryView
 {
     public partial class FormWorker : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
-
         public int Id { set { id = value; } }
-
-        private readonly IWorker service;
 
         private int? id;
 
-        public FormWorker(IWorker service)
+        public FormWorker()
         {
             InitializeComponent();
-            this.service = service;
         }
 
-        private void FormImplementer_Load(object sender, EventArgs e)
+        private void FormWorker_Load(object sender, EventArgs e)
         {
             if (id.HasValue)
             {
                 try
                 {
-                    WorkerView view = service.GetElement(id.Value);
-                    if (view != null)
+                    var response = APIConsumer.GetRequest("api/Worker/Get/" + id.Value);
+                    if (response.Result.IsSuccessStatusCode)
                     {
-                        textBoxFIO.Text = view.WorkerName;
+                        var implementer = APIConsumer.GetElement<WorkerView>(response);
+                        textBoxName.Text = implementer.WorkerName;
+                    }
+                    else
+                    {
+                        throw new Exception(APIConsumer.GetError(response));
                     }
                 }
                 catch (Exception ex)
@@ -46,31 +44,39 @@ namespace CarFactoryView
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(textBoxFIO.Text))
+            if (string.IsNullOrEmpty(textBoxName.Text))
             {
-                MessageBox.Show("Заполните ФИО", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Заполните имя", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             try
             {
+                Task<HttpResponseMessage> response;
                 if (id.HasValue)
                 {
-                    service.UpdElement(new BindingWorkers
+                    response = APIConsumer.PostRequest("api/Worker/UpdElement", new BindingWorkers
                     {
                         Id = id.Value,
-                        WorkerName = textBoxFIO.Text
+                        WorkerName = textBoxName.Text
                     });
                 }
                 else
                 {
-                    service.AddElement(new BindingWorkers
-					{
-                        WorkerName = textBoxFIO.Text
+                    response = APIConsumer.PostRequest("api/Worker/AddElement", new BindingWorkers
+                    {
+                        WorkerName = textBoxName.Text
                     });
                 }
-                MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DialogResult = DialogResult.OK;
-                Close();
+                if (response.Result.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }
+                else
+                {
+                    throw new Exception(APIConsumer.GetError(response));
+                }
             }
             catch (Exception ex)
             {

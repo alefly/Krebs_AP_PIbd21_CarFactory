@@ -5,7 +5,7 @@
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private System.ComponentModel.IContainer ingridients = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -13,9 +13,9 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (ingridients != null))
             {
-                components.Dispose();
+                ingridients.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -30,8 +30,8 @@
         {
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
-            this.textBoxFIO = new System.Windows.Forms.TextBox();
-            this.labelFIO = new System.Windows.Forms.Label();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.labelName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonCancel
@@ -54,35 +54,35 @@
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
-            // textBoxFIO
+            // textBoxName
             // 
-            this.textBoxFIO.Location = new System.Drawing.Point(55, 6);
-            this.textBoxFIO.Name = "textBoxFIO";
-            this.textBoxFIO.Size = new System.Drawing.Size(217, 20);
-            this.textBoxFIO.TabIndex = 1;
+            this.textBoxName.Location = new System.Drawing.Point(55, 6);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(217, 20);
+            this.textBoxName.TabIndex = 1;
             // 
-            // labelFIO
+            // labelName
             // 
-            this.labelFIO.AutoSize = true;
-            this.labelFIO.Location = new System.Drawing.Point(12, 9);
-            this.labelFIO.Name = "labelFIO";
-            this.labelFIO.Size = new System.Drawing.Size(37, 13);
-            this.labelFIO.TabIndex = 0;
-            this.labelFIO.Text = "ФИО:";
+            this.labelName.AutoSize = true;
+            this.labelName.Location = new System.Drawing.Point(12, 9);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(37, 13);
+            this.labelName.TabIndex = 0;
+            this.labelName.Text = "Имя:";
             // 
-            // FormImplementer
+            // FormWorker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 68);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
-            this.Controls.Add(this.textBoxFIO);
-            this.Controls.Add(this.labelFIO);
-            this.Name = "FormImplementer";
+            this.Controls.Add(this.textBoxName);
+            this.Controls.Add(this.labelName);
+            this.Name = "FormWorker";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Исполнитель";
-            this.Load += new System.EventHandler(this.FormImplementer_Load);
+            this.Load += new System.EventHandler(this.FormWorker_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -92,7 +92,7 @@
 
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.TextBox textBoxFIO;
-        private System.Windows.Forms.Label labelFIO;
+        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.Label labelName;
     }
 }

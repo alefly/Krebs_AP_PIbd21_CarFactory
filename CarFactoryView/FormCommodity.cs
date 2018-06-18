@@ -1,46 +1,44 @@
 ﻿using CarFactoryService.BindingModels;
-using CarFactoryService.Interfaces;
 using CarFactoryService.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using Unity;
-using Unity.Attributes;
 
 namespace CarFactoryView
 {
     public partial class FormCommodity : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
-
         public int Id { set { id = value; } }
-
-        private readonly ICommodity service;
 
         private int? id;
 
-        private List<CommodityIngridientView> productComponents;
+        private List<CommodityIngridientView> commodityIngridients;
 
-        public FormCommodity(ICommodity service)
+        public FormCommodity()
         {
             InitializeComponent();
-            this.service = service;
         }
 
-        private void FormProduct_Load(object sender, EventArgs e)
+        private void FormCommodity_Load(object sender, EventArgs e)
         {
             if (id.HasValue)
             {
                 try
                 {
-                    CommodityView view = service.GetElement(id.Value);
-                    if (view != null)
+                    var response = APIConsumer.GetRequest("api/Commodity/Get/" + id.Value);
+                    if (response.Result.IsSuccessStatusCode)
                     {
-                        textBoxName.Text = view.CommodityName;
-                        textBoxPrice.Text = view.Price.ToString();
-                        productComponents = view.CommodityIngridients;
+                        var commodity = APIConsumer.GetElement<CommodityView>(response);
+                        textBoxName.Text = commodity.CommodityName;
+                        textBoxPrice.Text = commodity.Price.ToString();
+                        commodityIngridients = commodity.CommodityIngridients;
                         LoadData();
+                    }
+                    else
+                    {
+                        throw new Exception(APIConsumer.GetError(response));
                     }
                 }
                 catch (Exception ex)
@@ -50,7 +48,7 @@ namespace CarFactoryView
             }
             else
             {
-                productComponents = new List<CommodityIngridientView>();
+                commodityIngridients = new List<CommodityIngridientView>();
             }
         }
 
@@ -58,10 +56,10 @@ namespace CarFactoryView
         {
             try
             {
-                if (productComponents != null)
+                if (commodityIngridients != null)
                 {
                     dataGridView.DataSource = null;
-                    dataGridView.DataSource = productComponents;
+                    dataGridView.DataSource = commodityIngridients;
                     dataGridView.Columns[0].Visible = false;
                     dataGridView.Columns[1].Visible = false;
                     dataGridView.Columns[2].Visible = false;
@@ -76,7 +74,7 @@ namespace CarFactoryView
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormCommodityIngridients>();
+            var form = new FormCommodityIngridients();
             if (form.ShowDialog() == DialogResult.OK)
             {
                 if(form.Model != null)
@@ -85,7 +83,7 @@ namespace CarFactoryView
                     {
                         form.Model.CommodityId = id.Value;
                     }
-                    productComponents.Add(form.Model);
+                    commodityIngridients.Add(form.Model);
                 }
                 LoadData();
             }
@@ -95,11 +93,11 @@ namespace CarFactoryView
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                var form = Container.Resolve<FormCommodityIngridients>();
-                form.Model = productComponents[dataGridView.SelectedRows[0].Cells[0].RowIndex];
+                var form = new FormCommodityIngridients();
+                form.Model = commodityIngridients[dataGridView.SelectedRows[0].Cells[0].RowIndex];
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    productComponents[dataGridView.SelectedRows[0].Cells[0].RowIndex] = form.Model;
+                    commodityIngridients[dataGridView.SelectedRows[0].Cells[0].RowIndex] = form.Model;
                     LoadData();
                 }
             }
@@ -113,7 +111,7 @@ namespace CarFactoryView
                 {
                     try
                     {
-                        productComponents.RemoveAt(dataGridView.SelectedRows[0].Cells[0].RowIndex);
+                        commodityIngridients.RemoveAt(dataGridView.SelectedRows[0].Cells[0].RowIndex);
                     }
                     catch (Exception ex)
                     {
@@ -141,46 +139,54 @@ namespace CarFactoryView
                 MessageBox.Show("Заполните цену", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (productComponents == null || productComponents.Count == 0)
+            if (commodityIngridients == null || commodityIngridients.Count == 0)
             {
                 MessageBox.Show("Заполните компоненты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             try
             {
-                List<BindingCommodityIngridient> productComponentBM = new List<BindingCommodityIngridient>();
-                for (int i = 0; i < productComponents.Count; ++i)
+                List<BindingCommodityIngridient> commodityIngridientsBM = new List<BindingCommodityIngridient>();
+                for (int i = 0; i < commodityIngridients.Count; ++i)
                 {
-                    productComponentBM.Add(new BindingCommodityIngridient
+                    commodityIngridientsBM.Add(new BindingCommodityIngridient
                     {
-                        Id = productComponents[i].Id,
-                        CommodityId = productComponents[i].CommodityId,
-                        IngridientId = productComponents[i].IngridientId,
-                        Count = productComponents[i].Count
+                        Id = commodityIngridients[i].Id,
+                        CommodityId = commodityIngridients[i].CommodityId,
+                        IngridientId = commodityIngridients[i].IngridientId,
+                        Count = commodityIngridients[i].Count
                     });
                 }
+                Task<HttpResponseMessage> response;
                 if (id.HasValue)
                 {
-                    service.UpdElement(new BindingCommodity
+                    response = APIConsumer.PostRequest("api/Commodity/UpdElement", new BindingCommodity
                     {
                         Id = id.Value,
                         CommodityName = textBoxName.Text,
                         Price = Convert.ToInt32(textBoxPrice.Text),
-                        CommodityIngridients = productComponentBM
+                        CommodityIngridients = commodityIngridientsBM
                     });
                 }
                 else
                 {
-                    service.AddElement(new BindingCommodity
+                    response = APIConsumer.PostRequest("api/Commodity/AddElement", new BindingCommodity
                     {
                         CommodityName = textBoxName.Text,
                         Price = Convert.ToInt32(textBoxPrice.Text),
-                        CommodityIngridients = productComponentBM
+                        CommodityIngridients = commodityIngridientsBM
                     });
                 }
-                MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DialogResult = DialogResult.OK;
-                Close();
+                if (response.Result.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }
+                else
+                {
+                    throw new Exception(APIConsumer.GetError(response));
+                }
             }
             catch (Exception ex)
             {

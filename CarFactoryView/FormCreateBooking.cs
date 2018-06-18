@@ -1,52 +1,53 @@
 ﻿using CarFactoryService.BindingModels;
-using CarFactoryService.Interfaces;
 using CarFactoryService.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Unity;
-using Unity.Attributes;
 
 namespace CarFactoryView
 {
     public partial class FormCreateBooking : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
-
-        private readonly IConsumer serviceC;
-
-        private readonly ICommodity serviceP;
-
-        private readonly IMain serviceM;
-
-        public FormCreateBooking(IConsumer serviceC, ICommodity serviceP, IMain serviceM)
+        public FormCreateBooking()
         {
             InitializeComponent();
-            this.serviceC = serviceC;
-            this.serviceP = serviceP;
-            this.serviceM = serviceM;
         }
 
-        private void FormCreateOrder_Load(object sender, EventArgs e)
+        private void FormCreateBooking_Load(object sender, EventArgs e)
         {
             try
             {
-                List<ConsumerView> listC = serviceC.GetList();
-                if (listC != null)
+                var responseC = APIConsumer.GetRequest("api/Consumer/GetList");
+                if (responseC.Result.IsSuccessStatusCode)
                 {
-                    comboBoxClient.DisplayMember = "ConsumerName";
-                    comboBoxClient.ValueMember = "Id";
-                    comboBoxClient.DataSource = listC;
-                    comboBoxClient.SelectedItem = null;
+                    List<ConsumerView> list = APIConsumer.GetElement<List<ConsumerView>>(responseC);
+                    if (list != null)
+                    {
+                        comboBoxConsumer.DisplayMember = "ConsumerName";
+                        comboBoxConsumer.ValueMember = "Id";
+                        comboBoxConsumer.DataSource = list;
+                        comboBoxConsumer.SelectedItem = null;
+                    }
                 }
-                List<CommodityView> listP = serviceP.GetList();
-                if (listP != null)
+                else
                 {
-                    comboBoxCommodity.DisplayMember = "CommodityName";
-                    comboBoxCommodity.ValueMember = "Id";
-                    comboBoxCommodity.DataSource = listP;
-                    comboBoxCommodity.SelectedItem = null;
+                    throw new Exception(APIConsumer.GetError(responseC));
+                }
+                var responseP = APIConsumer.GetRequest("api/Commodity/GetList");
+                if (responseP.Result.IsSuccessStatusCode)
+                {
+                    List<CommodityView> list = APIConsumer.GetElement<List<CommodityView>>(responseP);
+                    if (list != null)
+                    {
+                        comboBoxCommodity.DisplayMember = "CommodityName";
+                        comboBoxCommodity.ValueMember = "Id";
+                        comboBoxCommodity.DataSource = list;
+                        comboBoxCommodity.SelectedItem = null;
+                    }
+                }
+                else
+                {
+                    throw new Exception(APIConsumer.GetError(responseP));
                 }
             }
             catch (Exception ex)
@@ -62,9 +63,17 @@ namespace CarFactoryView
                 try
                 {
                     int id = Convert.ToInt32(comboBoxCommodity.SelectedValue);
-                    CommodityView commodity = serviceP.GetElement(id);
-                    int count = Convert.ToInt32(textBoxCount.Text);
-                    textBoxSum.Text = ((int)(count * commodity.Price)).ToString();
+                    var responseP = APIConsumer.GetRequest("api/Commodity/Get/" + id);
+                    if (responseP.Result.IsSuccessStatusCode)
+                    {
+                        CommodityView product = APIConsumer.GetElement<CommodityView>(responseP);
+                        int count = Convert.ToInt32(textBoxCount.Text);
+                        textBoxSum.Text = (count * (int)product.Price).ToString();
+                    }
+                    else
+                    {
+                        throw new Exception(APIConsumer.GetError(responseP));
+                    }
                 }
                 catch(Exception ex)
                 {
@@ -90,7 +99,7 @@ namespace CarFactoryView
                 MessageBox.Show("Заполните поле Количество", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (comboBoxClient.SelectedValue == null)
+            if (comboBoxConsumer.SelectedValue == null)
             {
                 MessageBox.Show("Выберите клиента", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -102,16 +111,23 @@ namespace CarFactoryView
             }
             try
             {
-                serviceM.CreateBooking(new BindingBooking
+                var response = APIConsumer.PostRequest("api/Main/CreateBooking", new BindingBooking
                 {
-                    ConsumerId = Convert.ToInt32(comboBoxClient.SelectedValue),
+                    ConsumerId = Convert.ToInt32(comboBoxConsumer.SelectedValue),
                     CommodityId = Convert.ToInt32(comboBoxCommodity.SelectedValue),
                     Count = Convert.ToInt32(textBoxCount.Text),
                     Sum = Convert.ToInt32(textBoxSum.Text)
                 });
-                MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DialogResult = DialogResult.OK;
-                Close();
+                if (response.Result.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }
+                else
+                {
+                    throw new Exception(APIConsumer.GetError(response));
+                }
             }
             catch (Exception ex)
             {

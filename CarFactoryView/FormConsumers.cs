@@ -1,24 +1,16 @@
-﻿using CarFactoryService.Interfaces;
+﻿using CarFactoryService.BindingModels;
 using CarFactoryService.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Unity;
-using Unity.Attributes;
 
 namespace CarFactoryView
 {
     public partial class FormConsumers : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
-
-        private readonly IConsumer service;
-
-        public FormConsumers(IConsumer service)
+        public FormConsumers()
         {
             InitializeComponent();
-            this.service = service;
         }
 
         private void FormClients_Load(object sender, EventArgs e)
@@ -30,12 +22,20 @@ namespace CarFactoryView
         {
             try
             {
-                List<ConsumerView> list = service.GetList();
-                if (list != null)
+                var response = APIConsumer.GetRequest("api/Consumer/GetList");
+                if (response.Result.IsSuccessStatusCode)
                 {
-                    dataGridView.DataSource = list;
-                    dataGridView.Columns[0].Visible = false;
-                    dataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    List<ConsumerView> list = APIConsumer.GetElement<List<ConsumerView>>(response);
+                    if (list != null)
+                    {
+                        dataGridView.DataSource = list;
+                        dataGridView.Columns[0].Visible = false;
+                        dataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    }
+                }
+                else
+                {
+                    throw new Exception(APIConsumer.GetError(response));
                 }
             }
             catch (Exception ex)
@@ -46,8 +46,8 @@ namespace CarFactoryView
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormConsumer>();
-            if(form.ShowDialog() == DialogResult.OK)
+            var form = new FormConsumer();
+            if (form.ShowDialog() == DialogResult.OK)
             {
                 LoadData();
             }
@@ -55,9 +55,9 @@ namespace CarFactoryView
 
         private void buttonUpd_Click(object sender, EventArgs e)
         {
-            if(dataGridView.SelectedRows.Count == 1)
+            if (dataGridView.SelectedRows.Count == 1)
             {
-                var form = Container.Resolve<FormConsumer>();
+                var form = new FormConsumer();
                 form.Id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                 if (form.ShowDialog() == DialogResult.OK)
                 {
@@ -70,12 +70,16 @@ namespace CarFactoryView
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                if(MessageBox.Show("Удалить запись", "Вопрос", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Удалить запись", "Вопрос", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                     try
                     {
-                        service.DelElement(id);
+                        var response = APIConsumer.PostRequest("api/Client/DelElement", new BindingConsumer { Id = id });
+                        if (!response.Result.IsSuccessStatusCode)
+                        {
+                            throw new Exception(APIConsumer.GetError(response));
+                        }
                     }
                     catch (Exception ex)
                     {

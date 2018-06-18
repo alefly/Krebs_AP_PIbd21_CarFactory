@@ -1,27 +1,19 @@
-﻿using CarFactoryService.Interfaces;
+﻿using CarFactoryService.BindingModels;
 using CarFactoryService.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Unity;
-using Unity.Attributes;
 
 namespace CarFactoryView
 {
     public partial class FormIngridients : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
-
-        private readonly IIngridient service;
-
-        public FormIngridients(IIngridient service)
+        public FormIngridients()
         {
             InitializeComponent();
-            this.service = service;
         }
 
-        private void FormComponents_Load(object sender, EventArgs e)
+        private void FormIngridients_Load(object sender, EventArgs e)
         {
             LoadData();
         }
@@ -30,12 +22,20 @@ namespace CarFactoryView
         {
             try
             {
-                List<IngridientView> list = service.GetList();
-                if (list != null)
+                var response = APIConsumer.GetRequest("api/Ingridient/GetList");
+                if (response.Result.IsSuccessStatusCode)
                 {
-                    dataGridView.DataSource = list;
-                    dataGridView.Columns[0].Visible = false;
-                    dataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    List<IngridientView> list = APIConsumer.GetElement<List<IngridientView>>(response);
+                    if (list != null)
+                    {
+                        dataGridView.DataSource = list;
+                        dataGridView.Columns[0].Visible = false;
+                        dataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    }
+                }
+                else
+                {
+                    throw new Exception(APIConsumer.GetError(response));
                 }
             }
             catch (Exception ex)
@@ -46,7 +46,7 @@ namespace CarFactoryView
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormIngridient>();
+            var form = new FormIngridient();
             if (form.ShowDialog() == DialogResult.OK)
             {
                 LoadData();
@@ -57,7 +57,7 @@ namespace CarFactoryView
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                var form = Container.Resolve<FormIngridient>();
+                var form = new FormIngridient();
                 form.Id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                 if (form.ShowDialog() == DialogResult.OK)
                 {
@@ -75,7 +75,11 @@ namespace CarFactoryView
                     int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                     try
                     {
-                        service.DelElement(id);
+                        var response = APIConsumer.PostRequest("api/Ingridient/DelElement", new BindingConsumer { Id = id });
+                        if (!response.Result.IsSuccessStatusCode)
+                        {
+                            throw new Exception(APIConsumer.GetError(response));
+                        }
                     }
                     catch (Exception ex)
                     {

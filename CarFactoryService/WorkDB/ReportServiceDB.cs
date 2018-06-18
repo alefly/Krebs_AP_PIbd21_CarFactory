@@ -120,21 +120,21 @@ namespace CarFactoryService.WorkDB
 
 		public List<StoragesLoadViewModel> GetStoragesLoad()
 		{
-			return context.Storages
-							.ToList()
-							.GroupJoin(
-									context.StorageIngridients
-												.Include(r => r.Ingridient)
-												.ToList(),
-									storage => storage,
-									storageIngridient => storageIngridient.Storage,
-									(storage, storageCompList) =>
-			new StoragesLoadViewModel
-			{
-				StorageName = storage.StorageName,
-				TotalCount = storageCompList.Sum(r => r.Count),
-				Ingridients = storageCompList.Select(r => new Tuple<string, int>(r.Ingridient.IngridientName, r.Count))
-			})
+            return context.Storages
+                            .ToList()
+                            .GroupJoin(
+                                    context.StorageIngridients
+                                                .Include(r => r.Ingridient)
+                                                .ToList(),
+                                    storage => storage,
+                                    storageIngridient => storageIngridient.Storage,
+                                    (storage, storageCompList) =>
+            new StoragesLoadViewModel
+            {
+                StorageName = storage.StorageName,
+                TotalCount = storageCompList.Sum(r => r.Count),
+                Ingridients = storageCompList.Select(r => new StorageIngridientLoadViewModel { IngridientName = r.Ingridient.IngridientName, Count = r.Count }).ToList()
+            })
 							.ToList();
 		}
 
@@ -220,9 +220,9 @@ namespace CarFactoryService.WorkDB
 
 							foreach (var listElem in elem.Ingridients)
 							{
-								excelcells.Value2 = listElem.Item1;
+								excelcells.Value2 = listElem.IngridientName;
 								excelcells.ColumnWidth = 10;
-								excelcells.get_Offset(0, 1).Value2 = listElem.Item2;
+								excelcells.get_Offset(0, 1).Value2 = listElem.Count;
 								excelcells = excelcells.get_Offset(1, 0);
 							}
 						}

@@ -30,9 +30,9 @@
         {
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
-            this.labelComponent = new System.Windows.Forms.Label();
+            this.labelIngridient = new System.Windows.Forms.Label();
             this.textBoxCount = new System.Windows.Forms.TextBox();
-            this.comboBoxComponent = new System.Windows.Forms.ComboBox();
+            this.comboBoxIngridient = new System.Windows.Forms.ComboBox();
             this.labelCount = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -56,14 +56,14 @@
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
-            // labelComponent
+            // labelIngridient
             // 
-            this.labelComponent.AutoSize = true;
-            this.labelComponent.Location = new System.Drawing.Point(12, 9);
-            this.labelComponent.Name = "labelComponent";
-            this.labelComponent.Size = new System.Drawing.Size(66, 13);
-            this.labelComponent.TabIndex = 0;
-            this.labelComponent.Text = "Компонент:";
+            this.labelIngridient.AutoSize = true;
+            this.labelIngridient.Location = new System.Drawing.Point(12, 9);
+            this.labelIngridient.Name = "labelIngridient";
+            this.labelIngridient.Size = new System.Drawing.Size(66, 13);
+            this.labelIngridient.TabIndex = 0;
+            this.labelIngridient.Text = "Компонент:";
             // 
             // textBoxCount
             // 
@@ -72,14 +72,14 @@
             this.textBoxCount.Size = new System.Drawing.Size(217, 20);
             this.textBoxCount.TabIndex = 3;
             // 
-            // comboBoxComponent
+            // comboBoxIngridient
             // 
-            this.comboBoxComponent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxComponent.FormattingEnabled = true;
-            this.comboBoxComponent.Location = new System.Drawing.Point(87, 6);
-            this.comboBoxComponent.Name = "comboBoxComponent";
-            this.comboBoxComponent.Size = new System.Drawing.Size(217, 21);
-            this.comboBoxComponent.TabIndex = 1;
+            this.comboBoxIngridient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxIngridient.FormattingEnabled = true;
+            this.comboBoxIngridient.Location = new System.Drawing.Point(87, 6);
+            this.comboBoxIngridient.Name = "comboBoxIngridient";
+            this.comboBoxIngridient.Size = new System.Drawing.Size(217, 21);
+            this.comboBoxIngridient.TabIndex = 1;
             // 
             // labelCount
             // 
@@ -90,21 +90,21 @@
             this.labelCount.TabIndex = 2;
             this.labelCount.Text = "Количество:";
             // 
-            // FormProductComponent
+            // FormCommodityIngridient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(320, 96);
             this.Controls.Add(this.labelCount);
-            this.Controls.Add(this.comboBoxComponent);
+            this.Controls.Add(this.comboBoxIngridient);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.textBoxCount);
-            this.Controls.Add(this.labelComponent);
-            this.Name = "FormProductComponent";
+            this.Controls.Add(this.labelIngridient);
+            this.Name = "FormCommodityIngridient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Компонент изделия";
-            this.Load += new System.EventHandler(this.FormProductComponent_Load);
+            this.Load += new System.EventHandler(this.FormCommodityIngridient_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,9 +114,9 @@
 
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.Label labelComponent;
+        private System.Windows.Forms.Label labelIngridient;
         private System.Windows.Forms.TextBox textBoxCount;
-        private System.Windows.Forms.ComboBox comboBoxComponent;
+        private System.Windows.Forms.ComboBox comboBoxIngridient;
         private System.Windows.Forms.Label labelCount;
     }
 }
