@@ -1,4 +1,4 @@
-﻿using CarFactoryService.ImplementationsList;
+﻿using Unity;
 using CarFactoryService.Interfaces;
 using CarFactoryService.ViewModels;
 using System;
@@ -13,7 +13,7 @@ namespace CarFactoryWebView
 {
     public partial class FormMain : System.Web.UI.Page
     {
-        private readonly IMain service = new MainList();
+        private readonly IMain service = UnityConfig.Container.Resolve<IMain>();
 
         List<BookingView> list;
 
@@ -27,7 +27,7 @@ namespace CarFactoryWebView
             try
             {
                 list = service.GetList();
-                dataGridView1.Columns[0].Visible = false;
+                //dataGridView1.Columns[0].Visible = true;
             }
             catch (Exception ex)
             {

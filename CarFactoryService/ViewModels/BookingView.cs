@@ -2,7 +2,7 @@
 {
     public class BookingView
     {
-        public int Id { get; set; }
+		public int Id { get; set; }
 
         public int ConsumerId { get; set; }
 
@@ -24,6 +24,6 @@
 
         public string DateCreate { get; set; }
 
-        public string DateWork { get; set; }
+        public string DateImplement { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿using CarFactoryService.ImplementationsList;
+﻿using Unity;
 using CarFactoryService.Interfaces;
 using CarFactoryService.ViewModels;
 using System;
@@ -12,10 +12,10 @@ namespace CarFactoryWebView
 {
     public partial class FormCommodityIngridient : System.Web.UI.Page
     {
-        private readonly IIngridient service = new IngridientList();
+        private readonly IIngridient service = UnityConfig.Container.Resolve<IIngridient>();
 
         private CommodityIngridientView model;
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -23,11 +23,14 @@ namespace CarFactoryWebView
                 List<IngridientView> list = service.GetList();
                 if (list != null)
                 {
-                    DropDownListIngridient.DataSource = list;
-                    DropDownListIngridient.DataValueField = "Id";
-                    DropDownListIngridient.DataTextField = "IngridientName";
-                    DropDownListIngridient.SelectedIndex = -1;
-                    Page.DataBind();
+                    if (!Page.IsPostBack)
+                    {
+                        DropDownListIngridient.DataSource = list;
+                        DropDownListIngridient.DataValueField = "Id";
+                        DropDownListIngridient.DataTextField = "IngridientName";
+                        DropDownListIngridient.SelectedIndex = -1;
+                        Page.DataBind();
+                    }
                 }
             }
             catch (Exception ex)

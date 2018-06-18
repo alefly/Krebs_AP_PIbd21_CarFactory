@@ -1,5 +1,5 @@
 ﻿using CarFactoryService.BindingModels;
-using CarFactoryService.ImplementationsList;
+using Unity;
 using CarFactoryService.Interfaces;
 using CarFactoryService.ViewModels;
 using System;
@@ -10,9 +10,9 @@ namespace CarFactoryWebView
 {
     public partial class TakeBookingInWork : System.Web.UI.Page
     {
-        private readonly IWorker serviceP = new WorkerList();
+        private readonly IWorker serviceP = UnityConfig.Container.Resolve<IWorker>();
 
-        private readonly IMain serviceM = new MainList();
+        private readonly IMain serviceM = UnityConfig.Container.Resolve<IMain>();
 
         private int id;
 
@@ -20,21 +20,26 @@ namespace CarFactoryWebView
         {
             try
             {
-                if (!Int32.TryParse((string)Session["id"],out id))
+                if (!Page.IsPostBack)
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Не указан заказ');</script>");
-                    Server.Transfer("FormMain.aspx");
+                    if (!Int32.TryParse((string)Session["id"], out id))
+                    {
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Не указан заказ');</script>");
+                        Server.Transfer("FormMain.aspx");
+
+                        List<WorkerView> listI = serviceP.GetList();
+                        if (listI != null)
+                        {
+                            DropDownListWorker.DataSource = listI;
+                            DropDownListWorker.DataBind();
+                            DropDownListWorker.DataTextField = "WorkerName";
+                            DropDownListWorker.DataValueField = "Id";
+                            DropDownListWorker.SelectedIndex = -1;
+                        }
+                        Page.DataBind();
+                    }
                 }
-                List<WorkerView> listI = serviceP.GetList();
-                if (listI != null)
-                {
-                    DropDownListWorker.DataSource = listI;
-                    DropDownListWorker.DataBind();
-                    DropDownListWorker.DataTextField = "WorkerName";
-                    DropDownListWorker.DataValueField = "Id";
-                    DropDownListWorker.SelectedIndex = -1;
-                }
-                Page.DataBind();
+
             }
             catch (Exception ex)
             {
@@ -53,7 +58,7 @@ namespace CarFactoryWebView
             {
                 serviceM.TakeBookingInWork(new BindingBooking
                 {
-                    Id = id,
+                    Id = id + 1,
                     WorkerId = Convert.ToInt32(DropDownListWorker.SelectedValue)
                 });
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Сохранение прошло успешно');</script>");

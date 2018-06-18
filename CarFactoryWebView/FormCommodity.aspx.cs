@@ -1,12 +1,11 @@
 ﻿using CarFactoryService.BindingModels;
-using CarFactoryService.ImplementationsList;
 using CarFactoryService.Interfaces;
 using CarFactoryService.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Web;
+using Unity;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -14,7 +13,7 @@ namespace CarFactoryWebView
 {
     public partial class FormCommodity : System.Web.UI.Page
     {
-        private readonly ICommodity service = new CommodityList();
+        private readonly ICommodity service = UnityConfig.Container.Resolve<ICommodity>();
 
         private int id;
 
@@ -31,9 +30,12 @@ namespace CarFactoryWebView
                     CommodityView view = service.GetElement(id);
                     if (view != null)
                     {
-                        textBoxName.Text = view.CommodityName;
-                        textBoxPrice.Text = view.Price.ToString();
-                        this.commodityIngridient = view.CommodityIngridients;
+                        if (!Page.IsPostBack)
+                        {
+                            textBoxName.Text = view.CommodityName;
+                            textBoxPrice.Text = view.Price.ToString();
+                        }
+                        commodityIngridient = view.CommodityIngridients;
                         LoadData();
                     }
                 }
@@ -44,40 +46,45 @@ namespace CarFactoryWebView
             }
             else
             {
-                if (service.GetList().Count == 0 || service.GetList().Last().CommodityName != null)
-                {
-                    this.commodityIngridient = new List<CommodityIngridientView>();
-                    LoadData();
-                }
-                else
-                {
-                    this.commodityIngridient = service.GetList().Last().CommodityIngridients;
-                    LoadData();
-                }
+                commodityIngridient = new List<CommodityIngridientView>();
             }
+
             if (Session["SEId"] != null)
             {
-                model = new CommodityIngridientView
-                {
-                    Id = (int)Session["SEId"],
-                    CommodityId = (int)Session["SECommodityId"],
-                    IngridientId = (int)Session["SEIngridientId"],
-                    IngridientName = (string)Session["SEIngridientName"],
-                    Count = (int)Session["SECount"]
-                };
                 if (Session["SEIs"] != null)
                 {
-                    this.commodityIngridient[(int)Session["SEIs"]] = model;
+                    model = new CommodityIngridientView
+                    {
+                        Id = (int)Session["SEId"],
+                        CommodityId = (int)Session["SECommodityId"],
+                        IngridientId = (int)Session["SEIngridientId"],
+                        IngridientName = (string)Session["SEIngridientName"],
+                        Count = (int)Session["SECount"]
+                    };
+                    commodityIngridient[(int)Session["SEIs"]] = model;
                 }
                 else
                 {
-                    this.commodityIngridient.Add(model);
+                    model = new CommodityIngridientView
+                    {
+                        CommodityId = (int)Session["SECommodityId"],
+                        IngridientId = (int)Session["SEIngridientId"],
+                        IngridientName = (string)Session["SEIngridientName"],
+                        Count = (int)Session["SECount"]
+                    };
+                    commodityIngridient.Add(model);
                 }
+                Session["SEId"] = null;
+                Session["SECommodityId"] = null;
+                Session["SEIngridientId"] = null;
+                Session["SEIngridientName"] = null;
+                Session["SECount"] = null;
+                Session["SEIs"] = null;
             }
-            List<BindingCommodityIngridient> commodityIngridient = new List<BindingCommodityIngridient>();
-            for (int i = 0; i < this.commodityIngridient.Count; ++i)
+            List<BindingCommodityIngridient> commodityIngridientBM = new List<BindingCommodityIngridient>();
+            for (int i = 0; i < commodityIngridient.Count; ++i)
             {
-                commodityIngridient.Add(new BindingCommodityIngridient
+                commodityIngridientBM.Add(new BindingCommodityIngridient
                 {
                     Id = this.commodityIngridient[i].Id,
                     CommodityId = this.commodityIngridient[i].CommodityId,
@@ -85,53 +92,31 @@ namespace CarFactoryWebView
                     Count = this.commodityIngridient[i].Count
                 });
             }
-            if (commodityIngridient.Count != 0)
+            if (commodityIngridientBM.Count != 0)
             {
-                if (service.GetList().Count == 0 || service.GetList().Last().CommodityName != null)
+                if (Int32.TryParse((string)Session["id"], out id))
                 {
-                    service.AddElement(new BindingCommodity
+                    service.UpdElement(new BindingCommodity
                     {
-                        CommodityName = null,
-                        Price = -1,
-                        CommodityIngridients = commodityIngridient
+                        Id = id,
+                        CommodityName = textBoxName.Text,
+                        Price = Convert.ToInt32(textBoxPrice.Text),
+                        CommodityIngridients = commodityIngridientBM
                     });
                 }
                 else
                 {
-                    service.UpdElement(new BindingCommodity
+                    service.AddElement(new BindingCommodity
                     {
-                        Id = service.GetList().Last().Id,
-                        CommodityName = null,
-                        Price = -1,
-                        CommodityIngridients = commodityIngridient
+                        CommodityName = "-0",
+                        Price = 0,
+                        CommodityIngridients = commodityIngridientBM
                     });
-                }
-
-            }
-            try
-            {
-                if (this.commodityIngridient != null)
-                {
-                    dataGridView.DataBind();
-                    dataGridView.DataSource = this.commodityIngridient;
-                    dataGridView.DataBind();
-                    dataGridView.ShowHeaderWhenEmpty = true;
-                    dataGridView.SelectedRowStyle.BackColor = Color.Silver;
-                    dataGridView.Columns[1].Visible = false;
-                    dataGridView.Columns[2].Visible = false;
-                    dataGridView.Columns[3].Visible = false;
+                    Session["id"] = service.GetList().Last().Id.ToString();
+                    Session["Change"] = "0";
                 }
             }
-            catch (Exception ex)
-            {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('" + ex.Message + "');</script>");
-            }
-            Session["SEId"] = null;
-            Session["SECommodityId"] = null;
-            Session["SEIngridientId"] = null;
-            Session["SEIngridientName"] = null;
-            Session["SECount"] = null;
-            Session["SEIs"] = null;
+            LoadData();
         }
 
         private void LoadData()
@@ -165,12 +150,14 @@ namespace CarFactoryWebView
         {
             if (dataGridView.SelectedIndex >= 0)
             {
+                model = service.GetElement(id).CommodityIngridients[dataGridView.SelectedIndex];
                 Session["SEId"] = model.Id;
                 Session["SECommodityId"] = model.CommodityId;
                 Session["SEIngridientId"] = model.IngridientId;
                 Session["SEIngridientName"] = model.IngridientName;
                 Session["SECount"] = model.Count;
                 Session["SEIs"] = dataGridView.SelectedIndex;
+                Session["Change"] = "0";
                 Server.Transfer("FormCommodityIngridient.aspx");
             }
         }
@@ -230,7 +217,7 @@ namespace CarFactoryWebView
                 if (Int32.TryParse((string)Session["id"], out id))
                 {
                     service.UpdElement(new BindingCommodity
-                    { 
+                    {
                         Id = id,
                         CommodityName = textBoxName.Text,
                         Price = Convert.ToInt32(textBoxPrice.Text),
@@ -247,6 +234,7 @@ namespace CarFactoryWebView
                     });
                 }
                 Session["id"] = null;
+                Session["Change"] = null;
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Сохранение прошло успешно');</script>");
                 Server.Transfer("FormCommodities.aspx");
             }

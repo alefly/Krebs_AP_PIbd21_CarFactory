@@ -1,5 +1,5 @@
 ﻿using CarFactoryService.BindingModels;
-using CarFactoryService.ImplementationsList;
+using Unity;
 using CarFactoryService.Interfaces;
 using CarFactoryService.ViewModels;
 using System;
@@ -13,7 +13,7 @@ namespace CarFactoryWebView
 {
     public partial class FormWorker : System.Web.UI.Page
     {
-        private readonly IWorker service = new WorkerList();
+        private readonly IWorker service = UnityConfig.Container.Resolve<IWorker>();
 
         private int id;
 
@@ -28,21 +28,11 @@ namespace CarFactoryWebView
                     WorkerView view = service.GetElement(id);
                     if (view != null)
                     {
-                        name = view.WorkerName;
-                        service.UpdElement(new BindingWorkers
+                        if (!Page.IsPostBack)
                         {
-                            Id = id,
-                            WorkerName = ""
-                        });
-                        if (!string.IsNullOrEmpty(name) && string.IsNullOrEmpty(TextBoxName.Text))
-                        {
-                            TextBoxName.Text = name;
+                            TextBoxName.Text = view.WorkerName;
                         }
-                        service.UpdElement(new BindingWorkers
-                        {
-                            Id = id,
-                            WorkerName = name
-                        });
+                        
                     }
                 }
                 catch (Exception ex)

@@ -18,7 +18,6 @@
         <asp:GridView ID="dataGridView" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" ShowHeaderWhenEmpty="True">
             <Columns>
                 <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" />
-                <asp:CommandField ShowSelectButton="true" SelectText=">>" />
                 <asp:BoundField DataField="IngridientName" HeaderText="IngridientName" SortExpression="IngridientName" />
             </Columns>
             <SelectedRowStyle BackColor="#CCCCCC" />
@@ -26,7 +25,7 @@
         <br />
         <br />
         <asp:Button ID="ButtonBack" runat="server" Text="Вернуться" OnClick="ButtonBack_Click" />
-        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetList" TypeName="CarFactoryService.ImplementationsList.IngridientList"></asp:ObjectDataSource>
+        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetList" TypeName="CarFactoryService.WorkDB.IngridientServiceDB"></asp:ObjectDataSource>
     
     </div>
     </form>
