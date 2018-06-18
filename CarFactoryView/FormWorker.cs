@@ -24,19 +24,15 @@ namespace CarFactoryView
             {
                 try
                 {
-                    var response = APIConsumer.GetRequest("api/Worker/Get/" + id.Value);
-                    if (response.Result.IsSuccessStatusCode)
-                    {
-                        var implementer = APIConsumer.GetElement<WorkerView>(response);
-                        textBoxName.Text = implementer.WorkerName;
-                    }
-                    else
-                    {
-                        throw new Exception(APIConsumer.GetError(response));
-                    }
+                    var Worker = Task.Run(() => APIConsumer.GetRequestData<WorkerView>("api/Worker/Get/" + id.Value)).Result;
+                    textBoxName.Text = Worker.WorkerName;
                 }
                 catch (Exception ex)
                 {
+                    while (ex.InnerException != null)
+                    {
+                        ex = ex.InnerException;
+                    }
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -46,47 +42,44 @@ namespace CarFactoryView
         {
             if (string.IsNullOrEmpty(textBoxName.Text))
             {
-                MessageBox.Show("Заполните имя", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Заполните ФИО", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            try
+            string fio = textBoxName.Text;
+            Task task;
+            if (id.HasValue)
             {
-                Task<HttpResponseMessage> response;
-                if (id.HasValue)
+                task = Task.Run(() => APIConsumer.PostRequestData("api/Worker/UpdElement", new BindingWorkers
                 {
-                    response = APIConsumer.PostRequest("api/Worker/UpdElement", new BindingWorkers
-                    {
-                        Id = id.Value,
-                        WorkerName = textBoxName.Text
-                    });
-                }
-                else
-                {
-                    response = APIConsumer.PostRequest("api/Worker/AddElement", new BindingWorkers
-                    {
-                        WorkerName = textBoxName.Text
-                    });
-                }
-                if (response.Result.IsSuccessStatusCode)
-                {
-                    MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    DialogResult = DialogResult.OK;
-                    Close();
-                }
-                else
-                {
-                    throw new Exception(APIConsumer.GetError(response));
-                }
+                    Id = id.Value,
+                    WorkerName = fio
+                }));
             }
-            catch (Exception ex)
+            else
             {
+                task = Task.Run(() => APIConsumer.PostRequestData("api/Worker/AddElement", new BindingWorkers
+                {
+                    WorkerName = fio
+                }));
+            }
+
+            task.ContinueWith((prevTask) => MessageBox.Show("Сохранение прошло успешно. Обновите список", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information),
+                TaskContinuationOptions.OnlyOnRanToCompletion);
+            task.ContinueWith((prevTask) =>
+            {
+                var ex = (Exception)prevTask.Exception;
+                while (ex.InnerException != null)
+                {
+                    ex = ex.InnerException;
+                }
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            }, TaskContinuationOptions.OnlyOnFaulted);
+
+            Close();
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
             Close();
         }
     }

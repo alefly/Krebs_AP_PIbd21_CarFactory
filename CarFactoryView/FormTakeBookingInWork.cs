@@ -2,6 +2,7 @@
 using CarFactoryService.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CarFactoryView
@@ -26,25 +27,21 @@ namespace CarFactoryView
                     MessageBox.Show("Не указан заказ", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Close();
                 }
-                var response = APIConsumer.GetRequest("api/Worker/GetList");
-                if (response.Result.IsSuccessStatusCode)
+                List<WorkerView> list = Task.Run(() => APIConsumer.GetRequestData<List<WorkerView>>("api/Worker/GetList")).Result;
+                if (list != null)
                 {
-                    List<WorkerView> list = APIConsumer.GetElement<List<WorkerView>>(response);
-                    if (list != null)
-                    {
-                        comboBoxWorker.DisplayMember = "WorkerName";
-                        comboBoxWorker.ValueMember = "Id";
-                        comboBoxWorker.DataSource = list;
-                        comboBoxWorker.SelectedItem = null;
-                    }
-                }
-                else
-                {
-                    throw new Exception(APIConsumer.GetError(response));
+                    comboBoxWorker.DisplayMember = "WorkerFIO";
+                    comboBoxWorker.ValueMember = "Id";
+                    comboBoxWorker.DataSource = list;
+                    comboBoxWorker.SelectedItem = null;
                 }
             }
             catch (Exception ex)
             {
+                while (ex.InnerException != null)
+                {
+                    ex = ex.InnerException;
+                }
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -58,31 +55,39 @@ namespace CarFactoryView
             }
             try
             {
-                var response = APIConsumer.PostRequest("api/Main/TakeBookingInWork", new BindingBooking
+                int implementerId = Convert.ToInt32(comboBoxWorker.SelectedValue);
+                Task task = Task.Run(() => APIConsumer.PostRequestData("api/Main/TakeBookingInWork", new BindingBooking
                 {
                     Id = id.Value,
-                    WorkerId = Convert.ToInt32(comboBoxWorker.SelectedValue)
-                });
-                if (response.Result.IsSuccessStatusCode)
+                    WorkerId = implementerId
+                }));
+
+                task.ContinueWith((prevTask) => MessageBox.Show("Заказ передан в работу. Обновите список", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information),
+                    TaskContinuationOptions.OnlyOnRanToCompletion);
+                task.ContinueWith((prevTask) =>
                 {
-                    MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    DialogResult = DialogResult.OK;
-                    Close();
-                }
-                else
-                {
-                    throw new Exception(APIConsumer.GetError(response));
-                }
+                    var ex = (Exception)prevTask.Exception;
+                    while (ex.InnerException != null)
+                    {
+                        ex = ex.InnerException;
+                    }
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }, TaskContinuationOptions.OnlyOnFaulted);
+
+                Close();
             }
             catch (Exception ex)
             {
+                while (ex.InnerException != null)
+                {
+                    ex = ex.InnerException;
+                }
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
             Close();
         }
     }

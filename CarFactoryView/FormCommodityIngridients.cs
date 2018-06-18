@@ -1,6 +1,7 @@
 ﻿using CarFactoryService.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CarFactoryView
@@ -20,21 +21,17 @@ namespace CarFactoryView
         {
             try
             {
-                var response = APIConsumer.GetRequest("api/Ingridient/GetList");
-                if (response.Result.IsSuccessStatusCode)
-                {
-                    comboBoxIngridient.DisplayMember = "IngridientName";
-                    comboBoxIngridient.ValueMember = "Id";
-                    comboBoxIngridient.DataSource = APIConsumer.GetElement<List<IngridientView>>(response);
-                    comboBoxIngridient.SelectedItem = null;
-                }
-                else
-                {
-                    throw new Exception(APIConsumer.GetError(response));
-                }
+                comboBoxIngridient.DisplayMember = "IngridientName";
+                comboBoxIngridient.ValueMember = "Id";
+                comboBoxIngridient.DataSource = Task.Run(() => APIConsumer.GetRequestData<List<IngridientView>>("api/Ingridient/GetList")).Result;
+                comboBoxIngridient.SelectedItem = null;
             }
             catch (Exception ex)
             {
+                while (ex.InnerException != null)
+                {
+                    ex = ex.InnerException;
+                }
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             if (model != null)
