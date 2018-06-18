@@ -5,30 +5,80 @@ E:\PrintingHouse\AbstractShopService\bin\Debug\AbstractShopService.dll
 E:\PrintingHouse\AbstractShopService\bin\Debug\AbstractShopService.pdb
 E:\PrintingHouse\AbstractShopService\bin\Debug\AbstractShopModel.dll
 E:\PrintingHouse\AbstractShopService\bin\Debug\AbstractShopModel.pdb
-J:\л2\CarFactoryService\obj\Debug\CarFactoryServise.csprojAssemblyReference.cache
-J:\л2\CarFactoryService\obj\Debug\CarFactoryServise.csproj.CoreCompileInputs.cache
-J:\л2\CarFactoryService\obj\Debug\CarFactoryServise.csproj.CopyComplete
-J:\л2\CarFactoryService\bin\Debug\CarFactoryService.dll
-J:\л2\CarFactoryService\bin\Debug\CarFactoryService.pdb
-J:\л2\CarFactoryService\bin\Debug\CarFactoryModel.dll
-J:\л2\CarFactoryService\bin\Debug\CarFactoryModel.pdb
-J:\л2\CarFactoryService\obj\Debug\CarFactoryService.dll
-J:\л2\CarFactoryService\obj\Debug\CarFactoryService.pdb
-J:\л2Web\CarFactoryService\bin\Debug\CarFactoryService.dll
-J:\л2Web\CarFactoryService\bin\Debug\CarFactoryService.pdb
-J:\л2Web\CarFactoryService\bin\Debug\CarFactoryModel.dll
-J:\л2Web\CarFactoryService\bin\Debug\CarFactoryModel.pdb
-J:\л2Web\CarFactoryService\obj\Debug\CarFactoryServise.csprojAssemblyReference.cache
-J:\л2Web\CarFactoryService\obj\Debug\CarFactoryServise.csproj.CoreCompileInputs.cache
-J:\л2Web\CarFactoryService\obj\Debug\CarFactoryServise.csproj.CopyComplete
-J:\л2Web\CarFactoryService\obj\Debug\CarFactoryService.dll
-J:\л2Web\CarFactoryService\obj\Debug\CarFactoryService.pdb
-D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryService\bin\Debug\CarFactoryService.dll
-D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryService\bin\Debug\CarFactoryService.pdb
-D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryService\bin\Debug\CarFactoryModel.dll
-D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryService\bin\Debug\CarFactoryModel.pdb
-D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryService\obj\Debug\CarFactoryServise.csprojAssemblyReference.cache
-D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryService\obj\Debug\CarFactoryServise.csproj.CoreCompileInputs.cache
-D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryService\obj\Debug\CarFactoryServise.csproj.CopyComplete
-D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryService\obj\Debug\CarFactoryService.dll
-D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryService\obj\Debug\CarFactoryService.pdb
+E:\л3\AbstractShopService\obj\Debug\CarFactoryServise.csprojResolveAssemblyReference.cache
+E:\л3\AbstractShopService\obj\Debug\AbstractShopService.dll
+E:\л3\AbstractShopService\obj\Debug\AbstractShopService.pdb
+E:\л3\AbstractShopService\bin\Debug\AbstractShopService.dll.config
+E:\л3\AbstractShopService\bin\Debug\AbstractShopService.dll
+E:\л3\AbstractShopService\bin\Debug\AbstractShopService.pdb
+E:\л3\AbstractShopService\bin\Debug\AbstractShopModel.dll
+E:\л3\AbstractShopService\bin\Debug\EntityFramework.dll
+E:\л3\AbstractShopService\bin\Debug\EntityFramework.SqlServer.dll
+E:\л3\AbstractShopService\bin\Debug\AbstractShopModel.pdb
+E:\л3\AbstractShopService\bin\Debug\EntityFramework.xml
+E:\л3\AbstractShopService\bin\Debug\EntityFramework.SqlServer.xml
+E:\л3\AbstractShopService\obj\Debug\AbstractShopService.Migrations.FirstMigration.resources
+E:\л3\AbstractShopService\obj\Debug\CarFactoryServise.csproj.GenerateResource.Cache
+E:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\bin\Debug\AbstractShopService.dll.config
+E:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\bin\Debug\AbstractShopService.dll
+E:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\bin\Debug\AbstractShopService.pdb
+E:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\bin\Debug\AbstractShopModel.dll
+E:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\bin\Debug\EntityFramework.dll
+E:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\bin\Debug\EntityFramework.SqlServer.dll
+E:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\bin\Debug\AbstractShopModel.pdb
+E:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\bin\Debug\EntityFramework.xml
+E:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\bin\Debug\EntityFramework.SqlServer.xml
+E:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\obj\Debug\CarFactoryServise.csprojResolveAssemblyReference.cache
+E:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\obj\Debug\AbstractShopService.Migrations.FirstMigration.resources
+E:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\obj\Debug\CarFactoryServise.csproj.GenerateResource.Cache
+E:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\obj\Debug\AbstractShopService.dll
+E:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\obj\Debug\AbstractShopService.pdb
+H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\bin\Debug\AbstractShopService.dll.config
+H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\bin\Debug\AbstractShopService.dll
+H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\bin\Debug\AbstractShopService.pdb
+H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\bin\Debug\AbstractShopModel.dll
+H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\bin\Debug\EntityFramework.dll
+H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\bin\Debug\EntityFramework.SqlServer.dll
+H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\bin\Debug\AbstractShopModel.pdb
+H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\bin\Debug\AbstractShopModel.dll.config
+H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\bin\Debug\EntityFramework.xml
+H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\bin\Debug\EntityFramework.SqlServer.xml
+H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\obj\Debug\CarFactoryServise.csprojResolveAssemblyReference.cache
+H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\obj\Debug\AbstractShopService.Migrations.FirstMigration.resources
+H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\obj\Debug\CarFactoryServise.csproj.GenerateResource.Cache
+H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\obj\Debug\CarFactoryServise.csproj.CoreCompileInputs.cache
+H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\obj\Debug\AbstractShopService.dll
+H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\obj\Debug\AbstractShopService.pdb
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\AbstractShopService.dll.config
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\AbstractShopService.dll
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\AbstractShopService.pdb
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\AbstractShopModel.dll
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\EntityFramework.dll
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\EntityFramework.SqlServer.dll
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\AbstractShopModel.pdb
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\AbstractShopModel.dll.config
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\EntityFramework.xml
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\EntityFramework.SqlServer.xml
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\obj\Debug\CarFactoryServise.csprojAssemblyReference.cache
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\obj\Debug\CarFactoryServise.csproj.CoreCompileInputs.cache
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\obj\Debug\CarFactoryServise.csproj.CopyComplete
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\obj\Debug\AbstractShopService.dll
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\obj\Debug\AbstractShopService.pdb
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\CommonServiceLocator.dll
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\Unity.Abstractions.dll
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\Unity.Configuration.dll
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\Unity.Container.dll
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\Unity.Interception.Configuration.dll
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\Unity.Interception.dll
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\Unity.RegistrationByConvention.dll
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\Unity.ServiceLocation.dll
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\CommonServiceLocator.pdb
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\Unity.Abstractions.pdb
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\Unity.Configuration.pdb
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\Unity.Container.pdb
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\Unity.Interception.pdb
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\Unity.Interception.Configuration.pdb
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\Unity.RegistrationByConvention.pdb
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\Unity.ServiceLocation.pdb
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\obj\Debug\AbstractShopService.Migrations.nigration.resources
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\obj\Debug\CarFactoryServise.csproj.GenerateResource.cache

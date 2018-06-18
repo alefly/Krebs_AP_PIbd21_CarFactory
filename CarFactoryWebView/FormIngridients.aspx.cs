@@ -1,4 +1,4 @@
-﻿using CarFactoryService.ImplementationsList;
+﻿using Unity;
 using CarFactoryService.Interfaces;
 using CarFactoryService.ViewModels;
 using System;
@@ -12,7 +12,7 @@ namespace CarFactoryWebView
 {
     public partial class FormIngridients : System.Web.UI.Page
     {
-        private readonly IIngridient service = new IngridientList();
+        private readonly IIngridient service = UnityConfig.Container.Resolve<IIngridient>();
 
         List<IngridientView> list;
 

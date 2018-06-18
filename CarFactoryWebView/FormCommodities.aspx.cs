@@ -1,4 +1,4 @@
-﻿using CarFactoryService.ImplementationsList;
+﻿using Unity;
 using CarFactoryService.Interfaces;
 using CarFactoryService.ViewModels;
 using System;
@@ -13,7 +13,7 @@ namespace CarFactoryWebView
 {
     public partial class FormCommodities : System.Web.UI.Page
     {
-        private readonly ICommodity service = new CommodityList();
+        private readonly ICommodity service = UnityConfig.Container.Resolve<ICommodity>();
 
         List<CommodityView> list;
 

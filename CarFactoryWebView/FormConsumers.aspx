@@ -27,7 +27,7 @@
         <br />
         <asp:Button ID="ButtonBack" runat="server" Text="Вернуться" OnClick="ButtonBack_Click" />
     
-        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetList" TypeName="CarFactoryService.ImplementationsList.ConsumerList"></asp:ObjectDataSource>
+        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetList" TypeName="CarFactoryService.WorkDB.ConsumerServiceDB"></asp:ObjectDataSource>
     
     </div>
     </form>

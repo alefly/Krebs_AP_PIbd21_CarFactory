@@ -1,5 +1,4 @@
 ﻿using CarFactoryService.BindingModels;
-using CarFactoryService.ImplementationsList;
 using CarFactoryService.Interfaces;
 using CarFactoryService.ViewModels;
 using System;
@@ -17,7 +16,7 @@ namespace CarFactoryWebView
     {
         public int Id { set { id = value; } }
 
-        private readonly IConsumer service = new ConsumerList();
+        private readonly IConsumer service = UnityConfig.Container.Resolve<IConsumer>();
 
         private int id;
 
@@ -32,21 +31,11 @@ namespace CarFactoryWebView
                     ConsumerView view = service.GetElement(id);
                     if (view != null)
                     {
-                        name = view.ConsumerName;
-                        service.UpdElement(new BindingConsumer
+                        if (!Page.IsPostBack)
                         {
-                            Id = id,
-                            ConsumerName = ""
-                        });
-                        if (!string.IsNullOrEmpty(name) && string.IsNullOrEmpty(textBoxName.Text))
-                        {
-                            textBoxName.Text = name;
+                            textBoxName.Text = view.ConsumerName;
                         }
-                        service.UpdElement(new BindingConsumer
-                        {
-                            Id = id,
-                            ConsumerName = name
-                        });
+                       
                     }
                 }
                 catch (Exception ex)

@@ -12,8 +12,9 @@
     <div>
     
         Исполнитель&nbsp;
-        <asp:DropDownList ID="DropDownListWorker" runat="server" Height="24px" Width="223px">
+        <asp:DropDownList ID="DropDownListWorker" runat="server" Height="24px" Width="223px" DataSourceID="ObjectDataSource1" DataTextField="WorkerName" DataValueField="Id">
         </asp:DropDownList>
+        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetList" TypeName="CarFactoryService.WorkDB.WorkerServiceDB"></asp:ObjectDataSource>
         <br />
         <br />
         <asp:Button ID="ButtonSave" runat="server" OnClick="ButtonSave_Click" Text="Сохранить" />

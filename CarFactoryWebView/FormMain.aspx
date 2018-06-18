@@ -35,8 +35,8 @@
         <asp:Button ID="ButtonUpd" runat="server" Text="Обновить список" OnClick="ButtonUpd_Click" />
         <asp:GridView ID="dataGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" ShowHeaderWhenEmpty="True">
             <Columns>
+                <asp:CommandField ShowSelectButton="True" />
                 <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" />
-                <asp:CommandField ShowSelectButton="true" SelectText=">>" />
                 <asp:BoundField DataField="ConsumerName" HeaderText="ConsumerName" SortExpression="ConsumerName" />
                 <asp:BoundField DataField="CommodityName" HeaderText="CommodityName" SortExpression="CommodityName" />
                 <asp:BoundField DataField="WorkerName" HeaderText="WorkerName" SortExpression="WorkerName" />
@@ -44,11 +44,12 @@
                 <asp:BoundField DataField="Sum" HeaderText="Sum" SortExpression="Sum" />
                 <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
                 <asp:BoundField DataField="DateCreate" HeaderText="DateCreate" SortExpression="DateCreate" />
-                <asp:BoundField DataField="DateWork" HeaderText="DateWork" SortExpression="DateWork" />
+                <asp:BoundField DataField="DateImplement" HeaderText="DateImplement" SortExpression="DateImplement" />
             </Columns>
             <SelectedRowStyle BackColor="#CCCCCC" />
         </asp:GridView>
-        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" DataObjectTypeName="CarFactoryService.BindingModels.BookingBindingModel" DeleteMethod="PayBooking" InsertMethod="CreateBooking" SelectMethod="GetList" TypeName="CarFactoryService.ImplementationsList.MainList" UpdateMethod="TakeBookingInWork">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
+        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" DeleteMethod="PayBooking" SelectMethod="GetList" TypeName="CarFactoryService.WorkDB.MainServiceDB">
             <DeleteParameters>
                 <asp:Parameter Name="id" Type="Int32" />
             </DeleteParameters>

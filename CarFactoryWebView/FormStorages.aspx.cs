@@ -1,4 +1,4 @@
-﻿using CarFactoryService.ImplementationsList;
+﻿using Unity;
 using CarFactoryService.Interfaces;
 using CarFactoryService.ViewModels;
 using System;
@@ -12,7 +12,7 @@ namespace CarFactoryWebView
 {
     public partial class FormStorages : System.Web.UI.Page
     {
-        private readonly IStorage service = new StorageList();
+        private readonly IStorage service = UnityConfig.Container.Resolve<IStorage>();
 
         List<StorageView> list;
 

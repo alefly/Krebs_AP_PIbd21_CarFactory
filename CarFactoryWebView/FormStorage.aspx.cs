@@ -1,5 +1,5 @@
 ﻿using CarFactoryService.BindingModels;
-using CarFactoryService.ImplementationsList;
+using Unity;
 using CarFactoryService.Interfaces;
 using CarFactoryService.ViewModels;
 using System;
@@ -9,7 +9,7 @@ namespace CarFactoryWebView
 {
     public partial class FormStorage : System.Web.UI.Page
     {
-        private readonly IStorage service = new StorageList();
+        private readonly IStorage service = UnityConfig.Container.Resolve<IStorage>();
 
         private int id;
 
@@ -24,27 +24,15 @@ namespace CarFactoryWebView
                     StorageView view = service.GetElement(id);
                     if (view != null)
                     {
-                        name = view.StorageName;
+                        if (!Page.IsPostBack)
+                        {
+                            textBoxName.Text = view.StorageName;
+                        }
                         dataGridView.DataSource = view.StorageIngridients;
                         dataGridView.DataBind();
-                        dataGridView.Columns[1].Visible = false;
-                        dataGridView.Columns[2].Visible = false;
-                        dataGridView.Columns[3].Visible = false;
-                        service.UpdElement(new BindingStorage
-                        {
-                            Id = id,
-                            StorageName = ""
-                        });
-                        if (!string.IsNullOrEmpty(name) && string.IsNullOrEmpty(textBoxName.Text))
-                        {
-                            textBoxName.Text = name;
-                        }
-                        service.UpdElement(new BindingStorage
-                        {
-                            Id = id,
-                            StorageName = name
-                        });
+                        dataGridView.ShowHeaderWhenEmpty = true;
                     }
+                    Page.DataBind();
                 }
                 catch (Exception ex)
                 {

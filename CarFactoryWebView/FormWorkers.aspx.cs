@@ -1,4 +1,4 @@
-﻿using CarFactoryService.ImplementationsList;
+﻿using Unity;
 using CarFactoryService.Interfaces;
 using CarFactoryService.ViewModels;
 using System;
@@ -12,7 +12,7 @@ namespace CarFactoryWebView
 {
     public partial class FormWorkers : System.Web.UI.Page
     {
-        private readonly IWorker service = new WorkerList();
+        private readonly IWorker service = UnityConfig.Container.Resolve<IWorker>();
 
         List<WorkerView> list;
 

@@ -3,43 +3,52 @@ E:\PrintingHouse\AbstractShopModel\bin\Debug\AbstractShopModel.pdb
 E:\PrintingHouse\AbstractShopModel\obj\Debug\CarFactory.csprojResolveAssemblyReference.cache
 E:\PrintingHouse\AbstractShopModel\obj\Debug\AbstractShopModel.dll
 E:\PrintingHouse\AbstractShopModel\obj\Debug\AbstractShopModel.pdb
-J:\л2\CarFactoryModel\obj\Debug\CarFactory.csprojAssemblyReference.cache
-J:\л2\CarFactoryModel\obj\Debug\CarFactory.csproj.CoreCompileInputs.cache
-J:\л2\CarFactoryModel\bin\Debug\CarFactoryModel.dll
-J:\л2\CarFactoryModel\bin\Debug\CarFactoryModel.pdb
-J:\л2\CarFactoryModel\obj\Debug\CarFactoryModel.dll
-J:\л2\CarFactoryModel\obj\Debug\CarFactoryModel.pdb
-J:\л2\CarFactoryModel\bin\Debug\Microsoft.Web.Infrastructure.dll
-J:\л2\CarFactoryModel\bin\Debug\System.Web.Helpers.dll
-J:\л2\CarFactoryModel\bin\Debug\System.Web.Mvc.dll
-J:\л2\CarFactoryModel\bin\Debug\System.Web.Razor.dll
-J:\л2\CarFactoryModel\bin\Debug\System.Web.WebPages.Deployment.dll
-J:\л2\CarFactoryModel\bin\Debug\System.Web.WebPages.dll
-J:\л2\CarFactoryModel\bin\Debug\System.Web.WebPages.Razor.dll
-J:\л2\CarFactoryModel\bin\Debug\System.Web.Helpers.xml
-J:\л2\CarFactoryModel\bin\Debug\System.Web.Mvc.xml
-J:\л2\CarFactoryModel\bin\Debug\System.Web.Razor.xml
-J:\л2\CarFactoryModel\bin\Debug\System.Web.WebPages.xml
-J:\л2\CarFactoryModel\bin\Debug\System.Web.WebPages.Deployment.xml
-J:\л2\CarFactoryModel\bin\Debug\System.Web.WebPages.Razor.xml
-J:\л2\CarFactoryModel\obj\Debug\CarFactory.csproj.CopyComplete
-D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryModel\bin\Debug\CarFactoryModel.dll
-D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryModel\bin\Debug\CarFactoryModel.pdb
-D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryModel\bin\Debug\Microsoft.Web.Infrastructure.dll
-D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryModel\bin\Debug\System.Web.Helpers.dll
-D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryModel\bin\Debug\System.Web.Mvc.dll
-D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryModel\bin\Debug\System.Web.Razor.dll
-D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryModel\bin\Debug\System.Web.WebPages.Deployment.dll
-D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryModel\bin\Debug\System.Web.WebPages.dll
-D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryModel\bin\Debug\System.Web.WebPages.Razor.dll
-D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryModel\bin\Debug\System.Web.Helpers.xml
-D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryModel\bin\Debug\System.Web.Mvc.xml
-D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryModel\bin\Debug\System.Web.Razor.xml
-D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryModel\bin\Debug\System.Web.WebPages.xml
-D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryModel\bin\Debug\System.Web.WebPages.Deployment.xml
-D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryModel\bin\Debug\System.Web.WebPages.Razor.xml
-D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryModel\obj\Debug\CarFactory.csprojAssemblyReference.cache
-D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryModel\obj\Debug\CarFactory.csproj.CoreCompileInputs.cache
-D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryModel\obj\Debug\CarFactory.csproj.CopyComplete
-D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryModel\obj\Debug\CarFactoryModel.dll
-D:\политех\2 курс\ТП\2 семестр\л2Web\CarFactoryModel\obj\Debug\CarFactoryModel.pdb
+E:\л3\AbstractShopModel\bin\Debug\AbstractShopModel.dll.config
+E:\л3\AbstractShopModel\bin\Debug\AbstractShopModel.dll
+E:\л3\AbstractShopModel\bin\Debug\AbstractShopModel.pdb
+E:\л3\AbstractShopModel\bin\Debug\EntityFramework.dll
+E:\л3\AbstractShopModel\bin\Debug\EntityFramework.SqlServer.dll
+E:\л3\AbstractShopModel\bin\Debug\EntityFramework.xml
+E:\л3\AbstractShopModel\bin\Debug\EntityFramework.SqlServer.xml
+E:\л3\AbstractShopModel\obj\Debug\CarFactory.csprojResolveAssemblyReference.cache
+E:\л3\AbstractShopModel\obj\Debug\AbstractShopModel.dll
+E:\л3\AbstractShopModel\obj\Debug\AbstractShopModel.pdb
+H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopModel\bin\Debug\AbstractShopModel.dll.config
+H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopModel\bin\Debug\AbstractShopModel.dll
+H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopModel\bin\Debug\AbstractShopModel.pdb
+H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopModel\bin\Debug\EntityFramework.dll
+H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopModel\bin\Debug\EntityFramework.SqlServer.dll
+H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopModel\bin\Debug\EntityFramework.xml
+H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopModel\bin\Debug\EntityFramework.SqlServer.xml
+H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopModel\obj\Debug\CarFactory.csprojResolveAssemblyReference.cache
+H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopModel\obj\Debug\CarFactory.csproj.CoreCompileInputs.cache
+H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopModel\obj\Debug\AbstractShopModel.dll
+H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopModel\obj\Debug\AbstractShopModel.pdb
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\bin\Debug\AbstractShopModel.dll.config
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\bin\Debug\AbstractShopModel.dll
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\bin\Debug\AbstractShopModel.pdb
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\bin\Debug\EntityFramework.dll
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\bin\Debug\EntityFramework.SqlServer.dll
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\bin\Debug\EntityFramework.xml
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\bin\Debug\EntityFramework.SqlServer.xml
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\obj\Debug\CarFactory.csprojAssemblyReference.cache
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\obj\Debug\CarFactory.csproj.CoreCompileInputs.cache
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\obj\Debug\CarFactory.csproj.CopyComplete
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\obj\Debug\AbstractShopModel.dll
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\obj\Debug\AbstractShopModel.pdb
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\bin\Debug\CommonServiceLocator.dll
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\bin\Debug\Unity.Abstractions.dll
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\bin\Debug\Unity.Configuration.dll
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\bin\Debug\Unity.Container.dll
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\bin\Debug\Unity.Interception.Configuration.dll
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\bin\Debug\Unity.Interception.dll
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\bin\Debug\Unity.RegistrationByConvention.dll
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\bin\Debug\Unity.ServiceLocation.dll
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\bin\Debug\CommonServiceLocator.pdb
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\bin\Debug\Unity.Abstractions.pdb
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\bin\Debug\Unity.Configuration.pdb
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\bin\Debug\Unity.Container.pdb
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\bin\Debug\Unity.Interception.pdb
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\bin\Debug\Unity.Interception.Configuration.pdb
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\bin\Debug\Unity.RegistrationByConvention.pdb
+J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\bin\Debug\Unity.ServiceLocation.pdb

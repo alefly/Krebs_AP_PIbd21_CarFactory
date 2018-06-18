@@ -1,20 +1,21 @@
-﻿using CarFactoryService.ImplementationsList;
-using CarFactoryService.Interfaces;
+﻿using CarFactoryService.Interfaces;
 using CarFactoryService.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Web.UI;
+using Unity;
 
 namespace CarFactoryWebView
 {
     public partial class FormConsumers : System.Web.UI.Page
     {
-        private readonly IConsumer service = new ConsumerList();
+        private IConsumer service = UnityConfig.Container.Resolve<IConsumer>();
 
         List<ConsumerView> list;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            service = UnityConfig.Container.Resolve<IConsumer>();
             LoadData();
         }
 

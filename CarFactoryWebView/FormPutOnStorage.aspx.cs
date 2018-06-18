@@ -1,5 +1,5 @@
 ﻿using CarFactoryService.BindingModels;
-using CarFactoryService.ImplementationsList;
+using Unity;
 using CarFactoryService.Interfaces;
 using CarFactoryService.ViewModels;
 using System;
@@ -13,11 +13,11 @@ namespace CarFactoryWebView
 {
     public partial class FormPutOnStorage : System.Web.UI.Page
     {
-        private readonly IStorage serviceS = new StorageList();
+        private readonly IStorage serviceS = UnityConfig.Container.Resolve<IStorage>();
 
-        private readonly IIngridient serviceE = new IngridientList();
+        private readonly IIngridient serviceE = UnityConfig.Container.Resolve<IIngridient>();
 
-        private readonly IMain serviceM = new MainList();
+        private readonly IMain serviceM = UnityConfig.Container.Resolve<IMain>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
