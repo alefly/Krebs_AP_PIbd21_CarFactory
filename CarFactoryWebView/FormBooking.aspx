@@ -12,13 +12,15 @@
     <div>
     
         Клиент&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:DropDownList ID="DropDownListConsumer" runat="server" Height="16px" Width="285px">
+        <asp:DropDownList ID="DropDownListConsumer" runat="server" Height="16px" Width="285px" DataSourceID="ObjectDataSource1" DataTextField="ConsumerName" DataValueField="Id">
         </asp:DropDownList>
+        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetList" TypeName="CarFactoryService.WorkDB.ConsumerServiceDB"></asp:ObjectDataSource>
         <br />
         <br />
         Изделие &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-        <asp:DropDownList ID="DropDownListCommodity" runat="server" Height="16px" Width="285px">
+        <asp:DropDownList ID="DropDownListCommodity" runat="server" Height="16px" Width="285px" DataSourceID="ObjectDataSource2" DataTextField="CommodityName" DataValueField="Id">
         </asp:DropDownList>
+        <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="GetList" TypeName="CarFactoryService.WorkDB.CommodityServiceDB"></asp:ObjectDataSource>
         <br />
         <br />
         Количество&nbsp;&nbsp; <asp:TextBox ID="TextBoxCount" runat="server" OnTextChanged="TextBoxCount_TextChanged" Width="274px" AutoPostBack="True"></asp:TextBox>

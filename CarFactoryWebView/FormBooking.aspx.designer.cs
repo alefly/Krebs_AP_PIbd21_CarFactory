@@ -31,6 +31,15 @@ namespace CarFactoryWebView {
         protected global::System.Web.UI.WebControls.DropDownList DropDownListConsumer;
         
         /// <summary>
+        /// ObjectDataSource1 элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource1;
+        
+        /// <summary>
         /// DropDownListCommodity элемент управления.
         /// </summary>
         /// <remarks>
@@ -38,6 +47,15 @@ namespace CarFactoryWebView {
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownListCommodity;
+        
+        /// <summary>
+        /// ObjectDataSource2 элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource2;
         
         /// <summary>
         /// TextBoxCount элемент управления.

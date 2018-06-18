@@ -1,6 +1,7 @@
 using CarFactoryService;
 using CarFactoryService.Interfaces;
 using CarFactoryService.WorkDB;
+using CarServiceService.WorkDB;
 using System;
 using System.Data.Entity;
 using Unity;
@@ -52,6 +53,7 @@ namespace CarFactoryWebView
             container.RegisterType<ICommodity, CommodityServiceDB>();
             container.RegisterType<IStorage, StorageServiceDB>();
             container.RegisterType<IMain, MainServiceDB>();
+            container.RegisterType<IReportService, ReportServiceDB>();
         }
     }
 }

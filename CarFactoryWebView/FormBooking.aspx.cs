@@ -13,7 +13,7 @@ namespace CarFactoryWebView
 {
     public partial class FormBooking : System.Web.UI.Page
     {
-        private readonly IConsumer serviceC = UnityConfig.Container.Resolve<IConsumer>();
+        private readonly IConsumer serviceC= UnityConfig.Container.Resolve<IConsumer>();
 
         private readonly ICommodity serviceS = UnityConfig.Container.Resolve<ICommodity>();
 
@@ -26,24 +26,24 @@ namespace CarFactoryWebView
                 if (!Page.IsPostBack)
                 {
                     List<ConsumerView> listC = serviceC.GetList();
-                    if (listC != null)
-                    {
+                                        if (listC != null)
+                                            {
                         DropDownListConsumer.DataSource = listC;
                         DropDownListConsumer.DataBind();
                         DropDownListConsumer.DataTextField = "ConsumerName";
                         DropDownListConsumer.DataValueField = "Id";
-                    }
-                    List<CommodityView> listP = serviceS.GetList();
-                    if (listP != null)
-                    {
+                                            }
+                    List <CommodityView> listP = serviceS.GetList();
+                                        if (listP != null)
+                                            {
                         DropDownListCommodity.DataSource = listP;
                         DropDownListCommodity.DataBind();
                         DropDownListCommodity.DataTextField = "CommodityName";
                         DropDownListCommodity.DataValueField = "Id";
-                    }
+                                            }
                     Page.DataBind();
                 }
-
+                
             }
             catch (Exception ex)
             {
@@ -53,7 +53,7 @@ namespace CarFactoryWebView
 
         private void CalcSum()
         {
-
+            
             if (DropDownListCommodity.SelectedValue != null && !string.IsNullOrEmpty(TextBoxCount.Text))
             {
                 try
@@ -104,7 +104,7 @@ namespace CarFactoryWebView
                     ConsumerId = Convert.ToInt32(DropDownListConsumer.SelectedValue),
                     CommodityId = Convert.ToInt32(DropDownListCommodity.SelectedValue),
                     Count = Convert.ToInt32(TextBoxCount.Text),
-                    Sum = (int)Convert.ToDouble(TextBoxSum.Text)
+                    Sum = Convert.ToInt32(TextBoxSum.Text)
                 });
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Сохранение прошло успешно');</script>");
                 Server.Transfer("FormMain.aspx");

@@ -54,9 +54,34 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.10.0.0.0\lib\net\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.140.1000.523\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.140.1000.523\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.10.0.0.0\lib\net\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebDesign, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.140.1000.523\lib\net40\Microsoft.ReportViewer.WebDesign.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.10.0.0.0\lib\net\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.140.1000.523\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -132,15 +157,33 @@
     <Content Include="FormCommodityIngridient.aspx" />
     <Content Include="FormConsumers.aspx" />
     <Content Include="FormConsumer.aspx" />
+    <Content Include="FormConsumerBookings.aspx" />
+    <Content Include="FormConsumerBookingsSave.aspx" />
     <Content Include="FormIngridient.aspx" />
     <Content Include="FormIngridients.aspx" />
     <Content Include="FormMain.aspx" />
+    <Content Include="FormPrice.aspx" />
     <Content Include="FormPutOnStorage.aspx" />
     <Content Include="FormStorage.aspx" />
     <Content Include="FormStorages.aspx" />
+    <Content Include="FormStoragesLoad.aspx" />
+    <Content Include="FormStoragesLoadSave.aspx" />
     <Content Include="FormWorker.aspx" />
     <Content Include="FormWorkers.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="TakeBookingInWork.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -189,6 +232,20 @@
     <Compile Include="FormConsumer.aspx.designer.cs">
       <DependentUpon>FormConsumer.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FormConsumerBookings.aspx.cs">
+      <DependentUpon>FormConsumerBookings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormConsumerBookings.aspx.designer.cs">
+      <DependentUpon>FormConsumerBookings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormConsumerBookingsSave.aspx.cs">
+      <DependentUpon>FormConsumerBookingsSave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormConsumerBookingsSave.aspx.designer.cs">
+      <DependentUpon>FormConsumerBookingsSave.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FormIngridient.aspx.cs">
       <DependentUpon>FormIngridient.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -209,6 +266,13 @@
     </Compile>
     <Compile Include="FormMain.aspx.designer.cs">
       <DependentUpon>FormMain.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormPrice.aspx.cs">
+      <DependentUpon>FormPrice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormPrice.aspx.designer.cs">
+      <DependentUpon>FormPrice.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormPutOnStorage.aspx.cs">
       <DependentUpon>FormPutOnStorage.aspx</DependentUpon>
@@ -231,6 +295,20 @@
     <Compile Include="FormStorages.aspx.designer.cs">
       <DependentUpon>FormStorages.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FormStoragesLoad.aspx.cs">
+      <DependentUpon>FormStoragesLoad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormStoragesLoad.aspx.designer.cs">
+      <DependentUpon>FormStoragesLoad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormStoragesLoadSave.aspx.cs">
+      <DependentUpon>FormStoragesLoadSave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormStoragesLoadSave.aspx.designer.cs">
+      <DependentUpon>FormStoragesLoadSave.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FormWorker.aspx.cs">
       <DependentUpon>FormWorker.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -249,6 +327,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="TakeBookingInWork.aspx.cs">
       <DependentUpon>TakeBookingInWork.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -276,9 +355,12 @@
       <Name>CarFactory</Name>
     </ProjectReference>
     <ProjectReference Include="..\CarFactoryService\CarFactoryService.csproj">
-      <Project>{2bc53217-7680-45d4-970e-944996e6ab2e}</Project>
+      <Project>{2BC53217-7680-45D4-970E-944996E6AB2E}</Project>
       <Name>CarFactoryService</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ReportConsumerBookings.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -26,6 +26,11 @@
                     <asp:MenuItem Text="Сотрудники" Value="Сотрудники" NavigateUrl="~/FormWorkers.aspx"></asp:MenuItem>
                 </asp:MenuItem>
                 <asp:MenuItem Text="Пополнить склад" Value="Пополнить склад" NavigateUrl="~/FormPutOnStorage.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="Отчеты" Value="Отчеты">
+                    <asp:MenuItem NavigateUrl="~/FormPrice.aspx" Text="Прайс изделий" Value="Прайс изделий"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/FormStoragesLoad.aspx" Text="Загруженность складов" Value="Загруженность складов"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/FormConsumerBookings.aspx" Text="Заказы клиентов" Value="Заказы клиентов"></asp:MenuItem>
+                </asp:MenuItem>
             </Items>
         </asp:Menu>
         <asp:Button ID="ButtonCreateBooking" runat="server" Text="Создать заказ" OnClick="ButtonCreateBooking_Click" />
@@ -48,7 +53,6 @@
             </Columns>
             <SelectedRowStyle BackColor="#CCCCCC" />
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
         <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" DeleteMethod="PayBooking" SelectMethod="GetList" TypeName="CarFactoryService.WorkDB.MainServiceDB">
             <DeleteParameters>
                 <asp:Parameter Name="id" Type="Int32" />

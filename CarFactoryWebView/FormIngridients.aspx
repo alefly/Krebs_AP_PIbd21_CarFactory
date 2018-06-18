@@ -22,10 +22,10 @@
             </Columns>
             <SelectedRowStyle BackColor="#CCCCCC" />
         </asp:GridView>
+        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetListIngr" TypeName="CarFactoryService.WorkDB.MainServiceDB"></asp:ObjectDataSource>
         <br />
         <br />
         <asp:Button ID="ButtonBack" runat="server" Text="Вернуться" OnClick="ButtonBack_Click" />
-        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetList" TypeName="CarFactoryService.WorkDB.IngridientServiceDB"></asp:ObjectDataSource>
     
     </div>
     </form>

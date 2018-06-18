@@ -21,7 +21,7 @@ namespace CarFactoryService.WorkDB
 
         public ConsumerServiceDB()
         {
-            this.context = new CarFactoryWebDbContext();
+            this.context = new CarFactoryWebDbContext(); ;
         }
 
         public List<ConsumerView> GetList()

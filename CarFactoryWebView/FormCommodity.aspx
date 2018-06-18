@@ -23,12 +23,14 @@
         <asp:Button ID="ButtonChange" runat="server" Text="Изменить" OnClick="ButtonChange_Click" />
         <asp:Button ID="ButtonDelete" runat="server" Text="Удалить" OnClick="ButtonDelete_Click" />
         <asp:Button ID="ButtonUpd" runat="server" Text="Обновить" OnClick="ButtonUpd_Click" />
-        <asp:GridView ID="dataGridView" runat="server" OnRowDataBound="dataGridView_RowDataBound">
+        <asp:GridView ID="dataGridView" runat="server" OnRowDataBound="dataGridView_RowDataBound" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1">
             <Columns>
-                <asp:CommandField ShowSelectButton="true" SelectText=">>" />
+                <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" />
+                <asp:BoundField DataField="IngridientName" HeaderText="IngridientName" SortExpression="IngridientName" />
             </Columns>
             <SelectedRowStyle BackColor="#CCCCCC" />
         </asp:GridView>
+        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetListIngr" TypeName="CarFactoryService.WorkDB.MainServiceDB"></asp:ObjectDataSource>
         <br />
         <asp:Button ID="ButtonSave" runat="server" Text="Сохранить" OnClick="ButtonSave_Click" />
         <asp:Button ID="ButtonCancel" runat="server" Text="Отмена" OnClick="ButtonCancel_Click" />

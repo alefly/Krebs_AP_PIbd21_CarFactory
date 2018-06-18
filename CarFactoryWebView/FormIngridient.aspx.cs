@@ -67,7 +67,7 @@ namespace CarFactoryWebView
                 {
                     service.UpdElement(new BindingIngridients
                     {
-                        Id = id,
+                        Id = id + 1,
                         IngridientName = textBoxName.Text
                     });
                 }

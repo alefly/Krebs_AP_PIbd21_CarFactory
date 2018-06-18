@@ -6,10 +6,8 @@ using CarFactoryService.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace CarFactoryService.WorkDB
+namespace CarServiceService.WorkDB
 {
 	public class IngridientServiceDB : IIngridient
 	{
@@ -22,9 +20,8 @@ namespace CarFactoryService.WorkDB
 
         public IngridientServiceDB()
         {
-            this.context = new CarFactoryWebDbContext();
+            this.context = new CarFactoryWebDbContext(); ;
         }
-
 
         public List<IngridientView> GetList()
 		{

@@ -21,9 +21,9 @@ namespace CarFactoryService.WorkDB
 
         public StorageServiceDB()
         {
-            this.context = new CarFactoryWebDbContext();
+            this.context = new CarFactoryWebDbContext(); ;
         }
-        
+
         public List<StorageView> GetList()
 		{
 			List<StorageView> result = context.Storages

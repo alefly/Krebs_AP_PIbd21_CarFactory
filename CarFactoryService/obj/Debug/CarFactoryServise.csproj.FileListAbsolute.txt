@@ -33,52 +33,355 @@ E:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\obj\D
 E:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\obj\Debug\CarFactoryServise.csproj.GenerateResource.Cache
 E:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\obj\Debug\AbstractShopService.dll
 E:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\obj\Debug\AbstractShopService.pdb
-H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\bin\Debug\AbstractShopService.dll.config
-H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\bin\Debug\AbstractShopService.dll
-H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\bin\Debug\AbstractShopService.pdb
-H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\bin\Debug\AbstractShopModel.dll
-H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\bin\Debug\EntityFramework.dll
-H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\bin\Debug\EntityFramework.SqlServer.dll
-H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\bin\Debug\AbstractShopModel.pdb
-H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\bin\Debug\AbstractShopModel.dll.config
-H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\bin\Debug\EntityFramework.xml
-H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\bin\Debug\EntityFramework.SqlServer.xml
-H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\obj\Debug\CarFactoryServise.csprojResolveAssemblyReference.cache
-H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\obj\Debug\AbstractShopService.Migrations.FirstMigration.resources
-H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\obj\Debug\CarFactoryServise.csproj.GenerateResource.Cache
-H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\obj\Debug\CarFactoryServise.csproj.CoreCompileInputs.cache
-H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\obj\Debug\AbstractShopService.dll
-H:\политех\2 курс\ТП\2 семестр\л3\AbstractShopService\obj\Debug\AbstractShopService.pdb
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\AbstractShopService.dll.config
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\AbstractShopService.dll
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\AbstractShopService.pdb
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\AbstractShopModel.dll
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\EntityFramework.dll
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\EntityFramework.SqlServer.dll
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\AbstractShopModel.pdb
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\AbstractShopModel.dll.config
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\EntityFramework.xml
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\EntityFramework.SqlServer.xml
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\obj\Debug\CarFactoryServise.csprojAssemblyReference.cache
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\obj\Debug\CarFactoryServise.csproj.CoreCompileInputs.cache
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\obj\Debug\CarFactoryServise.csproj.CopyComplete
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\obj\Debug\AbstractShopService.dll
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\obj\Debug\AbstractShopService.pdb
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\CommonServiceLocator.dll
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\Unity.Abstractions.dll
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\Unity.Configuration.dll
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\Unity.Container.dll
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\Unity.Interception.Configuration.dll
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\Unity.Interception.dll
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\Unity.RegistrationByConvention.dll
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\Unity.ServiceLocation.dll
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\CommonServiceLocator.pdb
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\Unity.Abstractions.pdb
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\Unity.Configuration.pdb
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\Unity.Container.pdb
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\Unity.Interception.pdb
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\Unity.Interception.Configuration.pdb
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\Unity.RegistrationByConvention.pdb
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\bin\Debug\Unity.ServiceLocation.pdb
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\obj\Debug\AbstractShopService.Migrations.nigration.resources
-J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryService\obj\Debug\CarFactoryServise.csproj.GenerateResource.cache
+E:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\obj\Debug\CarFactoryServise.csprojResolveAssemblyReference.cache
+E:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\obj\Debug\CarFactoryServise.csproj.GenerateResource.Cache
+E:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\obj\Debug\AbstractShopService.dll
+E:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\obj\Debug\AbstractShopService.pdb
+E:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\obj\Debug\AbstractShopService.Properties.Resources.resources
+E:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\obj\Debug\CarFactoryService.Migrations.FirstMigration.resources
+E:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\bin\Debug\AbstractShopService.dll.config
+E:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\bin\Debug\AbstractShopService.dll
+E:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\bin\Debug\AbstractShopService.pdb
+E:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\bin\Debug\AbstractShopModel.dll
+E:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\bin\Debug\EntityFramework.dll
+E:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\bin\Debug\EntityFramework.SqlServer.dll
+E:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\bin\Debug\itextsharp.dll
+E:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\bin\Debug\AbstractShopModel.pdb
+E:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\bin\Debug\EntityFramework.xml
+E:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\bin\Debug\EntityFramework.SqlServer.xml
+E:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\bin\Debug\itextsharp.xml
+H:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\bin\Debug\AbstractShopService.dll.config
+H:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\bin\Debug\AbstractShopService.dll
+H:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\bin\Debug\AbstractShopService.pdb
+H:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\bin\Debug\AbstractShopModel.dll
+H:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\bin\Debug\EntityFramework.dll
+H:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\bin\Debug\EntityFramework.SqlServer.dll
+H:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\bin\Debug\itextsharp.dll
+H:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\bin\Debug\AbstractShopModel.pdb
+H:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\bin\Debug\AbstractShopModel.dll.config
+H:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\bin\Debug\EntityFramework.xml
+H:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\bin\Debug\EntityFramework.SqlServer.xml
+H:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\bin\Debug\itextsharp.xml
+H:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\obj\Debug\CarFactoryServise.csprojResolveAssemblyReference.cache
+H:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\obj\Debug\CarFactoryService.Migrations.FirstMigration.resources
+H:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\obj\Debug\AbstractShopService.Properties.Resources.resources
+H:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\obj\Debug\CarFactoryServise.csproj.GenerateResource.Cache
+H:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\obj\Debug\CarFactoryServise.csproj.CoreCompileInputs.cache
+H:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\obj\Debug\AbstractShopService.dll
+H:\политех\2 курс\ТП\2 семестр\л4\AbstractShopService\obj\Debug\AbstractShopService.pdb
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\AbstractShopService.dll.config
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\AbstractShopService.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\AbstractShopService.pdb
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\AbstractShopModel.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\EntityFramework.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\EntityFramework.SqlServer.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\itextsharp.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\AbstractShopModel.pdb
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\AbstractShopModel.dll.config
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\EntityFramework.xml
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\EntityFramework.SqlServer.xml
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\itextsharp.xml
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\obj\Debug\CarFactoryServise.csprojResolveAssemblyReference.cache
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\obj\Debug\AbstractShopService.Properties.Resources.resources
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\obj\Debug\CarFactoryServise.csproj.GenerateResource.Cache
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\obj\Debug\CarFactoryServise.csproj.CoreCompileInputs.cache
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\obj\Debug\AbstractShopService.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\obj\Debug\AbstractShopService.pdb
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\obj\Debug\CarFactoryServise.csprojResolveAssemblyReference.cache
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\obj\Debug\AbstractShopService.Migrations.FirstMigration.resources
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\obj\Debug\AbstractShopService.Properties.Resources.resources
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\obj\Debug\CarFactoryServise.csproj.GenerateResource.Cache
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\obj\Debug\CarFactoryServise.csproj.CoreCompileInputs.cache
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\obj\Debug\AbstractShopService.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\obj\Debug\AbstractShopService.pdb
+E:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\obj\Debug\CarFactoryServise.csprojResolveAssemblyReference.cache
+E:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\obj\Debug\AbstractShopService.Migrations.FirstMigration.resources
+E:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\obj\Debug\AbstractShopService.Properties.Resources.resources
+E:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\obj\Debug\CarFactoryServise.csproj.GenerateResource.cache
+E:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\obj\Debug\CarFactoryServise.csproj.CoreCompileInputs.cache
+E:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\obj\Debug\AbstractShopService.dll
+E:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\obj\Debug\AbstractShopService.pdb
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\SqlServerTypes\x64\msvcr120.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\SqlServerTypes\x86\msvcr120.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\SqlServerTypes\x86\SqlServerSpatial140.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\CommonServiceLocator.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.ReportViewer.Common.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.ReportViewer.DataVisualization.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.ReportViewer.Design.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.ReportViewer.WebForms.DLL
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.SqlServer.Types.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Unity.Abstractions.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Unity.Configuration.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Unity.Container.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Unity.Interception.Configuration.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Unity.Interception.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Unity.RegistrationByConvention.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Unity.ServiceLocation.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\EnvDTE.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.VisualStudio.Shell.Interop.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.VisualStudio.Shell.Interop.8.0.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\stdole.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.VisualStudio.OLE.Interop.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.8.0.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.MSXML.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\CommonServiceLocator.pdb
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Unity.Abstractions.pdb
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Unity.Configuration.pdb
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Unity.Container.pdb
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Unity.Interception.pdb
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Unity.Interception.Configuration.pdb
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Unity.RegistrationByConvention.pdb
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Unity.ServiceLocation.pdb
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\de\Microsoft.ReportViewer.Common.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\es\Microsoft.ReportViewer.Common.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\fr\Microsoft.ReportViewer.Common.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\it\Microsoft.ReportViewer.Common.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\ja\Microsoft.ReportViewer.Common.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\ko\Microsoft.ReportViewer.Common.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\pt\Microsoft.ReportViewer.Common.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\ru\Microsoft.ReportViewer.Common.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\zh-CHS\Microsoft.ReportViewer.Common.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\zh-CHT\Microsoft.ReportViewer.Common.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\de\Microsoft.ReportViewer.DataVisualization.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\es\Microsoft.ReportViewer.DataVisualization.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\fr\Microsoft.ReportViewer.DataVisualization.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\it\Microsoft.ReportViewer.DataVisualization.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\ja\Microsoft.ReportViewer.DataVisualization.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\ko\Microsoft.ReportViewer.DataVisualization.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\pt\Microsoft.ReportViewer.DataVisualization.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\ru\Microsoft.ReportViewer.DataVisualization.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\zh-CHS\Microsoft.ReportViewer.DataVisualization.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\zh-CHT\Microsoft.ReportViewer.DataVisualization.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\de\Microsoft.ReportViewer.Design.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\es\Microsoft.ReportViewer.Design.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\fr\Microsoft.ReportViewer.Design.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\it\Microsoft.ReportViewer.Design.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\ja\Microsoft.ReportViewer.Design.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\ko\Microsoft.ReportViewer.Design.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\pt\Microsoft.ReportViewer.Design.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\ru\Microsoft.ReportViewer.Design.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\zh-CHS\Microsoft.ReportViewer.Design.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\zh-CHT\Microsoft.ReportViewer.Design.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\de\Microsoft.ReportViewer.WinForms.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\es\Microsoft.ReportViewer.WinForms.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\fr\Microsoft.ReportViewer.WinForms.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\it\Microsoft.ReportViewer.WinForms.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\ja\Microsoft.ReportViewer.WinForms.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\ko\Microsoft.ReportViewer.WinForms.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\pt\Microsoft.ReportViewer.WinForms.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\ru\Microsoft.ReportViewer.WinForms.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
+H:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\obj\Debug\AbstractShopService.Migrations.FirstMigration.resources
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\SqlServerTypes\x64\msvcr120.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\SqlServerTypes\x86\msvcr120.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\SqlServerTypes\x86\SqlServerSpatial140.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\AbstractShopService.dll.config
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\AbstractShopService.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\AbstractShopService.pdb
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\AbstractShopModel.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\CommonServiceLocator.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\EntityFramework.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\EntityFramework.SqlServer.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\itextsharp.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.ReportViewer.Common.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.ReportViewer.DataVisualization.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.ReportViewer.Design.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.ReportViewer.WebForms.DLL
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.SqlServer.Types.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Unity.Abstractions.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Unity.Configuration.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Unity.Container.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Unity.Interception.Configuration.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Unity.Interception.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Unity.RegistrationByConvention.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Unity.ServiceLocation.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\EnvDTE.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.VisualStudio.Shell.Interop.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.VisualStudio.Shell.Interop.8.0.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\stdole.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.VisualStudio.OLE.Interop.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.VisualStudio.VSHelp.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.VisualStudio.Shell.Interop.9.0.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.8.0.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.VisualStudio.ProjectAggregator.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.VisualStudio.TemplateWizardInterface.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.VisualStudio.Debugger.InteropA.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\EnvDTE80.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.VisualStudio.Data.Services.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\VSLangProj.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.VisualStudio.Shell.Interop.11.0.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.VisualStudio.Data.Core.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.VisualStudio.Shell.Interop.10.0.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\VSLangProj80.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.VisualStudio.ManagedInterfaces.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.VisualStudio.WCFReference.Interop.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.VisualStudio.Debugger.Interop.11.0.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Newtonsoft.Json.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\System.Threading.Tasks.Dataflow.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.MSXML.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.10.0.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\VSLangProj2.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\AbstractShopModel.pdb
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\AbstractShopModel.dll.config
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\CommonServiceLocator.pdb
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\EntityFramework.xml
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\EntityFramework.SqlServer.xml
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\itextsharp.xml
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Unity.Abstractions.pdb
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Unity.Configuration.pdb
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Unity.Container.pdb
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Unity.Interception.pdb
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Unity.Interception.Configuration.pdb
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Unity.RegistrationByConvention.pdb
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Unity.ServiceLocation.pdb
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\Microsoft.VisualStudio.TemplateWizardInterface.xml
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\de\Microsoft.ReportViewer.Common.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\es\Microsoft.ReportViewer.Common.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\fr\Microsoft.ReportViewer.Common.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\it\Microsoft.ReportViewer.Common.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\ja\Microsoft.ReportViewer.Common.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\ko\Microsoft.ReportViewer.Common.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\pt\Microsoft.ReportViewer.Common.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\ru\Microsoft.ReportViewer.Common.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\zh-CHS\Microsoft.ReportViewer.Common.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\zh-CHT\Microsoft.ReportViewer.Common.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\de\Microsoft.ReportViewer.DataVisualization.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\es\Microsoft.ReportViewer.DataVisualization.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\fr\Microsoft.ReportViewer.DataVisualization.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\it\Microsoft.ReportViewer.DataVisualization.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\ja\Microsoft.ReportViewer.DataVisualization.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\ko\Microsoft.ReportViewer.DataVisualization.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\pt\Microsoft.ReportViewer.DataVisualization.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\ru\Microsoft.ReportViewer.DataVisualization.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\zh-CHS\Microsoft.ReportViewer.DataVisualization.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\zh-CHT\Microsoft.ReportViewer.DataVisualization.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\de\Microsoft.ReportViewer.Design.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\es\Microsoft.ReportViewer.Design.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\fr\Microsoft.ReportViewer.Design.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\it\Microsoft.ReportViewer.Design.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\ja\Microsoft.ReportViewer.Design.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\ko\Microsoft.ReportViewer.Design.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\pt\Microsoft.ReportViewer.Design.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\ru\Microsoft.ReportViewer.Design.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\zh-CHS\Microsoft.ReportViewer.Design.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\zh-CHT\Microsoft.ReportViewer.Design.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\de\Microsoft.ReportViewer.WinForms.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\es\Microsoft.ReportViewer.WinForms.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\fr\Microsoft.ReportViewer.WinForms.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\it\Microsoft.ReportViewer.WinForms.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\ja\Microsoft.ReportViewer.WinForms.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\ko\Microsoft.ReportViewer.WinForms.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\pt\Microsoft.ReportViewer.WinForms.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\ru\Microsoft.ReportViewer.WinForms.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\ru\Microsoft.VisualStudio.Data.Services.resources.dll
+J:\политех\2 курс\ТП\2 семестр\л4\CarFactoryService\bin\Debug\ru\Microsoft.VisualStudio.Data.Core.resources.dll
+F:\Projects\C#\л4\CarFactoryService\obj\Debug\CarFactoryServise.csprojResolveAssemblyReference.cache
+F:\Projects\C#\л4\CarFactoryService\obj\Debug\CarFactoryServise.csproj.GenerateResource.cache
+F:\Projects\C#\л4\CarFactoryService\obj\Debug\CarFactoryServise.csproj.CoreCompileInputs.cache
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\SqlServerTypes\x64\msvcr120.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\SqlServerTypes\x86\msvcr120.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\SqlServerTypes\x86\SqlServerSpatial140.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\CommonServiceLocator.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\EntityFramework.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\EntityFramework.SqlServer.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\itextsharp.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Microsoft.ReportViewer.Common.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Microsoft.ReportViewer.DataVisualization.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Microsoft.ReportViewer.Design.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Microsoft.ReportViewer.WebForms.DLL
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Microsoft.SqlServer.Types.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Unity.Abstractions.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Unity.Configuration.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Unity.Container.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Unity.Interception.Configuration.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Unity.Interception.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Unity.RegistrationByConvention.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Unity.ServiceLocation.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\EnvDTE.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Microsoft.VisualStudio.Shell.Interop.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Microsoft.VisualStudio.Shell.Interop.8.0.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\stdole.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Microsoft.VisualStudio.OLE.Interop.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.8.0.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Microsoft.MSXML.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\CommonServiceLocator.pdb
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\EntityFramework.xml
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\EntityFramework.SqlServer.xml
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\itextsharp.xml
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Unity.Abstractions.pdb
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Unity.Configuration.pdb
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Unity.Container.pdb
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Unity.Interception.pdb
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Unity.Interception.Configuration.pdb
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Unity.RegistrationByConvention.pdb
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Unity.ServiceLocation.pdb
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\de\Microsoft.ReportViewer.Common.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\es\Microsoft.ReportViewer.Common.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\fr\Microsoft.ReportViewer.Common.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\it\Microsoft.ReportViewer.Common.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\ja\Microsoft.ReportViewer.Common.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\ko\Microsoft.ReportViewer.Common.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\pt\Microsoft.ReportViewer.Common.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\ru\Microsoft.ReportViewer.Common.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\zh-CHS\Microsoft.ReportViewer.Common.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\zh-CHT\Microsoft.ReportViewer.Common.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\de\Microsoft.ReportViewer.DataVisualization.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\es\Microsoft.ReportViewer.DataVisualization.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\fr\Microsoft.ReportViewer.DataVisualization.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\it\Microsoft.ReportViewer.DataVisualization.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\ja\Microsoft.ReportViewer.DataVisualization.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\ko\Microsoft.ReportViewer.DataVisualization.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\pt\Microsoft.ReportViewer.DataVisualization.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\ru\Microsoft.ReportViewer.DataVisualization.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\zh-CHS\Microsoft.ReportViewer.DataVisualization.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\zh-CHT\Microsoft.ReportViewer.DataVisualization.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\de\Microsoft.ReportViewer.Design.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\es\Microsoft.ReportViewer.Design.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\fr\Microsoft.ReportViewer.Design.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\it\Microsoft.ReportViewer.Design.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\ja\Microsoft.ReportViewer.Design.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\ko\Microsoft.ReportViewer.Design.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\pt\Microsoft.ReportViewer.Design.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\ru\Microsoft.ReportViewer.Design.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\zh-CHS\Microsoft.ReportViewer.Design.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\zh-CHT\Microsoft.ReportViewer.Design.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\de\Microsoft.ReportViewer.WinForms.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\es\Microsoft.ReportViewer.WinForms.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\fr\Microsoft.ReportViewer.WinForms.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\it\Microsoft.ReportViewer.WinForms.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\ja\Microsoft.ReportViewer.WinForms.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\ko\Microsoft.ReportViewer.WinForms.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\pt\Microsoft.ReportViewer.WinForms.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\ru\Microsoft.ReportViewer.WinForms.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
+F:\Projects\C#\л4\CarFactoryService\obj\Debug\CarFactoryServise.csproj.CopyComplete
+F:\Projects\C#\л4\CarFactoryService\obj\Debug\CarFactoryService.Migrations.FirstMigration.resources
+F:\Projects\C#\л4\CarFactoryService\obj\Debug\CarFactoryServise.Properties.Resources.resources
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\CarFactoryServise.dll.config
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\CarFactoryServise.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\CarFactoryServise.pdb
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\CarFactory.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Microsoft.ReportViewer.Common.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Microsoft.ReportViewer.DataVisualization.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Microsoft.ReportViewer.Design.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\Microsoft.ReportViewer.WinForms.resources.dll
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\CarFactory.pdb
+F:\Projects\C#\л4\CarFactoryService\bin\Debug\CarFactory.dll.config
+F:\Projects\C#\л4\CarFactoryService\obj\Debug\CarFactoryServise.dll
+F:\Projects\C#\л4\CarFactoryService\obj\Debug\CarFactoryServise.pdb
