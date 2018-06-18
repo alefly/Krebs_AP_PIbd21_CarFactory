@@ -18,17 +18,6 @@ namespace CarFactoryApiRest.Controllers
 			_service = service;
 		}
 
-		/*[HttpGet]
-		public IHttpActionResult GetStoragesLoad()
-		{
-			var list = _service.GetStoragesLoad();
-			if (list == null)
-			{
-				InternalServerError(new Exception("Нет данных"));
-			}
-			return Ok(list);
-		}*/
-
 		[HttpPost]
 		public IHttpActionResult GetConsumerBookings(ReportBindingModel model)
 		{
