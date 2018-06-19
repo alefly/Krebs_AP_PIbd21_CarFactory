@@ -35,10 +35,54 @@
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common.resources">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Common.resources.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization.resources">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.DataVisualization.resources.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design.resources">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Design.resources.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms.resources">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.WinForms.resources.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -81,7 +125,9 @@
     <Compile Include="BindingModels\BindingCommodityIngridient.cs" />
     <Compile Include="BindingModels\BindingStorage.cs" />
     <Compile Include="BindingModels\BindingStorageIngridients.cs" />
+    <Compile Include="BindingModels\ReportBindingModel.cs" />
     <Compile Include="CarFactoryWebDbContext.cs" />
+    <Compile Include="Interfaces\IReportService.cs" />
     <Compile Include="ListDataSingleton.cs" />
     <Compile Include="Interfaces\IConsumer.cs" />
     <Compile Include="Interfaces\IIngridient.cs" />
@@ -89,14 +135,22 @@
     <Compile Include="Interfaces\IMain.cs" />
     <Compile Include="Interfaces\ICommodity.cs" />
     <Compile Include="Interfaces\IStorage.cs" />
-    <Compile Include="Migrations\201806081732320_Initial.cs" />
-    <Compile Include="Migrations\201806081732320_Initial.Designer.cs">
-      <DependentUpon>201806081732320_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201806181921575_init.cs" />
+    <Compile Include="Migrations\201806181921575_init.Designer.cs">
+      <DependentUpon>201806181921575_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="ViewModels\ConsumerBookingsModel.cs" />
     <Compile Include="ViewModels\ConsumerView.cs" />
     <Compile Include="ViewModels\IngridientView.cs" />
+    <Compile Include="ViewModels\StoragesLoadViewModel.cs" />
     <Compile Include="ViewModels\WorkerView.cs" />
     <Compile Include="ViewModels\BookingView.cs" />
     <Compile Include="ViewModels\CommodityIngridientsView.cs" />
@@ -107,23 +161,54 @@
     <Compile Include="WorkDB\ConsumerServiceDB.cs" />
     <Compile Include="WorkDB\IngridientServiceDB.cs" />
     <Compile Include="WorkDB\MainServiceDB.cs" />
+    <Compile Include="WorkDB\ReportServiceDB.cs" />
     <Compile Include="WorkDB\StorageServiceDB.cs" />
     <Compile Include="WorkDB\WorkerServiceDB.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CarFactoryModel\CarFactory.csproj">
-      <Project>{5edcfafa-0f3a-4810-8489-4d221a86ad1e}</Project>
-      <Name>CarFactory</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\CarFactoryService.ViewModels.BookingView.datasource" />
+    <None Include="Properties\DataSources\CarFactoryService.ViewModels.CommodityIngridientView.datasource" />
+    <None Include="Properties\DataSources\CarFactoryService.ViewModels.CommodityView.datasource" />
+    <None Include="Properties\DataSources\CarFactoryService.ViewModels.ConsumerBookingsModel.datasource" />
+    <None Include="Properties\DataSources\CarFactoryService.ViewModels.ConsumerView.datasource" />
+    <None Include="Properties\DataSources\CarFactoryService.ViewModels.IngridientView.datasource" />
+    <None Include="Properties\DataSources\CarFactoryService.ViewModels.StorageIngridientsView.datasource" />
+    <None Include="Properties\DataSources\CarFactoryService.ViewModels.StoragesLoadViewModel.datasource" />
+    <None Include="Properties\DataSources\CarFactoryService.ViewModels.StorageView.datasource" />
+    <None Include="Properties\DataSources\CarFactoryService.ViewModels.WorkerView.datasource" />
+    <None Include="Resources\TIMCYR.TTF" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806081732320_Initial.resx">
-      <DependentUpon>201806081732320_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806181921575_init.resx">
+      <DependentUpon>201806181921575_init.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CarFactoryModel\CarFactory.csproj">
+      <Project>{5EDCFAFA-0F3A-4810-8489-4D221A86AD1E}</Project>
+      <Name>CarFactory</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

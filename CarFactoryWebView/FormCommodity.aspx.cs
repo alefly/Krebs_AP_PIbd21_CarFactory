@@ -35,7 +35,7 @@ namespace CarFactoryWebView
                             textBoxName.Text = view.CommodityName;
                             textBoxPrice.Text = view.Price.ToString();
                         }
-                        commodityIngridient = view.CommodityIngridients;
+                        this.commodityIngridient = view.CommodityIngridients;
                         LoadData();
                     }
                 }
@@ -46,45 +46,44 @@ namespace CarFactoryWebView
             }
             else
             {
-                commodityIngridient = new List<CommodityIngridientView>();
+                this.commodityIngridient = new List<CommodityIngridientView>();
             }
 
-            if (Session["SEId"] != null)
+
+            if (Session["SEIs"] != null)
             {
-                if (Session["SEIs"] != null)
+                model = new CommodityIngridientView
                 {
-                    model = new CommodityIngridientView
-                    {
-                        Id = (int)Session["SEId"],
-                        CommodityId = (int)Session["SECommodityId"],
-                        IngridientId = (int)Session["SEIngridientId"],
-                        IngridientName = (string)Session["SEIngridientName"],
-                        Count = (int)Session["SECount"]
-                    };
-                    commodityIngridient[(int)Session["SEIs"]] = model;
-                }
-                else
-                {
-                    model = new CommodityIngridientView
-                    {
-                        CommodityId = (int)Session["SECommodityId"],
-                        IngridientId = (int)Session["SEIngridientId"],
-                        IngridientName = (string)Session["SEIngridientName"],
-                        Count = (int)Session["SECount"]
-                    };
-                    commodityIngridient.Add(model);
-                }
-                Session["SEId"] = null;
-                Session["SECommodityId"] = null;
-                Session["SEIngridientId"] = null;
-                Session["SEIngridientName"] = null;
-                Session["SECount"] = null;
-                Session["SEIs"] = null;
+                    Id = (int)Session["SEId"],
+                    CommodityId = (int)Session["SECommodityId"],
+                    IngridientId = (int)Session["SEIngridientId"],
+                    IngridientName = (string)Session["SEIngridientName"],
+                    Count = (int)Session["SECount"]
+                };
+                this.commodityIngridient[(int)Session["SEIs"]] = model;
             }
-            List<BindingCommodityIngridient> commodityIngridientBM = new List<BindingCommodityIngridient>();
-            for (int i = 0; i < commodityIngridient.Count; ++i)
+            else
             {
-                commodityIngridientBM.Add(new BindingCommodityIngridient
+                model = new CommodityIngridientView
+                {
+                    Id = (int)Session["SEId"],
+                    CommodityId = (int)Session["SECommodityId"],
+                    IngridientId = (int)Session["SEIngridientId"],
+                    IngridientName = (string)Session["SEIngridientName"],
+                    Count = (int)Session["SECount"]
+                };
+                this.commodityIngridient.Add(model);
+            }
+            Session["SEId"] = null;
+            Session["SECommodityId"] = null;
+            Session["SEIngridientId"] = null;
+            Session["SEIngridientName"] = null;
+            Session["SECount"] = null;
+            Session["SEIs"] = null;
+            List<BindingCommodityIngridient> commodityIngridient = new List<BindingCommodityIngridient>();
+            for (int i = 0; i < this.commodityIngridient.Count; ++i)
+            {
+                commodityIngridient.Add(new BindingCommodityIngridient
                 {
                     Id = this.commodityIngridient[i].Id,
                     CommodityId = this.commodityIngridient[i].CommodityId,
@@ -92,7 +91,7 @@ namespace CarFactoryWebView
                     Count = this.commodityIngridient[i].Count
                 });
             }
-            if (commodityIngridientBM.Count != 0)
+            if (commodityIngridient.Count != 0)
             {
                 if (Int32.TryParse((string)Session["id"], out id))
                 {
@@ -101,7 +100,7 @@ namespace CarFactoryWebView
                         Id = id,
                         CommodityName = textBoxName.Text,
                         Price = Convert.ToInt32(textBoxPrice.Text),
-                        CommodityIngridients = commodityIngridientBM
+                        CommodityIngridients = commodityIngridient
                     });
                 }
                 else
@@ -110,7 +109,7 @@ namespace CarFactoryWebView
                     {
                         CommodityName = "-0",
                         Price = 0,
-                        CommodityIngridients = commodityIngridientBM
+                        CommodityIngridients = commodityIngridient
                     });
                     Session["id"] = service.GetList().Last().Id.ToString();
                     Session["Change"] = "0";

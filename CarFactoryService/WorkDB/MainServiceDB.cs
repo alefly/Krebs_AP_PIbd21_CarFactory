@@ -23,8 +23,9 @@ namespace CarFactoryService.WorkDB
 
         public MainServiceDB()
         {
-            this.context = new CarFactoryWebDbContext();
+            this.context = new CarFactoryWebDbContext(); ;
         }
+
 
         public List<BookingView> GetList()
 		{
@@ -67,7 +68,19 @@ namespace CarFactoryService.WorkDB
 			context.SaveChanges();
 		}
 
-		public void TakeBookingInWork(BindingBooking model)
+        public List<IngridientView> GetListIngr()
+        {
+            List<IngridientView> result = context.Ingridients
+                .Select(rec => new IngridientView
+                {
+                    Id = rec.Id,
+                    IngridientName = rec.IngridientName
+                })
+                .ToList();
+            return result;
+        }
+
+        public void TakeBookingInWork(BindingBooking model)
 		{
 			using (var transaction = context.Database.BeginTransaction())
 			{

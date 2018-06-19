@@ -35,7 +35,7 @@ namespace AbstractShopView
                     if (view != null)
                     {
                         textBoxName.Text = view.StorageName;
-                        dataGridView.DataSource = view.StorageComponents;
+                        dataGridView.DataSource = view.StorageIngridients;
                         dataGridView.Columns[0].Visible = false;
                         dataGridView.Columns[1].Visible = false;
                         dataGridView.Columns[2].Visible = false;

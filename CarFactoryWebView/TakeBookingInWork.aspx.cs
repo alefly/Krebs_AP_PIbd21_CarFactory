@@ -58,7 +58,7 @@ namespace CarFactoryWebView
             {
                 serviceM.TakeBookingInWork(new BindingBooking
                 {
-                    Id = id + 1,
+                    Id = id,
                     WorkerId = Convert.ToInt32(DropDownListWorker.SelectedValue)
                 });
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Сохранение прошло успешно');</script>");
