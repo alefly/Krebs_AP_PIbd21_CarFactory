@@ -26,12 +26,12 @@ namespace CarFactoryView
                 {
                     var client = Task.Run(() => APIConsumer.GetRequestData<ConsumerView>("api/Consumer/Get/" + id.Value)).Result;
                     textBoxName.Text = client.ConsumerName;
+
                     textBoxMail.Text = client.Mail;
                     dataGridView.DataSource = client.Messages;
                     dataGridView.Columns[0].Visible = false;
                     dataGridView.Columns[1].Visible = false;
                     dataGridView.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
                 }
                 catch (Exception ex)
                 {
@@ -52,6 +52,7 @@ namespace CarFactoryView
                 return;
             }
             string name = textBoxName.Text;
+
             string mail = textBoxMail.Text;
                         if (!string.IsNullOrEmpty(mail))
                             {
@@ -70,6 +71,7 @@ namespace CarFactoryView
                 {
 
                     Id = id.Value,
+
                     ConsumerName = name,
                     Mail = mail
                 }));
@@ -79,6 +81,7 @@ namespace CarFactoryView
                 task = Task.Run(() => APIConsumer.PostRequestData("api/Consumer/AddElement", new BindingConsumer
 
                 {
+
                     ConsumerName = name,
                     Mail = mail
                 }));

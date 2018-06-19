@@ -17,7 +17,7 @@ namespace CarFactoryApiRest.Controllers
 		{
 			_service = service;
 		}
-
+    
 		[HttpPost]
 		public IHttpActionResult GetConsumerBookings(ReportBindingModel model)
 		{

@@ -129,6 +129,7 @@
     <Compile Include="Controllers\IngridientController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\MessageInfoController.cs" />
+lab14_var16
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\StorageController.cs" />
     <Compile Include="Controllers\WorkerController.cs" />

@@ -30,7 +30,7 @@ namespace CarFactoryView
                 List<WorkerView> list = Task.Run(() => APIConsumer.GetRequestData<List<WorkerView>>("api/Worker/GetList")).Result;
                 if (list != null)
                 {
-                    comboBoxWorker.DisplayMember = "WorkerName";
+                    comboBoxWorker.DisplayMember = "WorkerFIO";
                     comboBoxWorker.ValueMember = "Id";
                     comboBoxWorker.DataSource = list;
                     comboBoxWorker.SelectedItem = null;

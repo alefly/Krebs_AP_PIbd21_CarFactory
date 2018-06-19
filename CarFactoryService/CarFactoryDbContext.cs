@@ -2,6 +2,7 @@
 
 namespace CarFactoryService
 {
+
     using System;
     using System.Data.Entity;
     using System.Linq;
@@ -24,6 +25,7 @@ namespace CarFactoryService
         public virtual DbSet<StorageIngridient> StorageIngridients { get; set; }
         public virtual DbSet<MessageInfo> MessageInfos { get; set; }
 
+
         public override int SaveChanges()
         {
             try
@@ -32,6 +34,7 @@ namespace CarFactoryService
             }
             catch (Exception)
             {
+
                 foreach (var entry in ChangeTracker.Entries())
                 {
                     switch (entry.State)
@@ -50,5 +53,6 @@ namespace CarFactoryService
                 throw;
             }
         }
+
     }
 }

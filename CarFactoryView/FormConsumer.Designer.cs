@@ -32,12 +32,14 @@
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
+
             this.textBoxMail = new System.Windows.Forms.TextBox();
             this.labelMail = new System.Windows.Forms.Label();
             this.groupBoxMails = new System.Windows.Forms.GroupBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.groupBoxMails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+
             this.SuspendLayout();
             // 
             // labelName
@@ -58,6 +60,7 @@
             // 
             // buttonSave
             // 
+
             this.buttonSave.Location = new System.Drawing.Point(392, 285);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
@@ -68,6 +71,7 @@
             // 
             // buttonCancel
             // 
+
             this.buttonCancel.Location = new System.Drawing.Point(473, 285);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
@@ -120,6 +124,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+
             this.ClientSize = new System.Drawing.Size(570, 315);
             this.Controls.Add(this.groupBoxMails);
             this.Controls.Add(this.textBoxMail);
@@ -132,6 +137,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Клиент";
             this.Load += new System.EventHandler(this.FormConsumer_Load);
+
             this.groupBoxMails.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
@@ -145,6 +151,7 @@
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonCancel;
+
         private System.Windows.Forms.TextBox textBoxMail;
         private System.Windows.Forms.Label labelMail;
         private System.Windows.Forms.GroupBox groupBoxMails;
