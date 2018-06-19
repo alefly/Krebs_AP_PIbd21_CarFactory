@@ -55,7 +55,9 @@ namespace CarFactoryApiRest
             container.RegisterType<IStorage, StorageServiceDB>(new HierarchicalLifetimeManager());
             container.RegisterType<IMain, MainServiceDB>(new HierarchicalLifetimeManager());
             container.RegisterType<IReportService, ReportServiceDB>(new HierarchicalLifetimeManager());
+
             container.RegisterType<IMessageInfo, MessageInfoServiceDB>(new HierarchicalLifetimeManager());
+
         }
     }
 }

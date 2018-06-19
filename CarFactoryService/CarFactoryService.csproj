@@ -96,13 +96,17 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+
     <Reference Include="System.Configuration" />
+
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.4\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
+
     <Reference Include="System.Security" />
+
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Http, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.4\lib\net45\System.Web.Http.dll</HintPath>
@@ -146,7 +150,9 @@
     <Compile Include="Attributies\CustomMethodAttribute.cs" />
     <Compile Include="BindingModels\BindingConsumer.cs" />
     <Compile Include="BindingModels\BindingIngridients.cs" />
+
     <Compile Include="BindingModels\BindingMessageInfo.cs" />
+
     <Compile Include="BindingModels\BindingWorkers.cs" />
     <Compile Include="BindingModels\BindingBooking.cs" />
     <Compile Include="BindingModels\BindingCommodity.cs" />
@@ -155,7 +161,9 @@
     <Compile Include="BindingModels\BindingStorageIngridients.cs" />
     <Compile Include="BindingModels\ReportBindingModel.cs" />
     <Compile Include="CarFactoryDbContext.cs" />
+
     <Compile Include="Interfaces\IMessageInfo.cs" />
+
     <Compile Include="Interfaces\IReportService.cs" />
     <Compile Include="ListDataSingleton.cs" />
     <Compile Include="ImplementationsList\ConsumerList.cs" />
@@ -170,9 +178,11 @@
     <Compile Include="Interfaces\IMain.cs" />
     <Compile Include="Interfaces\ICommodity.cs" />
     <Compile Include="Interfaces\IStorage.cs" />
+
     <Compile Include="Migrations\201806021058425_Init.cs" />
     <Compile Include="Migrations\201806021058425_Init.Designer.cs">
       <DependentUpon>201806021058425_Init.cs</DependentUpon>
+
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -185,7 +195,9 @@
     <Compile Include="ViewModels\ConsumerBookingsModel.cs" />
     <Compile Include="ViewModels\ConsumerView.cs" />
     <Compile Include="ViewModels\IngridientView.cs" />
+
     <Compile Include="ViewModels\MessageInfoView.cs" />
+
     <Compile Include="ViewModels\StoragesLoadViewModel.cs" />
     <Compile Include="ViewModels\WorkerView.cs" />
     <Compile Include="ViewModels\BookingView.cs" />
@@ -197,7 +209,9 @@
     <Compile Include="WorkDB\ConsumerServiceDB.cs" />
     <Compile Include="WorkDB\IngridientServiceDB.cs" />
     <Compile Include="WorkDB\MainServiceDB.cs" />
+
     <Compile Include="WorkDB\MessageInfoServiceDB.cs" />
+
     <Compile Include="WorkDB\ReportServiceDB.cs" />
     <Compile Include="WorkDB\StorageServiceDB.cs" />
     <Compile Include="WorkDB\WorkerServiceDB.cs" />
@@ -220,8 +234,10 @@
     <None Include="Resources\TIMCYR.TTF" />
   </ItemGroup>
   <ItemGroup>
+
     <EmbeddedResource Include="Migrations\201806021058425_Init.resx">
       <DependentUpon>201806021058425_Init.cs</DependentUpon>
+
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

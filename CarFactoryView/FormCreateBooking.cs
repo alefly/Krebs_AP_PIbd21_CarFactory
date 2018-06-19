@@ -21,6 +21,7 @@ namespace CarFactoryView
                 List<ConsumerView> listC = Task.Run(() => APIConsumer.GetRequestData<List<ConsumerView>>("api/Consumer/GetList")).Result;
                 if (listC != null)
                 {
+
                     comboBoxConsumer.DisplayMember = "ConsumerName";
                     comboBoxConsumer.ValueMember = "Id";
                     comboBoxConsumer.DataSource = listC;

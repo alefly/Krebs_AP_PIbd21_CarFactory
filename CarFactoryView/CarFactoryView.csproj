@@ -44,6 +44,7 @@
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
@@ -160,6 +161,7 @@
     <Compile Include="FormIngridients.Designer.cs">
       <DependentUpon>FormIngridients.cs</DependentUpon>
     </Compile>
+
     <Compile Include="FormMails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -227,6 +229,7 @@
       <DependentUpon>FormWorkers.cs</DependentUpon>
     </Compile>
     <Compile Include="HttpErrorMessage.cs" />
+
     <Compile Include="MailConsumer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
