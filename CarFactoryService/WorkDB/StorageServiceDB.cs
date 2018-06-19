@@ -12,14 +12,19 @@ namespace CarFactoryService.WorkDB
 {
 	public class StorageServiceDB : IStorage
 	{
-		private CarFactoryDbContext context;
+		private CarFactoryWebDbContext context;
 
-		public StorageServiceDB(CarFactoryDbContext context)
+		public StorageServiceDB(CarFactoryWebDbContext context)
 		{
 			this.context = context;
 		}
 
-		public List<StorageView> GetList()
+        public StorageServiceDB()
+        {
+            this.context = new CarFactoryWebDbContext(); ;
+        }
+
+        public List<StorageView> GetList()
 		{
 			List<StorageView> result = context.Storages
 				.Select(rec => new StorageView

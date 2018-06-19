@@ -12,14 +12,19 @@ namespace CarFactoryService.WorkDB
 {
 	public class ConsumerServiceDB : IConsumer
 	{
-		private CarFactoryDbContext context;
+		private CarFactoryWebDbContext context;
 
-		public ConsumerServiceDB(CarFactoryDbContext context)
+		public ConsumerServiceDB(CarFactoryWebDbContext context)
 		{
 			this.context = context;
 		}
 
-		public List<ConsumerView> GetList()
+        public ConsumerServiceDB()
+        {
+            this.context = new CarFactoryWebDbContext(); ;
+        }
+
+        public List<ConsumerView> GetList()
 		{
 			List<ConsumerView> result = context.Consumers
 				.Select(rec => new ConsumerView

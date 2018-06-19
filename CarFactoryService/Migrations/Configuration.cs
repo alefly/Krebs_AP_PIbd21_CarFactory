@@ -1,20 +1,18 @@
-namespace AbstractShopService.Migrations
+namespace CarFactoryService.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<CarFactoryService.CarFactoryDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<CarFactoryService.CarFactoryWebDbContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-			AutomaticMigrationDataLossAllowed = true;
+            AutomaticMigrationsEnabled = false;
+        }
 
-		}
-
-        protected override void Seed(CarFactoryService.CarFactoryDbContext context)
+        protected override void Seed(CarFactoryService.CarFactoryWebDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

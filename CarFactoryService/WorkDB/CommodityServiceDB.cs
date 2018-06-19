@@ -13,14 +13,19 @@ namespace CarFactoryService.WorkDB
 {
 	public class CommodityServiceDB : ICommodity
 	{
-		private CarFactoryDbContext context;
+		private CarFactoryWebDbContext context;
 
-		public CommodityServiceDB(CarFactoryDbContext context)
+		public CommodityServiceDB(CarFactoryWebDbContext context)
 		{
 			this.context = context;
 		}
 
-		public List<CommodityView> GetList()
+        public CommodityServiceDB()
+        {
+            this.context = new CarFactoryWebDbContext(); ;
+        }
+
+        public List<CommodityView> GetList()
 		{
 			List<CommodityView> result = context.Commodities
 				.Select(rec => new CommodityView
