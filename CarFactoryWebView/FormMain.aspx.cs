@@ -27,7 +27,7 @@ namespace CarFactoryWebView
             try
             {
                 list = service.GetList();
-                //dataGridView1.Columns[0].Visible = true;
+                dataGridView1.Columns[0].Visible = true;
             }
             catch (Exception ex)
             {

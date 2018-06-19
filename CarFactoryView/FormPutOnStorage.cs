@@ -74,7 +74,7 @@ namespace AbstractShopView
             }
             try
             {
-                serviceM.PutComponentOnStock(new BindingStorageComponents
+                serviceM.PutIngridientOnStorage(new BindingStorageIngridients
                 {
                     IngridientId = Convert.ToInt32(comboBoxComponent.SelectedValue),
                     StorageId = Convert.ToInt32(comboBoxStock.SelectedValue),

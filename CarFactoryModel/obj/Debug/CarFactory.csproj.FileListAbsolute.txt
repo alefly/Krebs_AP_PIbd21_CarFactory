@@ -52,3 +52,31 @@ J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\bin\De
 J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\bin\Debug\Unity.Interception.Configuration.pdb
 J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\bin\Debug\Unity.RegistrationByConvention.pdb
 J:\политех\2 курс\ТП\2 семестр\л3Web\CarFactoryModel\bin\Debug\Unity.ServiceLocation.pdb
+C:\Users\Олег\Desktop\л4Web\CarFactoryModel\bin\Debug\AbstractShopModel.dll.config
+C:\Users\Олег\Desktop\л4Web\CarFactoryModel\bin\Debug\AbstractShopModel.dll
+C:\Users\Олег\Desktop\л4Web\CarFactoryModel\bin\Debug\AbstractShopModel.pdb
+C:\Users\Олег\Desktop\л4Web\CarFactoryModel\bin\Debug\CommonServiceLocator.dll
+C:\Users\Олег\Desktop\л4Web\CarFactoryModel\bin\Debug\EntityFramework.dll
+C:\Users\Олег\Desktop\л4Web\CarFactoryModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Олег\Desktop\л4Web\CarFactoryModel\bin\Debug\Unity.Abstractions.dll
+C:\Users\Олег\Desktop\л4Web\CarFactoryModel\bin\Debug\Unity.Configuration.dll
+C:\Users\Олег\Desktop\л4Web\CarFactoryModel\bin\Debug\Unity.Container.dll
+C:\Users\Олег\Desktop\л4Web\CarFactoryModel\bin\Debug\Unity.Interception.Configuration.dll
+C:\Users\Олег\Desktop\л4Web\CarFactoryModel\bin\Debug\Unity.Interception.dll
+C:\Users\Олег\Desktop\л4Web\CarFactoryModel\bin\Debug\Unity.RegistrationByConvention.dll
+C:\Users\Олег\Desktop\л4Web\CarFactoryModel\bin\Debug\Unity.ServiceLocation.dll
+C:\Users\Олег\Desktop\л4Web\CarFactoryModel\bin\Debug\CommonServiceLocator.pdb
+C:\Users\Олег\Desktop\л4Web\CarFactoryModel\bin\Debug\EntityFramework.xml
+C:\Users\Олег\Desktop\л4Web\CarFactoryModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Олег\Desktop\л4Web\CarFactoryModel\bin\Debug\Unity.Abstractions.pdb
+C:\Users\Олег\Desktop\л4Web\CarFactoryModel\bin\Debug\Unity.Configuration.pdb
+C:\Users\Олег\Desktop\л4Web\CarFactoryModel\bin\Debug\Unity.Container.pdb
+C:\Users\Олег\Desktop\л4Web\CarFactoryModel\bin\Debug\Unity.Interception.pdb
+C:\Users\Олег\Desktop\л4Web\CarFactoryModel\bin\Debug\Unity.Interception.Configuration.pdb
+C:\Users\Олег\Desktop\л4Web\CarFactoryModel\bin\Debug\Unity.RegistrationByConvention.pdb
+C:\Users\Олег\Desktop\л4Web\CarFactoryModel\bin\Debug\Unity.ServiceLocation.pdb
+C:\Users\Олег\Desktop\л4Web\CarFactoryModel\obj\Debug\CarFactory.csprojAssemblyReference.cache
+C:\Users\Олег\Desktop\л4Web\CarFactoryModel\obj\Debug\CarFactory.csproj.CoreCompileInputs.cache
+C:\Users\Олег\Desktop\л4Web\CarFactoryModel\obj\Debug\CarFactory.csproj.CopyComplete
+C:\Users\Олег\Desktop\л4Web\CarFactoryModel\obj\Debug\AbstractShopModel.dll
+C:\Users\Олег\Desktop\л4Web\CarFactoryModel\obj\Debug\AbstractShopModel.pdb

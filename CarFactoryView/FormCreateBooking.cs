@@ -102,7 +102,7 @@ namespace AbstractShopView
             }
             try
             {
-                serviceM.CreateOrder(new BindingBooking
+                serviceM.CreateBooking(new BindingBooking
                 {
                     ConsumerId = Convert.ToInt32(comboBoxClient.SelectedValue),
                     CommodityId = Convert.ToInt32(comboBoxCommodity.SelectedValue),

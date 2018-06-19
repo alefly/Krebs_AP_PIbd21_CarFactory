@@ -1,5 +1,4 @@
-﻿using CarFactoryService.WorkerList;
-using CarFactoryService.Interfaces;
+﻿using CarFactoryService.Interfaces;
 using System;
 using System.Windows.Forms;
 using Unity;

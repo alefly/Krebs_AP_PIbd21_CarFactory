@@ -22,7 +22,7 @@ namespace CarFactoryService.WorkDB
 
         public CommodityServiceDB()
         {
-            this.context = new CarFactoryWebDbContext();
+            this.context = new CarFactoryWebDbContext(); ;
         }
 
         public List<CommodityView> GetList()
