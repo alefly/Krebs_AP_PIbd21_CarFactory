@@ -1,4 +1,5 @@
-﻿using CarFactoryService.BindingModels;
+﻿using CarFactoryService.Attributies;
+using CarFactoryService.BindingModels;
 using CarFactoryService.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -8,16 +9,22 @@ using System.Threading.Tasks;
 
 namespace CarFactoryService.Interfaces
 {
-	public interface IReportService
+    [CustomInterface("Интерфейс для работы с отчетами")]
+    public interface IReportService
 	{
-		void SaveCommodityPrice(ReportBindingModel model);
+        [CustomMethod("Метод сохранения списка изделий в doc-файл")]
+        void SaveCommodityPrice(ReportBindingModel model);
 
-		List<StoragesLoadViewModel> GetStoragesLoad();
+        [CustomMethod("Метод получения списка складов с количество компонент на них")]
+        List<StoragesLoadViewModel> GetStoragesLoad();
 
-		void SaveStoragesLoad(ReportBindingModel model);
+        [CustomMethod("Метод сохранения списка списка складов с количество компонент на них в xls-файл")]
+        void SaveStoragesLoad(ReportBindingModel model);
 
-		List<ConsumerBookingsModel> GetConsumerBookings(ReportBindingModel model);
+        [CustomMethod("Метод получения списка заказов клиентов")]
+        List<ConsumerBookingsModel> GetConsumerBookings(ReportBindingModel model);
 
-		void SaveConsumerBookings(ReportBindingModel model);
+        [CustomMethod("Метод сохранения списка заказов клиентов в pdf-файл")]
+        void SaveConsumerBookings(ReportBindingModel model);
 	}
 }

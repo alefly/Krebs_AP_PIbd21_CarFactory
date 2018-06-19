@@ -146,6 +146,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributies\CustomInterfaceAttribute.cs" />
+    <Compile Include="Attributies\CustomMethodAttribute.cs" />
     <Compile Include="BindingModels\BindingConsumer.cs" />
     <Compile Include="BindingModels\BindingIngridients.cs" />
 
