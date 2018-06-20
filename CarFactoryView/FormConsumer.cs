@@ -1,6 +1,7 @@
 ﻿using CarFactoryService.BindingModels;
 using CarFactoryService.ViewModels;
 using System;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -25,6 +26,12 @@ namespace CarFactoryView
                 {
                     var client = Task.Run(() => APIConsumer.GetRequestData<ConsumerView>("api/Consumer/Get/" + id.Value)).Result;
                     textBoxName.Text = client.ConsumerName;
+
+                    textBoxMail.Text = client.Mail;
+                    dataGridView.DataSource = client.Messages;
+                    dataGridView.Columns[0].Visible = false;
+                    dataGridView.Columns[1].Visible = false;
+                    dataGridView.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
                 catch (Exception ex)
                 {
@@ -45,6 +52,17 @@ namespace CarFactoryView
                 return;
             }
             string name = textBoxName.Text;
+
+            string mail = textBoxMail.Text;
+                        if (!string.IsNullOrEmpty(mail))
+                            {
+                                if (!Regex.IsMatch(mail, @"^(?("")(""[^""]+?""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+                @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9]{2,17}))$"))
+                                    {
+                    MessageBox.Show("Неверный формат для электронной почты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                            }
             Task task;
             if (id.HasValue)
             {
@@ -53,7 +71,9 @@ namespace CarFactoryView
                 {
 
                     Id = id.Value,
-                    ConsumerName = name
+
+                    ConsumerName = name,
+                    Mail = mail
                 }));
             }
             else
@@ -61,7 +81,9 @@ namespace CarFactoryView
                 task = Task.Run(() => APIConsumer.PostRequestData("api/Consumer/AddElement", new BindingConsumer
 
                 {
-                    ConsumerName = name
+
+                    ConsumerName = name,
+                    Mail = mail
                 }));
             }
             task.ContinueWith((prevTask) => MessageBox.Show("Сохранение прошло успешно. Обновите список", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information),

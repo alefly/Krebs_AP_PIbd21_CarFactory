@@ -1,41 +1,30 @@
 ﻿using CarFactory;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CarFactoryService
 {
-	[Table("CarFactoryDatabase")]
-	public class CarFactoryDbContext : DbContext
-	{
-		public CarFactoryDbContext()
-		{
-			//настройки конфигурации для entity
-			Configuration.ProxyCreationEnabled = false;
-			Configuration.LazyLoadingEnabled = false;
-			var ensureDLLIsCopied = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
-		}
 
-		public virtual DbSet<Consumer> Consumers { get; set; }
+    using System;
+    using System.Data.Entity;
+    using System.Linq;
 
-		public virtual DbSet<Ingridient> Ingridients { get; set; }
+    public class CarFactoryDbContext : DbContext
+    {
 
-		public virtual DbSet<Worker> Workers { get; set; }
+        public CarFactoryDbContext()
+            : base("name=CarFactoryDbContext")
+        {
+        }
 
-		public virtual DbSet<Booking> Bookings { get; set; }
+        public virtual DbSet<Consumer> Consumers { get; set; }
+        public virtual DbSet<Ingridient> Ingridients { get; set; }
+        public virtual DbSet<Worker> Workers { get; set; }
+        public virtual DbSet<Booking> Bookings { get; set; }
+        public virtual DbSet<Commodity> Commodities { get; set; }
+        public virtual DbSet<CommodityIngridient> CommodityIngridients { get; set; }
+        public virtual DbSet<Storage> Storages { get; set; }
+        public virtual DbSet<StorageIngridient> StorageIngridients { get; set; }
+        public virtual DbSet<MessageInfo> MessageInfos { get; set; }
 
-		public virtual DbSet<Commodity> Commodities { get; set; }
-
-		public virtual DbSet<CommodityIngridient> CommodityIngridients { get; set; }
-
-		public virtual DbSet<Storage> Storages { get; set; }
-
-		public virtual DbSet<StorageIngridient> StorageIngridients { get; set; }
 
         public override int SaveChanges()
         {
@@ -45,7 +34,8 @@ namespace CarFactoryService
             }
             catch (Exception)
             {
-               foreach (var entry in ChangeTracker.Entries())
+
+                foreach (var entry in ChangeTracker.Entries())
                 {
                     switch (entry.State)
                     {
@@ -63,5 +53,6 @@ namespace CarFactoryService
                 throw;
             }
         }
-	}
+
+    }
 }

@@ -32,28 +32,32 @@ namespace CarFactoryView
         public static async Task<T> GetRequestData<T>(string requestUrl)
         {
             HttpResponseMessage response = Task.Run(() => GetRequest(requestUrl)).Result;
-                        if (response.IsSuccessStatusCode)
-                            {
-                                return await response.Content.ReadAsAsync<T>();
-                            }
-                        else
+
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadAsAsync<T>();
+            }
+            else
             {
                 string error = response.Content.ReadAsStringAsync().Result;
                 throw new Exception(error);
-                            }
+            }
+
         }
 
         public static void PostRequestData<T>(string requestUrl, T model)
         {
             HttpResponseMessage response = Task.Run(() => PostRequest(requestUrl, model)).Result;
-                        if (!response.IsSuccessStatusCode)
-                            {
+
+            if (!response.IsSuccessStatusCode)
+            {
                 string error = response.Content.ReadAsStringAsync().Result;
                 var errorMessage = JsonConvert.DeserializeObject<HttpErrorMessage>(error);
                 throw new Exception(errorMessage.Message + " " + (errorMessage.MessageDetail ?? "") +
                  " " + (errorMessage.ExceptionMessage ?? ""));
-                           }
-                    }
+
+            }
+        }
 
         public static async Task<U> PostRequestData<T, U>(string requestUrl, T model)
         {
@@ -66,7 +70,8 @@ namespace CarFactoryView
             {
                 string error = response.Content.ReadAsStringAsync().Result;
                 var errorMessage = JsonConvert.DeserializeObject<HttpErrorMessage>(error);
-                throw new Exception(errorMessage.Message + " " + errorMessage.MessageDetail ?? "" + 
+
+                throw new Exception(errorMessage.Message + " " + errorMessage.MessageDetail ?? "" +
                     " " + errorMessage.ExceptionMessage ?? "");
             }
         }

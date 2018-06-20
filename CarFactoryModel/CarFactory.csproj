@@ -130,6 +130,9 @@
   <ItemGroup>
     <Compile Include="Consumer.cs" />
     <Compile Include="Ingredient.cs" />
+
+    <Compile Include="MessageInfo.cs" />
+
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Worker.cs" />
     <Compile Include="Booking.cs" />

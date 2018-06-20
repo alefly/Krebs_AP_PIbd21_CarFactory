@@ -1,4 +1,7 @@
-﻿using System.Runtime.Serialization;
+
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
+
 
 namespace CarFactoryService.ViewModels
 {
@@ -7,7 +10,16 @@ namespace CarFactoryService.ViewModels
     {
         [DataMember]
         public int Id { get; set; }
+
+
+        [DataMember]
+        public string Mail { get; set; }
+
+
         [DataMember]
         public string ConsumerName { get; set; }
+
+        [DataMember]
+        public List<MessageInfoView> Messages { get; set; }
     }
 }
